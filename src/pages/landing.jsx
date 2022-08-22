@@ -17,7 +17,8 @@ function Landing() {
         </a>
       </StApplyBtn>
       <footer>
-        <p>지원 및 기타 문의 : 010-5178-5316 (회장 주송아)</p>
+        <p>지원 및 기타 문의</p>
+        <p>010-5178-5316(회장 주송아)</p>
       </footer>
     </StLanding>
   );
@@ -57,10 +58,11 @@ const StLanding = styled.div`
 
   p {
     font-size: 17px;
-    line-height: 25px;
+    line-height: 30px;
     color: #cccccc;
   }
-  & > footer {
+
+  footer {
     padding: 5rem;
   }
 `;

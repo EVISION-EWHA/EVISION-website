@@ -43,7 +43,7 @@ function Curriculum() {
         </StCard>
         <StCard isActive={option === "study"}>
           <p>심화 스터디 및 자율 스터디를 통해 </p>
-          <p>자신의 관심분야에 대해 더욱 심화으로 공부합니다.</p>
+          <p>자신의 관심분야에 대해 더욱 심화적으로 공부합니다.</p>
           <br />
           <p>심화스터디 - 8주차 진행.</p>
           <p>부원 별로 1가지를 선택하여 한가지 분야를 심층적으로 공부합니다.</p>
@@ -97,6 +97,7 @@ const StCurri = styled.div`
 `;
 
 const StBtn = styled.button`
+  height: 3rem;
   font-size: 20px;
   line-height: 25px;
   color: ${({ isActive }) => (isActive ? "#bdbdbd" : "#787878")};
