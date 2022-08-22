@@ -75,8 +75,8 @@ const StApplyBtn = styled.button`
   font-size: 2rem;
 
   width: 20rem;
-  margin-top: 2rem;
-  margin-bottom: 5rem;
+  margin: 2rem 0 5rem 0;
+  padding: 0.2rem 0 0.2rem 0;
 
   border-radius: 0.8rem;
   cursor: pointer;
