@@ -50,7 +50,7 @@ const StLanding = styled.div`
 
   h2 {
     font-size: 35px;
-    margin-top: 3rem;
+    margin-top: 6rem;
     margin-bottom: 2rem;
     color: #ebeced;
   }
@@ -61,7 +61,7 @@ const StLanding = styled.div`
     color: #cccccc;
   }
   & > footer {
-    padding: 3rem;
+    padding: 5rem;
   }
 `;
 

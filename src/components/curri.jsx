@@ -16,7 +16,7 @@ function Curriculum() {
             isActive={option === "study"}
             onClick={() => setOption("study")}
           >
-            심화/자율 스터디
+            스터디
           </StBtn>
           <StBtn
             isActive={option === "network"}
@@ -52,11 +52,8 @@ function Curriculum() {
             각 팀별 로드맵, 자료는 동아리에서 쌓은 데이터를 기반으로 제공됩니다.
           </p>
           <br />
-          <p>자율스터디 - 자유롭게 진행. 주제 제한 없음, 주차 제한 없음</p>
-          <p>
-            부원별로 자율적으로 참여하고 싶은 스터디를 자유롭게 선택하여
-            공부합니다.
-          </p>
+          <p>자율스터디 - 주제,주차 제한 없음</p>
+          <p>부원별로 참여하고 싶은 스터디를 자유롭게 선택하여 공부합니다.</p>
           <p>같은 분야를 선택한 사람끼리 팀을 이뤄 활동합니다.</p>
           <p>모든 부원이 원하는 스터디를 열 수 있습니다.</p>
           <p>학술 스터디의 경우 동아리에서 로드맵, 자료들을 제공해드립니다.</p>
@@ -81,7 +78,6 @@ function Curriculum() {
 export default Curriculum;
 
 const StCurri = styled.div`
-  width: 35rem;
   background-color: black;
 
   display: flex;
@@ -109,13 +105,13 @@ const StBtn = styled.button`
 
 const StNav = styled.aside`
   display: flex;
-  gap: 5rem;
   margin-bottom: 2rem;
 `;
 
 const StCard = styled.section`
   display: flex;
-  height: 50rem;
+  width: 35rem;
+
   flex-direction: column;
   display: ${({ isActive }) => (isActive ? "block" : "none")};
 `;
