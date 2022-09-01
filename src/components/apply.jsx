@@ -4,11 +4,7 @@ function Apply() {
     <StApply>
       <h2>APPLY (8/22~8/29)</h2>
       <p>하단 버튼을 누르면 폼 링크로 접속됩니다.</p>
-      <StApplyBtn>
-        <a href={"https://forms.gle/iLL9DeepsXAjeUZ5A"} target="_blank">
-          지원하기
-        </a>
-      </StApplyBtn>
+      <StApplyBtn>지원하기</StApplyBtn>
     </StApply>
   );
 }
