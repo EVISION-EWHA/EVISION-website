@@ -5,13 +5,15 @@ import Curriculum from "components/curri";
 import Fade from "react-reveal/Fade";
 import Apply from "components/apply";
 import Footer from "components/footer";
+import Login from "./login/Login";
 
 function Landing() {
   return (
     <StLanding>
-      <img src={logo} alt="로고사진" />
+      {/*  <img src={logo} alt="로고사진" />
       <Fade>
         <Intro />
+        <Login />
       </Fade>
       <Fade>
         <Curriculum />
@@ -19,7 +21,8 @@ function Landing() {
       <Fade>
         <Apply />
       </Fade>
-      <Footer />
+      <Footer /> */}
+      <Login></Login>
     </StLanding>
   );
 }
@@ -35,15 +38,26 @@ const StLanding = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: black;
+  //background-color: black;
 
   & > img {
     width: 25rem;
     margin: 4rem auto;
   }
-
+  label {
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 25px;
+  }
+  input {
+    font-size: 50px;
+  }
+  button {
+    font-size: 30px;
+    text-align: right;
+  }
   h1 {
-    color: #ebeced;
+    color: black;
     font-size: 40px;
     margin-bottom: 3rem;
   }
@@ -57,8 +71,8 @@ const StLanding = styled.div`
   }
 
   p {
-    font-size: 17px;
+    font-size: 30px;
     line-height: 30px;
-    color: #cccccc;
+    color: black;
   }
 `;
