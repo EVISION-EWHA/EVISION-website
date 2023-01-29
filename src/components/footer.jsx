@@ -18,4 +18,12 @@ const StFooter = styled.div`
 
   padding: 5rem;
   margin-bottom: 5rem;
+
+  background-color: black;
+
+  p {
+    font-size: 17px;
+    line-height: 30px;
+    color: #cccccc;
+  }
 `;
