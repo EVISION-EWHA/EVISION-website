@@ -13,8 +13,7 @@ function Login() {
         <StInput type="password" />
       </Stlabel>
       <br />
-      <StLoginBtn type="submit">로그인
-      </StLoginBtn>
+      <StLoginBtn type="submit">로그인</StLoginBtn>
     </StLogin>
   );
 }
@@ -33,12 +32,14 @@ const StLogin = styled.div`
 
 const Stlabel = styled.label`
   width: 40rem;
-  margin: 4rem 0 2rem 0;
+  margin: 4rem 0 2rem 1rem;
+  padding: 0 0 0 1rem;
   flex-direction: row;
-  font-size: 5rem;
+  font-size: 4rem;
 `;
 
 const StInput = styled.input`
+  font-size: 3rem;
   width: 40rem;
   height: 5rem;
 `;
