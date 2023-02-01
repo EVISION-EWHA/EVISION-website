@@ -1,41 +1,45 @@
 import React from "react";
 import styled from "styled-components";
 
-function Login() {
+function Signup() {
   return (
-    <StLogin>
-      <Stlabel>
-        Id
-        <StInput type="email" />
-      </Stlabel>
-      <Stlabel>
-        Password
-        <StInput type="password" />
-      </Stlabel>
+    <StSignup>
+      <Stlabel>Id</Stlabel>
+      <StInput type="email" />
+      <Stlabel>Password</Stlabel>
+      <StInput type="password" />
+      <Stlabel>RePassword</Stlabel>
+      <StInput type="password" />
+      <Stlabel>Email</Stlabel>
+      <StInput type="email" />
+      <Stlabel>이름</Stlabel>
+      <StInput type="text" />
+      <Stlabel>전화번호</Stlabel>
+      <StInput type="tel" />
       <br />
-      <StLoginBtn type="submit">로그인</StLoginBtn>
-    </StLogin>
+      <StSignupBtn type="submit">회원가입</StSignupBtn>
+    </StSignup>
   );
 }
-export default Login;
+export default Signup;
 
-const StLogin = styled.div`
+const StSignup = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 20rem 0 5rem 0;
+  margin: 7rem 0 5rem 0;
   padding: 5rem 0 5rem 0;
   flex-direction: column;
   font-size: 30px;
 `;
 
-const Stlabel = styled.label`
+const Stlabel = styled.div`
   width: 40rem;
-  margin: 4rem 0 2rem 1rem;
-  padding: 0 0 0 1rem;
+  margin: 3rem 0 1rem 0;
+  align-content: space-between;
   flex-direction: row;
-  font-size: 4rem;
+  font-size: 2.7rem;
 `;
 
 const StInput = styled.input`
@@ -44,7 +48,7 @@ const StInput = styled.input`
   height: 5rem;
 `;
 
-const StLoginBtn = styled.button`
+const StSignupBtn = styled.button`
   display: flex;
   width: 140px;
   height: 50px;

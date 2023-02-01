@@ -29,7 +29,7 @@ function Landing() {
 
 export default Landing;
 
-const StLanding = styled.div`
+const StLanding = styled.div` 
   display: flex;
   flex-direction: column;
   justify-content: center;
