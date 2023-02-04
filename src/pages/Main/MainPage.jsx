@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import logo from "assets/icon.png";
 import Intro from "components/Intro";
-import Curriculum from "components/curri";
 import Fade from "react-reveal/Fade";
 import Apply from "components/apply";
-import Footer from "components/footer";
 
 const MainPage = () => {
   return (
@@ -25,7 +23,7 @@ const MainPage = () => {
 
 export default MainPage;
 
-const StLanding = styled.div`
+export const StLanding = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
