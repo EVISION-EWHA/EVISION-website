@@ -1,10 +1,17 @@
 .Post {
-    
+    font-size: 40pt;
+    justify-content: center;
     width: 100%;
+    /* display: center; */
+    text-align: center;
+    width: 100%;
+    /* margin-bottom: 50px; */
+    
   }
   
   .container {
     margin: 0 auto;
+    margin-top: 100px;
     width: 80%;
     border: 1px solid #333;
     padding: 10px 0 30px 0;
@@ -13,30 +20,38 @@
   }
   
   .form-wrapper{
+    text-align: left;
     font-size: 20pt;
     width: 60%;
     margin: 0 auto;
   }
   
   .title-input {
+    
     text-align: left;
+    font-size: 15pt;
     width: 800px;
     height: 40px;
     margin: 10px;
   }
 
   .text-area {
+    margin-bottom: 100px;
     width: 800px;
-    font-size: 15pt;
+    text-align: left;
+    font-size: 18pt;
     min-height: 500px;
+    margin:10px;
   }
   .submit-button {
-    display: flex;
-    width: 180px;
+    font-size: 25pt;
+    display: right;
+    width: 160px;
     height: 50px;
-    font-size: 20px;
-    padding: 20px;
-    border: none;
-    background: green;
-    border-radius: 5px;
+    box-sizing: border-box;
+    border: 2px solid #00462a;
+    /* padding: 20px; */
+    /* border: none; */
+    background: white;
+    border-radius: 4px;
   }
