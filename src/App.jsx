@@ -21,8 +21,8 @@ const App = () => {
         <Route path="/main" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
         <Route path="/postview/:no" element={<PostView></PostView>} />
-        <Route path="/postmain" element={<PostMain></PostMain>} />
-        <Route path="/postlist" element={<PostList></PostList>} />
+        <Route path='/postmain' element={<PostMain></PostMain>}/>
+        <Route path='/postlist' element={<PostList></PostList>}/>
         <Route path="/admin" element={<UserList></UserList>} />
       </Routes>
       <Footer />
