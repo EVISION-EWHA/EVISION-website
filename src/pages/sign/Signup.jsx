@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-//import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import styled from "styled-components";
 
 function Signup() {
@@ -98,7 +98,7 @@ function Signup() {
   };
 
   return (
-    <StSignup>
+    <StSignup onSubmit={handleSubmit}>
       <Stlabel>Id</Stlabel>
       <StInput
         type="text"
@@ -109,19 +109,23 @@ function Signup() {
         autoFocus
       />
       <Stlabel>Password</Stlabel>
-      <StInput
-        type="password"
-        id="password"
-        name="password"
-        error={passwordState !== "" || false}
-        placeholder="영문, 숫자, 특수문자 포함 8자 이상"
-      />
+      <form>
+        <StInput
+          type="password"
+          id="password"
+          name="password"
+          error={passwordState !== "" || false}
+          autoComplete="new-password"
+          //placeholder="영문, 숫자, 특수문자 포함 8자 이상"
+        />
+      </form>
       <Stlabel>RePassword</Stlabel>
       <StInput
         type="password"
         name="rePassword"
-        placeholder="비밀번호 재입력"
+        //placeholder="비밀번호 재입력"
         error={passwordError !== "" || false}
+        autoComplete="new-password"
         id="rePassword"
       />
       <Stlabel>Email</Stlabel>
