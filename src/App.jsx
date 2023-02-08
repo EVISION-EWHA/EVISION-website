@@ -1,10 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "pages/login/Login";
 import Signup from "pages/sign/Signup";
+import MainPage from "pages/Main/MainPage";
+import CurriculumPage from "pages/Curriculum/CurriculumPage";
 import Post from "pages/board/post";
-import PostMain from "pages/Post1/PostMain";
+import PostMain from "pages/Post/PostMain";
 import PostView from "pages/Post/PostView";
-import PostList from "pages/Post1/PostList";
+import PostList from "pages/Post/PostList";
+import UserList from "pages/userList/userList";
+import Header from "components/header";
+import Footer from "components/footer";
 
 const App = () => {
   return (
@@ -22,7 +27,7 @@ const App = () => {
       </Routes>
       <Footer />
     </>
-     );
+  );
 };
 
 export default App;
