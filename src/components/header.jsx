@@ -7,7 +7,10 @@ const Header = () => {
       <HeaderBlock>
         <Wrapper>
           <Logo>
-            <NavLink style={{ color: "white", textDecoration: "none" }} to="/">
+            <NavLink
+              style={{ color: "white", textDecoration: "none" }}
+              to="/main"
+            >
               EVI$ION
             </NavLink>
           </Logo>
@@ -100,5 +103,5 @@ const LoginButton = styled.div`
 `;
 
 const Spacer = styled.div`
-  height: 6.5rem;
+  height: 11.5rem;
 `;
