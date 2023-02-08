@@ -1,19 +1,84 @@
 import React from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function Login() {
+function Login({ setIsLogin }) {
+  const navigate = useNavigate();
+  const onhandlePost = async (data) => {
+    const { userId, userPassword } = data;
+    const postData = { userId, userPassword };
+    postData.userId = data.id;
+    postData.userPassword = data.password;
+
+    await axios
+      .post("/login", postData)
+      .then((res) => {
+        let submitBtn = document.getElementById("submit");
+        submitBtn.addEventListener("click", function (e) {
+          this.setAttribute("disabled", "true");
+          this.setAttribute("disabledElevation", "true");
+          this.setAttribute("disabledRipple", "true");
+        });
+        navigate("/");
+        setIsLogin(true);
+      })
+      .catch((err) => {
+        if (err.response.data === "userId") {
+          Swal.fire({
+            width: 460,
+            height: 260,
+            html: "<b> 로그인 실패</b><br><br>잘못된 이메일입니다",
+            showConfirmButton: false,
+            cancelButtonText: "확인",
+            cancelButtonColor: "#CF5E53",
+            showCancelButton: true,
+            background: "#fff url(/image/swalBackground.png)",
+            timer: 5000,
+          });
+          //존재하지 않는 이메일로 로그인 실패
+        } else if (err.response.data === "userPassword") {
+          Swal.fire({
+            width: 460,
+            height: 260,
+            html: "<b> 로그인 실패</b><br><br>잘못된 비밀번호입니다",
+            showConfirmButton: false,
+            cancelButtonText: "확인",
+            cancelButtonColor: "#CF5E53",
+            showCancelButton: true,
+            timer: 5000,
+          });
+        }
+      });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const loginData = {
+      id: data.get("id"),
+      password: data.get("password"),
+    };
+    onhandlePost(loginData);
+  };
+
   return (
-    <StLogin>
+    <StLogin onSubmit={handleSubmit}>
       <Stlabel>
         Id
-        <StInput type="email" />
+        <StInput type="text" id="id" name="id" autoComplete="id" />
       </Stlabel>
       <Stlabel>
         Password
-        <StInput type="password" />
+        <form>
+          <StInput name="password" type="password" id="password" autoComplete="new-password"/>
+        </form>
       </Stlabel>
       <br />
-      <StLoginBtn type="submit">로그인</StLoginBtn>
+      <StLoginBtn type="submit" id="submit">
+        로그인
+      </StLoginBtn>
     </StLogin>
   );
 }
