@@ -16,33 +16,31 @@ const Header = () => {
           </Logo>
           <MenusBlock>
             {menus.map((m, index) => (
-              <NavLink
-                style={{ color: "gray", textDecoration: "none" }}
-                to={m.link}
-                key={index}
-                // activeStyle={{ color: "green" }}
-              >
+              <NavStyle to={m.link}>
                 <Menu>{m.name}</Menu>
-              </NavLink>
+              </NavStyle>
+              // <NavLink
+              //   style={{ color: "gray", textDecoration: "none" }}
+              //   to={m.link}
+              //   key={index}
+              //   activeStyle={{ color: "white" }}
+              // >
+              //   <Menu>{m.name}</Menu>
+              // </NavLink>
             ))}
           </MenusBlock>
           <LoginButton>
-            <NavLink
+            <NavStyle
               exact
               style={{
-                color: "gray",
-                textDecoration: "none",
                 position: "absolute",
                 right: 0,
                 marginRight: "30px",
               }}
-              // className={({ isActive }) => {
-              //   return isActive ? "green" : "";
-              // }}
               to="/login"
             >
               Login
-            </NavLink>
+            </NavStyle>
           </LoginButton>
         </Wrapper>
       </HeaderBlock>
@@ -56,7 +54,7 @@ export default Header;
 const menus = [
   { name: "Curriculum", link: "/curriculum" },
   { name: "Recruit", link: "/recruit" },
-  { name: "Notice", link: "/notice" },
+  { name: "Board", link: "/borad" },
 ];
 
 const Logo = styled.div`
@@ -87,12 +85,26 @@ const MenusBlock = styled.div`
   display: flex;
 `;
 
+const NavStyle = styled(NavLink)`
+  color: gray;
+  &:link {
+    transition: 0.5s;
+    text-decoration: none;
+  }
+  &:hover {
+    color: white;
+  }
+  &.active {
+    color: white;
+    position: relative;
+  }
+`;
+
 const Menu = styled.div`
   font-size: 30px;
   display: flex;
   align-items: center;
   cursor: pointer;
-  text-decoration: none;
   padding-left: 3rem;
 `;
 
