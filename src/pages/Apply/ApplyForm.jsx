@@ -6,12 +6,13 @@ import "./apply.css";
 function ApplyForm() {
 
     function handleSubmit(){
-        // var isChecked = document.checkout.isAgree.checked;
-        // if(isChecked){
-        //     alert("개인정보 수집에 동의해주세요!!");
-        //     return false;
-        // }
+        var isChecked = document.getElementById('checkAgree').checked;
+        if(!isChecked){
+            alert("개인정보 수집에 동의해주세요!!");
+            return false;
+        }
         alert("지원이 완료되었습니다!");
+        window.location.href = './home';
     }
     
 
@@ -19,16 +20,16 @@ return(
     <div className = "ApplyForm">
         <h2>EVI$ION 지원서 작성</h2>
         <form className = "mainform">
-            <label />1.	목표를 세우고 이를 달성하기 위해 노력한 경험이 있나요? 그 과정을 통해 무엇을 얻었나요? (500자 이내로 작성)
+            
+            <label>자신이 몰입해서 공부해본 분야가 있나요? 있다면 어떤 분야였고, 결과는 어땠으며, 그 과정을 통해 무엇을 얻었는 지 이야기해주세요. 꼭 보안이 아니어도 좋습니다. (최대 600자)</label> 
             <textArea placeholder = "내용을 입력해주세요" /> <br/>
-            <index />2. 동아리 활동으로 얻어가고 싶은 것이 있나요?  어떤 것인지 구체적으로 서술해주세요.
-            <textArea placeholder = "내용을 입력해주세요"/><br />
-            <index>3. 동아리 활동과 보안 공부에 시간을 얼마나 투자하실 수 있나요?</index>
-            <textArea placeholder = "내용을 입력해주세요"/> <br/>
+            <index />EVI$ION에서 특히 공부해보고 싶은 활동이나 분야가 있나요? (최대 600자)
+            <textArea placeholder = "내용을 입력해주세요"/><br /> 
+
         </form>
 
-        <form name = "checkout"><input type="checkbox" name = "isAgee" id= "checkAgree" value=""/> 개인정보 수집에 동의하시겠습니까? <br />
-        </form><br />
+        <p name = "checkout"><input type="checkbox" name = "isAgee" id= "checkAgree" value=""/> 개인정보 수집에 동의하시겠습니까? <br />
+        </p><br />
 
         <button type = "button" onClick ={()=>{handleSubmit()}}>제출하기</button>
     </div>
