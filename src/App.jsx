@@ -10,6 +10,8 @@ import PostList from "pages/Post/PostList";
 import UserList from "pages/userList/userList";
 import Header from "components/header";
 import Footer from "components/footer";
+import ApplyInfo from "pages/Apply/ApplyInfo";
+import ApplyForm from "pages/Apply/ApplyForm";
 
 const App = () => {
   return (
@@ -24,6 +26,9 @@ const App = () => {
         <Route path='/postmain' element={<PostMain></PostMain>}/>
         <Route path='/postlist' element={<PostList></PostList>}/>
         <Route path="/admin" element={<UserList></UserList>} />
+        <Route path = "/Applyinfo" element = {<ApplyInfo></ApplyInfo>}/>
+        <Route path = "/Applyform" element = {<ApplyForm></ApplyForm>}/>
+
       </Routes>
       <Footer />
     </>

@@ -1,0 +1,50 @@
+
+.ApplyInfo {
+    margin : 10% 5% 10% 5%;
+    padding : 30px;
+  }
+  
+  .ApplyInfo form{
+      display : flex;
+      flex-direction: column;
+      background-color: lightgray;
+      padding : 20px;
+  }
+  
+  .ApplyInfo button, .ApplyForm button{
+    margin-top : 20px;
+    margin-bottom : 20px;
+    padding : 10px;
+    width : 30%;
+    cursor: pointer;    
+  }
+  
+  
+  .ApplyForm{
+    margin : 0% 5% 0% 1%;
+  }
+  
+  .ApplyForm form{
+    display : flex;
+    flex-direction: column;
+    background-color: lightgray;
+    padding : 20px;
+  }
+  
+  
+  .ApplyForm textArea{
+    margin-top : 10px;
+    width :  95%;
+    height : 6.25em;
+    border : none;
+    resize : none;
+  }
+  
+  .ApplyForm input{
+    margin-top:5px;
+    width : 95;
+    border : none;
+    resize : none;
+  }
+  
+  
