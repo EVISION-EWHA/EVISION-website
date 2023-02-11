@@ -19,14 +19,6 @@ const Header = () => {
               <NavStyle to={m.link}>
                 <Menu>{m.name}</Menu>
               </NavStyle>
-              // <NavLink
-              //   style={{ color: "gray", textDecoration: "none" }}
-              //   to={m.link}
-              //   key={index}
-              //   activeStyle={{ color: "white" }}
-              // >
-              //   <Menu>{m.name}</Menu>
-              // </NavLink>
             ))}
           </MenusBlock>
           <LoginButton>
@@ -55,6 +47,7 @@ const menus = [
   { name: "Curriculum", link: "/curriculum" },
   { name: "Recruit", link: "/recruit" },
   { name: "Board", link: "/borad" },
+  { name: "Admin", link: "/admin" },
 ];
 
 const Logo = styled.div`
