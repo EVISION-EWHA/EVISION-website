@@ -7,13 +7,13 @@ import styled from "styled-components";
 function Login({ setIsLogin }) {
   const navigate = useNavigate();
   const onhandlePost = async (data) => {
-    const { userId, userPassword } = data;
-    const postData = { userId, userPassword };
+    const { userId, userPw } = data;
+    const postData = { userId, userPw };
     postData.userId = data.id;
-    postData.userPassword = data.password;
+    postData.userPw = data.password;
 
     await axios
-      .post("/login", postData)
+      .post("http://localhost:8080/login", postData)
       .then((res) => {
         let submitBtn = document.getElementById("submit");
         submitBtn.addEventListener("click", function (e) {
@@ -72,7 +72,12 @@ function Login({ setIsLogin }) {
       <Stlabel>
         Password
         <form>
-          <StInput name="password" type="password" id="password" autoComplete="new-password"/>
+          <StInput
+            name="password"
+            type="password"
+            id="password"
+            autoComplete="new-password"
+          />
         </form>
       </Stlabel>
       <br />
@@ -89,7 +94,7 @@ const StLogin = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 20rem 0 5rem 0;
+  margin: 10rem 0 5rem 0;
   padding: 5rem 0 5rem 0;
   flex-direction: column;
   font-size: 30px;
@@ -104,7 +109,7 @@ const Stlabel = styled.label`
 `;
 
 const StInput = styled.input`
-  font-size: 3rem;
+  font-size: 2rem;
   width: 40rem;
   height: 5rem;
 `;

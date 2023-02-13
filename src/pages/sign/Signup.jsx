@@ -5,12 +5,8 @@ import Swal from "sweetalert2";
 import styled from "styled-components";
 
 function Signup() {
-  const [idError, setIdError] = useState("");
   const [passwordState, setPasswordState] = useState(""); //비밀번호 입력
   const [passwordError, setPasswordError] = useState(""); //비밀번호 재입력
-  const [emailError, setEmailError] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
 
   const onhandlePost = async (data) => {
     const { userId, userPassword, userEmail, userName, userPhone } = data;
@@ -63,18 +59,12 @@ function Signup() {
     console.log("phone", phone);
     console.log("rePassword", rePassword);
 
-    // 아이디 유효성 체크
-    // const idRegrex =
-    //   /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-    // if (!idRegrex.test(id)) setIdError("이메일 형식이 올바르지 않습니다");
-    // else setIdError("");
-
-    // // 비밀번호 유효성 체크
-    // const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-    // if (!passwordRegex.test(password))
-    //   setPasswordState(
-    //     " 영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요."
-    //   );
+    // 비밀번호 유효성 체크
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+    if (!passwordRegex.test(password))
+      setPasswordState(
+        " 영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요."
+      );
     // else setPasswordState("");
 
     // const nameRegex = /^[가-힣a-zA-Z]+$/;
@@ -83,7 +73,7 @@ function Signup() {
     // else setNameError('');
     // 비밀번호 같은지 체크
 
-    if (password !== rePassword)
+    if (passwordRegex.test(password) && password === rePassword)
       setPasswordError("비밀번호가 일치하지 않습니다.");
     else setPasswordError("");
 
@@ -116,14 +106,14 @@ function Signup() {
           name="password"
           error={passwordState !== "" || false}
           autoComplete="new-password"
-          //placeholder="영문, 숫자, 특수문자 포함 8자 이상"
+          placeholder="영문, 숫자, 특수문자 포함 8자 이상"
         />
       </form>
       <Stlabel>RePassword</Stlabel>
       <StInput
         type="password"
         name="rePassword"
-        //placeholder="비밀번호 재입력"
+        placeholder="비밀번호 재입력"
         error={passwordError !== "" || false}
         autoComplete="new-password"
         id="rePassword"
@@ -133,7 +123,12 @@ function Signup() {
       <Stlabel>이름</Stlabel>
       <StInput type="text" id="name" name="name" />
       <Stlabel>전화번호</Stlabel>
-      <StInput type="tel" id="phone" name="phone" />
+      <StInput
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="예) 010-1111-2222"
+      />
       <br />
       <StSignupBtn id="submit" name="submit" type="submit">
         회원가입
@@ -163,7 +158,7 @@ const Stlabel = styled.div`
 `;
 
 const StInput = styled.input`
-  font-size: 3rem;
+  font-size: 2rem;
   width: 40rem;
   height: 5rem;
 `;
