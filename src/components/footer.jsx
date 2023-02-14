@@ -17,7 +17,6 @@ const StFooter = styled.div`
   align-items: center;
 
   padding: 5rem;
-  margin-bottom: 5rem;
 
   background-color: black;
 
