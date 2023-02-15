@@ -13,9 +13,9 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
-function UserList() {
+async function UserList() {
   //dummy data
-  const rows: GridRowsProp = [
+  const rows = [
     {
       id: 1,
       col1: "abc333",
@@ -28,7 +28,7 @@ function UserList() {
     { id: 4, col1: "asd343", col2: "전수경", col3: "2022/08/31", col4: "거절" },
   ];
 
-  const columns: GridColDef[] = [
+  const columns = [
     { field: "col1", headerName: "아이디", width: 250 },
     { field: "col2", headerName: "이름", width: 250 },
     { field: "col3", headerName: "가입일자", width: 250 },
@@ -39,26 +39,33 @@ function UserList() {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        // 요청이 시작 할 때에는 error 와 users 를 초기화하고
-        setError(null);
-        setUsers(null);
-        const response = await axios.get(
-          "http://3.37.117.164:8080/admin/users"
-        );
-        setAllData(response.data); // 데이터는 response.data 안에 들어있습니다.
-        console.log(response.data);
-      } catch (e) {
-        console.log(e);
-        setError(e);
-      }
-    };
-    fetchUsers();
-  }, []);
+  // try {
+  //   const data = await axios.get("http://3.37.117.164:8080/admin/users");
+  //   console.log(data);
+  // } catch (err) {
+  //   console.log(err);
+  //   // 오류 발생시 실행
+  // }
+  // useEffect(() => {
+  //   const fetchUsers = async () => {
+  //     try {
+  //       // 요청이 시작 할 때에는 error 와 users 를 초기화하고
+  //       setError(null);
+  //       setUsers(null);
+  //       const response = await axios.get(
+  //         "http://3.37.117.164:8080/admin/users"
+  //       );
+  //       setAllData(response.data); // 데이터는 response.data 안에 들어있습니다.
+  //       console.log(response.data);
+  //     } catch (e) {
+  //       console.log(e);
+  //       setError(e);
+  //     }
+  //   };
+  //   fetchUsers();
+  // }, []);
 
-  if (error) return <div>에러가 발생했습니다</div>;
+  // if (error) return <div>에러가 발생했습니다</div>;
 
   return (
     <div
@@ -86,14 +93,14 @@ function UserList() {
         columns={columns}
         checkboxSelection
       />
-      <Box>
+      {/* <Box>
         {allData &&
           allData.map((user) => (
             <div key={user.userId}>
               {user.userId} ({user.authStatus})
             </div>
           ))}
-      </Box>
+      </Box> */}
     </div>
   );
 }

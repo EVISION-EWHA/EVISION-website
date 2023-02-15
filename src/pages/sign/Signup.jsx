@@ -35,37 +35,39 @@ function Signup() {
   };
 
   const onhandlePost = async (data) => {
-    const { userId, userPassword, userEmail, userName, userPhone } = data;
-    const postData = { userId, userPassword, userEmail, userName, userPhone };
+    const { userId, userPw, email } = data;
+    const postData = { userId, userPw, email };
     postData.userId = data.userId;
-    postData.userPassword = data.userPassword;
-    postData.userEmail = data.userEmail;
-    postData.userName = data.userName;
-    postData.userPhone = data.userPhone;
+    postData.userPw = data.userPw;
+    postData.email = data.email;
+    // postData.userName = data.userName;
+    // postData.userPhone = data.userPhone;
     console.log("postdata", postData);
 
     await axios
-      .post("/signup", postData, { withCredentials: true })
-      .then((postData, res) => {
-        console.log(postData);
+      .post("http://3.37.117.164:8080/signup", postData)
+      .then((res) => {
+        console.log(res);
         let submitBtn = document.getElementById("submit");
         submitBtn.addEventListener("click", function (e) {
           this.setAttribute("disabled", "true");
           this.setAttribute("disabledElevation", "true");
           this.setAttribute("disabledRipple", "true");
-          console.log("성공");
+          console.log("클릭성공");
         });
-        const status = res.body;
+        const status = res.data;
+        console.log(status);
         if (status === 0) {
           console.log("회원가입 성공");
+          alert("회원가입을 성공했습니다");
         } else if (status === -1) {
           console.log("회원가입 실패(아이디 중복)");
+          alert("이미 존재하는 아이디입니다");
         }
         // navigate('/');
       })
       .catch((err) => {
         console.log("error", err);
-        console.log(err.response.status);
       });
   };
 
@@ -74,30 +76,27 @@ function Signup() {
     console.log("click signup");
     const joinData = {
       userId: inputId,
-      userPassword: inputPw,
-      userEmail: inputEmail,
-      userName: inputName,
-      userPhone: inputPhone,
+      userPw: inputPw,
+      email: inputEmail,
+      //userName: inputName,
+      //userPhone: inputPhone,
     };
 
     console.log("joinData", joinData);
 
     // 비밀번호 유효성 체크
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-    if (!passwordRegex.test(joinData.userPassword)) {
+    if (!passwordRegex.test(joinData.userPw)) {
       setPasswordState(
         " 영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요."
       );
     } else setPasswordState("");
 
-    if (
-      passwordRegex.test(joinData.userPassword) &&
-      joinData.userPassword === inputRePw
-    )
+    if (passwordRegex.test(joinData.userPw) && joinData.userPw === inputRePw)
       setPasswordError("비밀번호가 일치하지 않습니다.");
     else setPasswordError("");
 
-    if (joinData.userPassword === inputRePw) {
+    if (joinData.userPw === inputRePw) {
       onhandlePost(joinData);
     }
   };

@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import ChangeStatus from "pages/Admin/ChangeStatus";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Login({ setIsLogin }) {
   const [inputId, setInputId] = useState("");
   const [inputPw, setinputPw] = useState("");
+  // 모달창 노출 여부 state
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // 모달창 노출
+  const showModal = () => {
+    setModalOpen(true);
+  };
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -28,9 +36,9 @@ function Login({ setIsLogin }) {
     postData.userPw = data.userPw;
     try {
       await axios
-        .post("/login", postData, { withCredentials: true })
-        .then((postData, res) => {
-          console.log(postData);
+        .post("http://3.37.117.164:8080/login", postData)
+        .then((res) => {
+          console.log(res);
           let submitBtn = document.getElementById("submit");
           submitBtn.addEventListener("click", function (e) {
             this.setAttribute("disabled", "true");
@@ -38,22 +46,29 @@ function Login({ setIsLogin }) {
             this.setAttribute("disabledRipple", "true");
           });
           //navigate("/");
-          const status = res.body;
+          const status = res.data;
+          console.log(status);
           if (status === 1 || status === 5) {
-            setIsLogin(true);
+            //setIsLogin(true);
             console.log("login 성공");
+            alert("login 성공");
+            navigate("/");
           } else if (status === 0) {
-            setIsLogin(false);
+            //setIsLogin(false);
             console.log("login실패. 대기 상태");
+            alert("가입 요청이 아직 승인되지 않았습니다.");
           } else if (status === 2) {
-            setIsLogin(false);
+            //setIsLogin(false);
             console.log("login실패. 거부당함");
+            alert("가입 요청이 거부되었습니다");
           } else if (status === -1) {
-            setIsLogin(false);
+            //setIsLogin(false);
             console.log("login실패. 비밀번호 오류");
+            alert("올바른 비밀번호가 아닙니다. 다시 입력해 주세요");
           } else if (status === -2) {
-            setIsLogin(false);
+            //setIsLogin(false);
             console.log("login실패. 아이디가 존재하지 않음");
+            alert("존재하는 아이디가 아닙니다. 다시 입력해 주세요");
           }
         });
     } catch (err) {
@@ -141,6 +156,10 @@ function Login({ setIsLogin }) {
       <StLoginBtn type="submit" id="submit" onClick={onClickLogin}>
         로그인
       </StLoginBtn>
+      <div>
+        <button onClick={showModal}>모달 띄우기</button>
+        {modalOpen && <ChangeStatus setModalOpen={setModalOpen} />}
+      </div>
     </form>
   );
 }
