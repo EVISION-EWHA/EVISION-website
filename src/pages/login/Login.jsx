@@ -5,18 +5,19 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Login({ setIsLogin }) {
-  const [inputId, setInputId] = useState('')
-  const [inputPw, setinputPw] = useState('')
+  const [inputId, setInputId] = useState("");
+  const [inputPw, setinputPw] = useState("");
 
   const handleInputId = (e) => {
-    setInputId(e.target.value)
-  }
+    setInputId(e.target.value);
+  };
   const handleInputPw = (e) => {
-    setinputPw(e.target.value)
-  }
+    setinputPw(e.target.value);
+  };
+
   const onClickLogin = () => {
-    console.log('click login')
-}
+    console.log("click login");
+  };
 
   const navigate = useNavigate();
 
@@ -25,60 +26,77 @@ function Login({ setIsLogin }) {
     const postData = { userId, userPw };
     postData.userId = data.userId;
     postData.userPw = data.userPw;
-    await axios
-      .post('login', postData)
-      .then((res) => {
-        console.log(postData);
-        let submitBtn = document.getElementById("submit");
-        submitBtn.addEventListener("click", function (e) {
-          this.setAttribute("disabled", "true");
-          this.setAttribute("disabledElevation", "true");
-          this.setAttribute("disabledRipple", "true");
-        });
-        //navigate("/");
-        setIsLogin(true);
-      })
-      .catch((err) => {
-        if (err.response === -2) {
-          Swal.fire({
-            width: 460,
-            height: 260,
-            html: "<b> 로그인 실패</b><br><br>존재하지 않는 아이디입니다",
-            showConfirmButton: false,
-            cancelButtonText: "확인",
-            cancelButtonColor: "#CF5E53",
-            showCancelButton: true,
-            background: "#fff url(/image/swalBackground.png)",
-            timer: 5000,
+    try {
+      await axios
+        .post("/login", postData, { withCredentials: true })
+        .then((postData, res) => {
+          console.log(postData);
+          let submitBtn = document.getElementById("submit");
+          submitBtn.addEventListener("click", function (e) {
+            this.setAttribute("disabled", "true");
+            this.setAttribute("disabledElevation", "true");
+            this.setAttribute("disabledRipple", "true");
           });
-          //존재하지 않는 이메일로 로그인 실패
-        } 
-        else {
-          console.log("err")
-        }
-        // else if (err.response.data === "userPassword") {
-        //   Swal.fire({
-        //     width: 460,
-        //     height: 260,
-        //     html: "<b> 로그인 실패</b><br><br>잘못된 비밀번호입니다",
-        //     showConfirmButton: false,
-        //     cancelButtonText: "확인",
-        //     cancelButtonColor: "#CF5E53",
-        //     showCancelButton: true,
-        //     timer: 5000,
-        //   });
-        // }
-      });
+          //navigate("/");
+          const status = res.body;
+          if (status === 1 || status === 5) {
+            setIsLogin(true);
+            console.log("login 성공");
+          } else if (status === 0) {
+            setIsLogin(false);
+            console.log("login실패. 대기 상태");
+          } else if (status === 2) {
+            setIsLogin(false);
+            console.log("login실패. 거부당함");
+          } else if (status === -1) {
+            setIsLogin(false);
+            console.log("login실패. 비밀번호 오류");
+          } else if (status === -2) {
+            setIsLogin(false);
+            console.log("login실패. 아이디가 존재하지 않음");
+          }
+        });
+    } catch (err) {
+      console.log(err);
+      // if (err.response === -2) {
+      //   Swal.fire({
+      //     width: 460,
+      //     height: 260,
+      //     html: "<b> 로그인 실패</b><br><br>존재하지 않는 아이디입니다",
+      //     showConfirmButton: false,
+      //     cancelButtonText: "확인",
+      //     cancelButtonColor: "#CF5E53",
+      //     showCancelButton: true,
+      //     background: "#fff url(/image/swalBackground.png)",
+      //     timer: 5000,
+      //   });
+      //   //존재하지 않는 이메일로 로그인 실패
+      // } else {
+      //   console.log("err");
+      // }
+    }
+    // else if (err.response.data === "userPassword") {
+    //   Swal.fire({
+    //     width: 460,
+    //     height: 260,
+    //     html: "<b> 로그인 실패</b><br><br>잘못된 비밀번호입니다",
+    //     showConfirmButton: false,
+    //     cancelButtonText: "확인",
+    //     cancelButtonColor: "#CF5E53",
+    //     showCancelButton: true,
+    //     timer: 5000,
+    //   });
+    // }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("click login")
-    const data = new FormData(event.currentTarget);
+    console.log("click login");
     const loginData = {
-      userId: data.get("userId"),
-      userPw: data.get("userPw"),
+      userId: inputId,
+      userPw: inputPw,
     };
+    console.log("loginData", loginData);
     onhandlePost(loginData);
   };
 
@@ -90,14 +108,21 @@ function Login({ setIsLogin }) {
     margin: "10rem 0 5rem 0",
     padding: "5rem 0 5rem 0",
     flexDirection: "column",
-    fontSize: "30px"
-  }
+    fontSize: "30px",
+  };
 
   return (
     <form style={hstyle} onSubmit={handleSubmit}>
       <Stlabel>
         Id
-        <StInput type="text" id="userId" name="id" onChange={handleInputId} value={inputId} autoComplete="id" />
+        <StInput
+          type="text"
+          id="userId"
+          name="id"
+          onChange={handleInputId}
+          value={inputId}
+          autoComplete="id"
+        />
       </Stlabel>
       <Stlabel>
         Password

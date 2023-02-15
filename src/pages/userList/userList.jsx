@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./userList.css";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -27,10 +27,6 @@ function UserList() {
     { id: 3, col1: "asd343", col2: "이지현", col3: "2022/12/05", col4: "추방" },
     { id: 4, col1: "asd343", col2: "전수경", col3: "2022/08/31", col4: "거절" },
   ];
-  const [age, setAge] = React.useState("");
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   const columns: GridColDef[] = [
     { field: "col1", headerName: "아이디", width: 250 },
@@ -39,53 +35,30 @@ function UserList() {
     { field: "col4", headerName: "승인 상태", width: 250 },
   ];
 
-  
-  // const onhandlePost = async (data) => {
-  //   const { userId, userPw } = data;
-  //   const postData = { userId, userPw };
-  //   postData.userId = data.userId;
-  //   postData.userPw = data.userPw;
+  const [allData, setAllData] = React.useState({});
+  const [users, setUsers] = useState(null);
+  const [error, setError] = useState(null);
 
-  //   await axios
-  //     .post("http://3.37.117.164:8080/login", postData)
-  //     .then((res) => {
-  //       let submitBtn = document.getElementById("submit");
-  //       submitBtn.addEventListener("click", function (e) {
-  //         this.setAttribute("disabled", "true");
-  //         this.setAttribute("disabledElevation", "true");
-  //         this.setAttribute("disabledRipple", "true");
-  //       });
-  //       //navigate("/");
-  //       //setIsLogin(true);
-  //     })
-  //     .catch((err) => {
-  //       if (err.response.data === "userId") {
-  //         Swal.fire({
-  //           width: 460,
-  //           height: 260,
-  //           html: "<b> 로그인 실패</b><br><br>잘못된 이메일입니다",
-  //           showConfirmButton: false,
-  //           cancelButtonText: "확인",
-  //           cancelButtonColor: "#CF5E53",
-  //           showCancelButton: true,
-  //           background: "#fff url(/image/swalBackground.png)",
-  //           timer: 5000,
-  //         });
-  //         //존재하지 않는 이메일로 로그인 실패
-  //       } else if (err.response.data === "userPassword") {
-  //         Swal.fire({
-  //           width: 460,
-  //           height: 260,
-  //           html: "<b> 로그인 실패</b><br><br>잘못된 비밀번호입니다",
-  //           showConfirmButton: false,
-  //           cancelButtonText: "확인",
-  //           cancelButtonColor: "#CF5E53",
-  //           showCancelButton: true,
-  //           timer: 5000,
-  //         });
-  //       }
-  //     });
-  // };
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        // 요청이 시작 할 때에는 error 와 users 를 초기화하고
+        setError(null);
+        setUsers(null);
+        const response = await axios.get(
+          "http://3.37.117.164:8080/admin/users"
+        );
+        setAllData(response.data); // 데이터는 response.data 안에 들어있습니다.
+        console.log(response.data);
+      } catch (e) {
+        console.log(e);
+        setError(e);
+      }
+    };
+    fetchUsers();
+  }, []);
+
+  if (error) return <div>에러가 발생했습니다</div>;
 
   return (
     <div
@@ -94,7 +67,7 @@ function UserList() {
         height: 800,
         width: 1000,
         margin: "10em 18rem 22rem 65rem",
-        display: "flex",
+        //display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
@@ -113,6 +86,14 @@ function UserList() {
         columns={columns}
         checkboxSelection
       />
+      <Box>
+        {allData &&
+          allData.map((user) => (
+            <div key={user.userId}>
+              {user.userId} ({user.authStatus})
+            </div>
+          ))}
+      </Box>
     </div>
   );
 }
