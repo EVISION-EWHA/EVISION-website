@@ -7,7 +7,7 @@ import Post from "pages/board/post";
 import PostMain from "pages/Post/PostMain";
 import PostView from "pages/Post/PostView";
 import PostList from "pages/Post/PostList";
-import UserList from "pages/userList/userList";
+import UserList from "pages/Admin/userList";
 import Header from "components/header";
 import Footer from "components/footer";
 import ApplyInfo from "pages/Apply/ApplyInfo";
