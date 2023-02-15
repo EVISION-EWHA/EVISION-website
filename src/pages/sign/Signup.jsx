@@ -5,104 +5,121 @@ import Swal from "sweetalert2";
 import styled from "styled-components";
 
 function Signup() {
-  const [idError, setIdError] = useState("");
+  const [inputId, setInputId] = useState("");
+  const [inputPw, setinputPw] = useState("");
+  const [inputRePw, setInputRePw] = useState("");
+  const [inputEmail, setinputEmail] = useState("");
+  const [inputPhone, setinputPhone] = useState("");
+  const [inputName, setinputName] = useState("");
+
   const [passwordState, setPasswordState] = useState(""); //비밀번호 입력
   const [passwordError, setPasswordError] = useState(""); //비밀번호 재입력
-  const [emailError, setEmailError] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
+
+  const handleInputId = (e) => {
+    setInputId(e.target.value);
+  };
+  const handleInputPw = (e) => {
+    setinputPw(e.target.value);
+  };
+  const handleInputRePw = (e) => {
+    setInputRePw(e.target.value);
+  };
+  const handleInputEmail = (e) => {
+    setinputEmail(e.target.value);
+  };
+  const handleInputName = (e) => {
+    setinputName(e.target.value);
+  };
+  const handleInputPhone = (e) => {
+    setinputPhone(e.target.value);
+  };
 
   const onhandlePost = async (data) => {
-    const { userId, userPassword, userEmail, userName, userPhone } = data;
-    console.log(data, "data");
-    const postData = { userId, userPassword, userEmail, userName, userPhone };
-    postData.userId = data.id;
-    postData.userPassword = data.password;
-    postData.userEmail = data.email;
-    postData.userName = data.name;
-    postData.userPhone = data.phone;
-    console.log(postData, "postData");
+    const { userId, userPw, email } = data;
+    const postData = { userId, userPw, email };
+    postData.userId = data.userId;
+    postData.userPw = data.userPw;
+    postData.email = data.email;
+    // postData.userName = data.userName;
+    // postData.userPhone = data.userPhone;
+    console.log("postdata", postData);
 
     await axios
-      .post("http://localhost:8080/signup", postData)
+      .post("http://3.37.117.164:8080/signup", postData)
       .then((res) => {
-        // submit 버튼 중복클릭 방지
+        console.log(res);
         let submitBtn = document.getElementById("submit");
         submitBtn.addEventListener("click", function (e) {
           this.setAttribute("disabled", "true");
           this.setAttribute("disabledElevation", "true");
           this.setAttribute("disabledRipple", "true");
-          console.log("성공");
+          console.log("클릭성공");
         });
+        const status = res.data;
+        console.log(status);
+        if (status === 0) {
+          console.log("회원가입 성공");
+          alert("회원가입을 성공했습니다");
+        } else if (status === -1) {
+          console.log("회원가입 실패(아이디 중복)");
+          alert("이미 존재하는 아이디입니다");
+        }
         // navigate('/');
       })
       .catch((err) => {
-        console.log("error남!!!!!!!!!", err);
-        console.log(err.response.data);
+        console.log("error", err);
       });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const data = new FormData(event.currentTarget);
-    console.log("data", data);
+    console.log("click signup");
     const joinData = {
-      id: data.get("id"),
-      password: data.get("password"),
-      email: data.get("email"),
-      name: data.get("name"),
-      phone: data.get("phone"),
-      rePassword: data.get("rePassword"),
+      userId: inputId,
+      userPw: inputPw,
+      email: inputEmail,
+      //userName: inputName,
+      //userPhone: inputPhone,
     };
-    const { id, password, email, name, phone, rePassword } = joinData;
-    console.log("id", id);
-    console.log("password", password);
-    console.log("email", email);
-    console.log("name", name);
-    console.log("phone", phone);
-    console.log("rePassword", rePassword);
 
-    // 아이디 유효성 체크
-    // const idRegrex =
-    //   /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-    // if (!idRegrex.test(id)) setIdError("이메일 형식이 올바르지 않습니다");
-    // else setIdError("");
+    console.log("joinData", joinData);
 
-    // // 비밀번호 유효성 체크
-    // const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-    // if (!passwordRegex.test(password))
-    //   setPasswordState(
-    //     " 영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요."
-    //   );
-    // else setPasswordState("");
+    // 비밀번호 유효성 체크
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+    if (!passwordRegex.test(joinData.userPw)) {
+      setPasswordState(
+        " 영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요."
+      );
+    } else setPasswordState("");
 
-    // const nameRegex = /^[가-힣a-zA-Z]+$/;
-    // if (!nameRegex.test(name) || name.length < 1)
-    //   setNameError('올바른 이름을 입력해주세요.');
-    // else setNameError('');
-    // 비밀번호 같은지 체크
-
-    if (password !== rePassword)
+    if (passwordRegex.test(joinData.userPw) && joinData.userPw === inputRePw)
       setPasswordError("비밀번호가 일치하지 않습니다.");
     else setPasswordError("");
 
-    // 이름 유효성 체크
-
-    // 모두 통과하면 post되는 코드 실행
-
-    if (password === rePassword) {
-      console.log("joinData", joinData);
+    if (joinData.userPw === inputRePw) {
       onhandlePost(joinData);
     }
   };
 
+  const hstyle = {
+    display: "flex",
+    justifContent: "center",
+    alignItems: "center",
+    width: "100%",
+    margin: "7rem 0 5rem 0",
+    padding: "5rem 0 5rem 0",
+    flexDirection: "column",
+    fontSize: "30px",
+  };
+
   return (
-    <StSignup onSubmit={handleSubmit}>
+    <form style={hstyle} onSubmit={handleSubmit}>
       <Stlabel>Id</Stlabel>
       <StInput
+        value={inputId}
+        onChange={handleInputId}
         type="text"
-        id="id"
+        id="userId"
         name="id"
         required
         autoComplete="id"
@@ -111,48 +128,71 @@ function Signup() {
       <Stlabel>Password</Stlabel>
       <form>
         <StInput
+          value={inputPw}
+          onChange={handleInputPw}
           type="password"
-          id="password"
+          id="userPassword"
           name="password"
           error={passwordState !== "" || false}
           autoComplete="new-password"
-          //placeholder="영문, 숫자, 특수문자 포함 8자 이상"
+          placeholder="영문, 숫자, 특수문자 포함 8자 이상"
         />
       </form>
       <Stlabel>RePassword</Stlabel>
       <StInput
+        value={inputRePw}
+        onChange={handleInputRePw}
         type="password"
         name="rePassword"
-        //placeholder="비밀번호 재입력"
+        placeholder="비밀번호 재입력"
         error={passwordError !== "" || false}
         autoComplete="new-password"
-        id="rePassword"
+        id="userRePassword"
       />
       <Stlabel>Email</Stlabel>
-      <StInput type="email" id="email" name="email" />
+      <StInput
+        value={inputEmail}
+        onChange={handleInputEmail}
+        type="email"
+        id="userEmail"
+        name="email"
+      />
       <Stlabel>이름</Stlabel>
-      <StInput type="text" id="name" name="name" />
+      <StInput
+        value={inputName}
+        onChange={handleInputName}
+        type="text"
+        id="userPhone"
+        name="name"
+      />
       <Stlabel>전화번호</Stlabel>
-      <StInput type="tel" id="phone" name="phone" />
+      <StInput
+        value={inputPhone}
+        onChange={handleInputPhone}
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="예) 010-1111-2222"
+      />
       <br />
       <StSignupBtn id="submit" name="submit" type="submit">
         회원가입
       </StSignupBtn>
-    </StSignup>
+    </form>
   );
 }
 export default Signup;
 
-const StSignup = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 7rem 0 5rem 0;
-  padding: 5rem 0 5rem 0;
-  flex-direction: column;
-  font-size: 30px;
-`;
+// const StSignup = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   margin: 7rem 0 5rem 0;
+//   padding: 5rem 0 5rem 0;
+//   flex-direction: column;
+//   font-size: 30px;
+// `;
 
 const Stlabel = styled.div`
   width: 40rem;
@@ -163,7 +203,7 @@ const Stlabel = styled.div`
 `;
 
 const StInput = styled.input`
-  font-size: 3rem;
+  font-size: 2rem;
   width: 40rem;
   height: 5rem;
 `;

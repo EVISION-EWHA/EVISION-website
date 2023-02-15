@@ -1,8 +1,9 @@
-
-import styled from "styled-components";
-import "./import.css";
-import { useState } from "react";
-
+import { useState, useEffect } from 'react';
+import './import.css';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ReactHtmlParser from 'react-html-parser';
+import Axios from 'axios';
 
 function Post() {
   const [Content, setContent] = useState({
@@ -13,13 +14,13 @@ function Post() {
   const [viewContent, setViewContent] = useState([]);
 
   useEffect(()=>{
-    axios.get('http://localhost:8000/api/get').then((response)=>{
-      setViewContent(response.sdata);
+    Axios.get('http://3.37.117.164:8080/board').then((response)=>{
+      setViewContent(response.data);
     })
   },[viewContent])
 
   const submitReview = ()=>{
-    axios.post('http://localhost:8000/api/insert', {
+    Axios.post('http://3.37.117.164:8080/board', {
       title: Content.title,
       content: Content.content
     }).then(()=>{
@@ -39,16 +40,15 @@ function Post() {
   return (
     <div className="Post">
       <h1>게시판</h1>
-      <div className="form-wrapper">
-        <h3>
-          제목
-          <input className="title-input" type="text" />
-        </h3>
-
-        <h4>내용</h4>
-
-        <textarea className="text-area" type="text"></textarea>
-
+      <div className='container'>
+        {viewContent.map(element =>
+          <div style={{ border: '1px solid black' }}>
+            <h2>{element.title}</h2>
+            <div>
+              {ReactHtmlParser(element.content)}
+            </div>
+          </div>
+        )}
       </div>
       <div className='form-wrapper'>
         <input className="title-input"
@@ -59,9 +59,9 @@ function Post() {
         />
         <CKEditor
           editor={ClassicEditor}
-          data="<p>내용을 입력하세요.</p>"
+          data="<p>내용을 적어주세요.</p>"
           onReady={editor => {
-          
+      
             console.log('Editor is ready to use!', editor);
           }}
           onChange={(event, editor) => {
@@ -89,4 +89,3 @@ function Post() {
 }
 
 export default Post;
-
