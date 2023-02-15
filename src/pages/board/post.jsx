@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import './App.css';
+import './import.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ReactHtmlParser from 'react-html-parser';
 // import ReactHtmlParser from 'react-html-parser';
-import Axios from 'axios';
+import axios from 'axios';
 
 function Post() {
   const [Content, setContent] = useState({
@@ -15,13 +15,13 @@ function Post() {
   const [viewContent, setViewContent] = useState([]);
 
   useEffect(()=>{
-    Axios.get('http://localhost:8000/api/get').then((response)=>{
+    axios.get('http://localhost:8000/api/get').then((response)=>{
       setViewContent(response.data);
     })
   },[viewContent])
 
   const submitReview = ()=>{
-    Axios.post('http://localhost:8000/api/inssert', {
+    axios.post('http://localhost:8000/api/insert', {
       title: Content.title,
       content: Content.content
     }).then(()=>{
