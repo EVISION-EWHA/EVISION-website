@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
-import './import.css';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import ReactHtmlParser from 'react-html-parser';
-// import ReactHtmlParser from 'react-html-parser';
-import axios from 'axios';
+
+import styled from "styled-components";
+import "./import.css";
+import { useState } from "react";
+
 
 function Post() {
   const [Content, setContent] = useState({
@@ -16,7 +14,7 @@ function Post() {
 
   useEffect(()=>{
     axios.get('http://localhost:8000/api/get').then((response)=>{
-      setViewContent(response.data);
+      setViewContent(response.sdata);
     })
   },[viewContent])
 
@@ -41,15 +39,16 @@ function Post() {
   return (
     <div className="Post">
       <h1>게시판</h1>
-      <div className='container'>
-        {viewContent.map(element =>
-          <div style={{ border: '1px solid #333' }}>
-            <h2>{element.title}</h2>
-            <div>
-              {ReactHtmlParser(element.content)}
-            </div>
-          </div>
-        )}
+      <div className="form-wrapper">
+        <h3>
+          제목
+          <input className="title-input" type="text" />
+        </h3>
+
+        <h4>내용</h4>
+
+        <textarea className="text-area" type="text"></textarea>
+
       </div>
       <div className='form-wrapper'>
         <input className="title-input"
@@ -90,3 +89,4 @@ function Post() {
 }
 
 export default Post;
+
