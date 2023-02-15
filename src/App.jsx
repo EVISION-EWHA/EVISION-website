@@ -20,15 +20,14 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login></Login>} />
         <Route path="/signup" element={<Signup></Signup>} />
-        <Route path="/main" element={<MainPage></MainPage>} />
+        <Route path="/" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
         <Route path="/postview/:no" element={<PostView></PostView>} />
-        <Route path='/postmain' element={<PostMain></PostMain>}/>
-        <Route path='/postlist' element={<PostList></PostList>}/>
+        <Route path="/postmain" element={<PostMain></PostMain>} />
+        <Route path="/postlist" element={<PostList></PostList>} />
         <Route path="/admin" element={<UserList></UserList>} />
-        <Route path = "/Applyinfo" element = {<ApplyInfo></ApplyInfo>}/>
-        <Route path = "/Applyform" element = {<ApplyForm></ApplyForm>}/>
-
+        <Route path="/Applyinfo" element={<ApplyInfo></ApplyInfo>} />
+        <Route path="/Applyform" element={<ApplyForm></ApplyForm>} />
       </Routes>
       <Footer />
     </>
