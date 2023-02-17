@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Box from "@mui/material/Box";
+import Input from "@mui/material/Input";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+import Visibility from "@mui/icons-material/Visibility";
+import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function Login({ setIsLogin }) {
+function Login({}) {
   const [inputId, setInputId] = useState("");
   const [inputPw, setinputPw] = useState("");
+  const [isLogin, setIsLogin] = React.useState(false);
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -44,7 +55,7 @@ function Login({ setIsLogin }) {
             setIsLogin(true);
             console.log("login 성공");
             alert("login 성공");
-            navigate("/");
+            navigate("/main");
           } else if (status === 0) {
             setIsLogin(false);
             console.log("login실패. 대기 상태");
@@ -80,6 +91,7 @@ function Login({ setIsLogin }) {
   };
 
   const hstyle = {
+    fontColor: "white",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -90,9 +102,17 @@ function Login({ setIsLogin }) {
     fontSize: "30px",
   };
 
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <form style={hstyle} onSubmit={handleSubmit}>
-      <Stlabel>
+      {/* <Stlabel>
         Id
         <StInput
           type="text"
@@ -102,20 +122,69 @@ function Login({ setIsLogin }) {
           value={inputId}
           autoComplete="id"
         />
-      </Stlabel>
-      <Stlabel>
-        Password
-        <form>
-          <StInput
-            name="password"
-            type="password"
-            id="userPw"
-            value={inputPw}
-            onChange={handleInputPw}
-            autoComplete="new-password"
-          />
-        </form>
-      </Stlabel>
+      </Stlabel> */}
+      <FormControl
+        sx={{
+          p: 2,
+          width: "40rem",
+          height: "15rem",
+          backgroundColor: "black",
+        }}
+        variant="outlined"
+      >
+        <InputLabel
+          sx={{ fontSize: "3rem", color: "white" }}
+          htmlFor="outlined-adornment-password"
+        >
+          Id
+        </InputLabel>
+        <Input
+          type="text"
+          id="userId"
+          name="id"
+          onChange={handleInputId}
+          value={inputId}
+          sx={{
+            background: "transparent",
+            color: "white",
+            width: "40rem",
+            fontSize: "3rem",
+          }}
+          //autoComplete="new-password"
+          label="Id"
+        />
+      </FormControl>
+      <FormControl
+        sx={{
+          p: 2,
+          width: "40rem",
+          height: "15rem",
+          backgroundColor: "black",
+        }}
+        variant="outlined"
+      >
+        <InputLabel
+          sx={{ fontSize: "3rem", color: "white" }}
+          htmlFor="outlined-adornment-password"
+        >
+          Password
+        </InputLabel>
+        <Input
+          name="password"
+          id="userPw"
+          sx={{
+            background: "transparent",
+            color: "white",
+            width: "40rem",
+            fontSize: "3rem",
+          }}
+          value={inputPw}
+          //autoComplete="new-password"
+          onChange={handleInputPw}
+          type="password"
+          label="Password"
+        />
+      </FormControl>
       <br />
       <StLoginBtn type="submit" id="submit" onClick={onClickLogin}>
         로그인
@@ -137,6 +206,7 @@ const form = styled.form`
 `;
 
 const Stlabel = styled.label`
+  font-color: white;
   width: 40rem;
   margin: 4rem 0 2rem 1rem;
   padding: 0 0 0 1rem;
@@ -158,7 +228,7 @@ const StLoginBtn = styled.button`
   justify-content: center;
   float: left;
   align-items: center;
-  background-color: white;
+  color: white;
   font-size: 2rem;
   position: relative;
   box-sizing: border-box;
