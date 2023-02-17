@@ -20,7 +20,7 @@ function Login({ setIsLogin }) {
   };
 
   const navigate = useNavigate();
-  console.log("Df");
+
   const onhandlePost = async (data) => {
     const { userId, userPw } = data;
     const postData = { userId, userPw };
@@ -41,24 +41,24 @@ function Login({ setIsLogin }) {
           const status = res.data;
           console.log(status);
           if (status === 1 || status === 5) {
-            //setIsLogin(true);
+            setIsLogin(true);
             console.log("login 성공");
             alert("login 성공");
             navigate("/");
           } else if (status === 0) {
-            //setIsLogin(false);
+            setIsLogin(false);
             console.log("login실패. 대기 상태");
             alert("가입 요청이 아직 승인되지 않았습니다.");
           } else if (status === 2) {
-            //setIsLogin(false);
+            setIsLogin(false);
             console.log("login실패. 거부당함");
             alert("가입 요청이 거부되었습니다");
           } else if (status === -1) {
-            //setIsLogin(false);
+            setIsLogin(false);
             console.log("login실패. 비밀번호 오류");
             alert("올바른 비밀번호가 아닙니다. 다시 입력해 주세요");
           } else if (status === -2) {
-            //setIsLogin(false);
+            setIsLogin(false);
             console.log("login실패. 아이디가 존재하지 않음");
             alert("존재하는 아이디가 아닙니다. 다시 입력해 주세요");
           }

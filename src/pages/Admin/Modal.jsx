@@ -22,15 +22,56 @@ import { useNavigate } from "react-router-dom";
 import "./modal.css";
 
 const Modal = (props) => {
-  // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header, data } = props;
-  const [status, setStatus] = React.useState("");
-  const [id, setId] = React.useState("");
-  const handleStatusChange = (event) => {
-    setStatus(event.target.value);
+  const [selectedId, setSelectedId] = React.useState("");
+  const [selctedGrade, setSelectedGrade] = React.useState("");
+
+  const onClickStatus = () => {
+    console.log("click login");
   };
+
+  const onhandlePost = async (data) => {
+    const { userId, authStatus } = data;
+    const postData = { userId, authStatus };
+    postData.userId = data.userId;
+    postData.authStatus = data.authStatus;
+    try {
+      await axios
+        .put("http://3.37.117.164:8080/admin/requests", postData)
+        .then((res) => {
+          console.log(res);
+          let submitBtn = document.getElementById("submit");
+          submitBtn.addEventListener("click", function (e) {
+            this.setAttribute("disabled", "true");
+            this.setAttribute("disabledElevation", "true");
+            this.setAttribute("disabledRipple", "true");
+          });
+          const test = res.data;
+          console.log(test);
+          alert("회원 등급 변경이 처리되었습니다");
+          close();
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("change submit");
+    const statusData = {
+      userId: selectedId,
+      authStatus: selctedGrade,
+    };
+    console.log("StatusData", statusData);
+    onhandlePost(statusData);
+  };
+
   const handleIdChange = (event) => {
-    setId(event.target.value);
+    setSelectedId(event.target.value);
+  };
+  const handleGradeChange = (event) => {
+    setSelectedGrade(event.target.value);
   };
 
   return (
@@ -44,95 +85,99 @@ const Modal = (props) => {
               &times;
             </button>
           </header>
-          <main>
-            <FormControl
-              size="large"
-              variant="standard"
-              sx={{ ml: 3, minWidth: 200, fontSize: "4rem" }}
+          <form onSubmit={handleSubmit}>
+            <main>
+              <FormControl
+                size="large"
+                variant="standard"
+                sx={{ ml: 3, minWidth: 200, fontSize: "4rem" }}
+              >
+                <InputLabel
+                  sx={{ fontSize: "2.5rem" }}
+                  id="demo-simple-select-standard-label"
+                >
+                  Id
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  value={selectedId}
+                  onChange={handleIdChange}
+                  label="selectedId"
+                  sx={{
+                    p: 1,
+                    fontSize: "2.5rem",
+                  }}
+                >
+                  {data.length > 0 &&
+                    data.map((info) => (
+                      <MenuItem
+                        sx={{ fontSize: "2.5rem" }}
+                        key={info.userId}
+                        value={info.userId}
+                      >
+                        {info.userId}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </FormControl>
+              <FormControl
+                size="large"
+                variant="standard"
+                sx={{ ml: 7, minWidth: 200, fontSize: "4rem" }}
+              >
+                <InputLabel
+                  sx={{ fontSize: "2.5rem" }}
+                  id="demo-simple-select-standard-label"
+                >
+                  Status
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  value={selctedGrade}
+                  onChange={handleGradeChange}
+                  label="selctedGrade"
+                  sx={{
+                    p: 1,
+                    fontSize: "2.5rem",
+                  }}
+                >
+                  <MenuItem sx={{ fontSize: "2.5rem" }} value={0}>
+                    0(승인 대기 중)
+                  </MenuItem>
+                  <MenuItem sx={{ fontSize: "2.5rem" }} value={1}>
+                    1(승인 완료)
+                  </MenuItem>
+                  <MenuItem sx={{ fontSize: "2.5rem" }} value={2}>
+                    2(승인 거절)
+                  </MenuItem>
+                  <MenuItem sx={{ fontSize: "2.5rem" }} value={3}>
+                    3(추방)
+                  </MenuItem>
+                  <MenuItem sx={{ fontSize: "2.5rem" }} value={5}>
+                    5(관리자)
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </main>
+            <Button
+              type="submit"
+              id="submit"
+              onClick={onClickStatus}
+              variant="contained"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                m: "auto",
+                mt: 6,
+                width: "15rem",
+                fontSize: "2rem",
+              }}
             >
-              <InputLabel
-                sx={{ fontSize: "2.5rem" }}
-                id="demo-simple-select-standard-label"
-              >
-                Id
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-standard-label"
-                id="demo-simple-select-standard"
-                value={id}
-                onChange={handleIdChange}
-                label="Id"
-                sx={{
-                  p: 1,
-                  fontSize: "2.5rem",
-                }}
-              >
-                {data.length > 0 &&
-                  data.map((info) => (
-                    <MenuItem
-                      sx={{ fontSize: "2.5rem" }}
-                      key={info.userId}
-                      value={info.userId}
-                    >
-                      {info.userId}
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
-            <FormControl
-              size="large"
-              variant="standard"
-              sx={{ ml: 7, minWidth: 200, fontSize: "4rem" }}
-            >
-              <InputLabel
-                sx={{ fontSize: "2.5rem" }}
-                id="demo-simple-select-standard-label"
-              >
-                Status
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-standard-label"
-                id="demo-simple-select-standard"
-                value={status}
-                onChange={handleStatusChange}
-                label="Status"
-                sx={{
-                  p: 1,
-                  fontSize: "2.5rem",
-                }}
-              >
-                <MenuItem sx={{ fontSize: "2.5rem" }} value={0}>
-                  0(승인 대기 중)
-                </MenuItem>
-                <MenuItem sx={{ fontSize: "2.5rem" }} value={1}>
-                  1(승인 완료)
-                </MenuItem>
-                <MenuItem sx={{ fontSize: "2.5rem" }} value={2}>
-                  2(승인 거절)
-                </MenuItem>
-                <MenuItem sx={{ fontSize: "2.5rem" }} value={3}>
-                  3(추방)
-                </MenuItem>
-                <MenuItem sx={{ fontSize: "2.5rem" }} value={5}>
-                  5(관리자)
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </main>
-          <Button
-            variant="contained"
-            href="#contained-buttons"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              m: "auto",
-              mt: 6,
-              width: "15rem",
-              fontSize: "2rem",
-            }}
-          >
-            변경하기
-          </Button>
+              변경하기
+            </Button>
+          </form>
         </section>
       ) : null}
     </div>

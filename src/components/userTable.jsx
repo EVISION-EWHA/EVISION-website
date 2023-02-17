@@ -38,8 +38,8 @@ function UserTable({ data }) {
                 sx={{
                   textAlign: "center",
                   width: "20rem",
-                  fontSize: "2.8rem",
-                  fontWeight: "400",
+                  fontSize: "2.5rem",
+                  fontWeight: "340",
                 }}
               >
                 Id
@@ -49,8 +49,8 @@ function UserTable({ data }) {
                 sx={{
                   textAlign: "center",
                   width: "20rem",
-                  fontSize: "2.8rem",
-                  fontWeight: "400",
+                  fontSize: "2.5rem",
+                  fontWeight: "340",
                 }}
               >
                 이메일
@@ -60,8 +60,8 @@ function UserTable({ data }) {
                 sx={{
                   textAlign: "center",
                   width: "20rem",
-                  fontSize: "2.8rem",
-                  fontWeight: "400",
+                  fontSize: "2.5rem",
+                  fontWeight: "340",
                 }}
               >
                 가입일
@@ -71,11 +71,11 @@ function UserTable({ data }) {
                 sx={{
                   textAlign: "center",
                   width: "20rem",
-                  fontSize: "2.8rem",
-                  fontWeight: "400",
+                  fontSize: "2.5rem",
+                  fontWeight: "340",
                 }}
               >
-                회원 상태
+                회원 등급
               </TableCell>
             </TableRow>
           </TableHead>
@@ -116,6 +116,9 @@ function UserTable({ data }) {
                   <TableCell
                     align="right"
                     sx={{
+                      paddingLeft: 8,
+                      paddingRight: 7,
+                      maxWidth: "10rem",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",

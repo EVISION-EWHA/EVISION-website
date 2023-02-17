@@ -18,9 +18,9 @@
   direction: column;
   align-items: flex-end;
   font-size: 3rem;
-  width: 25%;
+  width: 55rem;
   max-width: 100rem;
-  height: 30%;
+  height: 35rem;
   min-height: 35rem;
   margin: 0 auto;
   border-radius: 0.3rem;
@@ -46,8 +46,9 @@
   color: #999;
   background-color: transparent;
 }
-.modal > section > main {
+.modal > section > form > main {
   margin-left: 14px;
+  margin-bottom: 10px;
   padding: 16px;
   border-bottom: 1px solid #dee2e6;
   border-top: 1px solid #dee2e6;

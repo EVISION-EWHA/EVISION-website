@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react";
 import Login from "pages/login/Login";
 import Signup from "pages/sign/Signup";
 import MainPage from "pages/Main/MainPage";
@@ -14,9 +15,10 @@ import ApplyForm from "pages/Apply/ApplyForm";
 import Admin from "pages/Admin/Admin";
 
 const App = () => {
+  const [isLogin, setIsLogin] = React.useState(false);
   return (
     <>
-      <Header />
+      <Header isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
         <Route path="/login" element={<Login></Login>} />
         <Route path="/signup" element={<Signup></Signup>} />

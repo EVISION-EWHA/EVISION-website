@@ -14,12 +14,18 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "./Modal";
 import UserTable from "components/userTable";
 
 function Admin() {
+  const theme = createTheme({
+    typography: {
+      fontFamily: "'Pretendard', sans-serif",
+    },
+  });
   const navigate = useNavigate();
   const [allData, setAllData] = React.useState({});
 
@@ -56,34 +62,40 @@ function Admin() {
   };
 
   return (
-    <div style={hstyle}>
-      <Button
-        sx={{
-          mb: 2,
-          flexDirection: "row",
-          alignItems: "flex-start",
-          width: "10rem",
-          fontSize: "1.35rem",
-        }}
-        variant="contained"
-        color="success"
-        onClick={openModal}
-      >
-        등급변경
-      </Button>
-      <Modal open={modalOpen} close={closeModal} header="부원 등급 변경" data={data}>
-      </Modal>
-      <UserTable data={data}></UserTable>
-      <Box
-        sx={{
-          fontSize: "2rem",
-          p: 3,
-        }}
-      >
-        승인 대기 중 : 0 승인 완료(부원) : 1 승인 거절 : 2 추방 : 3 관리자 계정
-        : 5
-      </Box>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div style={hstyle}>
+        <Button
+          sx={{
+            mb: 2,
+            flexDirection: "row",
+            alignItems: "flex-start",
+            width: "10rem",
+            fontSize: "1.35rem",
+          }}
+          variant="contained"
+          color="success"
+          onClick={openModal}
+        >
+          등급변경
+        </Button>
+        <Modal
+          open={modalOpen}
+          close={closeModal}
+          header="부원 등급 변경"
+          data={data}
+        ></Modal>
+        <UserTable data={data}></UserTable>
+        <Box
+          sx={{
+            fontSize: "2rem",
+            p: 3,
+          }}
+        >
+          승인 대기 중 : 0 승인 완료(부원) : 1 승인 거절 : 2 추방 : 3 관리자
+          계정 : 5
+        </Box>
+      </div>
+    </ThemeProvider>
   );
 }
 export default Admin;
