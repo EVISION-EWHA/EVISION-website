@@ -3,8 +3,6 @@ import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
-  @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
-
   html,
   body {
     width: 100%;
@@ -20,8 +18,10 @@ const GlobalStyle = createGlobalStyle`
   }
   
   * {
+    color: white;
+    background-color: black;
     box-sizing: border-box;
-    font-family: 'Gowun Batang', serif;
+    font-family: 'Pretendard', sans-serif
   }
 
   body, button {
