@@ -7,11 +7,11 @@ import Post from "pages/board/post";
 import PostMain from "pages/Post/PostMain";
 import PostView from "pages/Post/PostView";
 import PostList from "pages/Post/PostList";
-import UserList from "pages/Admin/userList";
 import Header from "components/header";
 import Footer from "components/footer";
 import ApplyInfo from "pages/Apply/ApplyInfo";
 import ApplyForm from "pages/Apply/ApplyForm";
+import Admin from "pages/Admin/Admin";
 
 const App = () => {
   return (
@@ -23,12 +23,11 @@ const App = () => {
         <Route path="/main" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
         <Route path="/postview/:no" element={<PostView></PostView>} />
-        <Route path='/postmain' element={<PostMain></PostMain>}/>
-        <Route path='/postlist' element={<PostList></PostList>}/>
-        <Route path="/admin" element={<UserList></UserList>} />
-        <Route path = "/Applyinfo" element = {<ApplyInfo></ApplyInfo>}/>
-        <Route path = "/Applyform" element = {<ApplyForm></ApplyForm>}/>
-
+        <Route path="/postmain" element={<PostMain></PostMain>} />
+        <Route path="/postlist" element={<PostList></PostList>} />
+        <Route path="/admin" element={<Admin></Admin>} />
+        <Route path="/Applyinfo" element={<ApplyInfo></ApplyInfo>} />
+        <Route path="/Applyform" element={<ApplyForm></ApplyForm>} />
       </Routes>
       <Footer />
     </>
