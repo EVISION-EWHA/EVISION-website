@@ -21,7 +21,7 @@ import styled from "styled-components";
 import Modal from "./Modal";
 import UserTable from "components/userTable";
 
-function Admin() {
+function Admin({ names, grade }) {
   const theme = createTheme({
     palette: {
       background: "black",
@@ -37,6 +37,8 @@ function Admin() {
     axios
       .get("http://3.37.117.164:8080/admin/users")
       .then(function (response) {
+        console.log(names);
+        console.log(grade);
         setAllData(response.data);
       })
       .catch(function (error) {
@@ -54,6 +56,12 @@ function Admin() {
   const closeModal = () => {
     setModalOpen(false);
   };
+  
+  useEffect(() => {
+    if (localStorage.getItem("userId") === null) {
+      window.location.replace("http://localhost:3000/main");
+    }
+  }, []);
 
   const hstyle = {
     //border: "10px solid white",
@@ -86,6 +94,10 @@ function Admin() {
         >
           등급 변경
         </Button>
+        <p style={{ fontSize: 30, fontFamily: "KyoboHand" }}>
+          {localStorage.getItem("userId")} 님 어서오세요! 회원님의 등급은{" "}
+          {localStorage.getItem("grade")}입니다
+        </p>
         <Modal
           open={modalOpen}
           close={closeModal}

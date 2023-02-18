@@ -7,10 +7,12 @@ import FormControl from "@mui/material/FormControl";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function Login({}) {
+function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setinputPw] = useState("");
   const [isLogin, setIsLogin] = React.useState(false);
+  // let [name, setName] = useState("");
+  // let [grade, setGrade] = useState(0);
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -44,6 +46,13 @@ function Login({}) {
           //navigate("/");
           const status = res.data;
           console.log(status);
+          // grade = status;
+          // name = postData.userId;
+          // console.log(grade, name);
+          // names = postData.userId;
+          // grade = status;
+          localStorage.setItem("grade", status);
+          console.log(localStorage);
           if (status === 1 || status === 5) {
             setIsLogin(true);
             console.log("login 성공");
@@ -83,8 +92,11 @@ function Login({}) {
       userId: inputId,
       userPw: inputPw,
     };
-    console.log("loginData", loginData);
-    onhandlePost(loginData);
+    localStorage.setItem("userId", loginData.userId);
+    localStorage.setItem("userPw", loginData.userPw);
+    //console.log("loginData", loginData);
+    console.log(localStorage);
+    onhandlePost(localStorage);
   };
 
   const hstyle = {
