@@ -1,10 +1,15 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
+import Input from "@mui/material/Input";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Signup() {
+  const navigate = useNavigate();
+
   const [inputId, setInputId] = useState("");
   const [inputPw, setinputPw] = useState("");
   const [inputRePw, setInputRePw] = useState("");
@@ -14,6 +19,10 @@ function Signup() {
 
   const [passwordState, setPasswordState] = useState(""); //비밀번호 입력
   const [passwordError, setPasswordError] = useState(""); //비밀번호 재입력
+
+  const onClickSignup = () => {
+    console.log("click signup");
+  };
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -60,6 +69,7 @@ function Signup() {
         if (status === 0) {
           console.log("회원가입 성공");
           alert("회원가입을 성공했습니다");
+          navigate("/main");
         } else if (status === -1) {
           console.log("회원가입 실패(아이디 중복)");
           alert("이미 존재하는 아이디입니다");
@@ -88,94 +98,239 @@ function Signup() {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
     if (!passwordRegex.test(joinData.userPw)) {
       setPasswordState(
-        " 영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요."
+        alert(
+          " 영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요."
+        )
       );
     } else setPasswordState("");
 
-    if (passwordRegex.test(joinData.userPw) && joinData.userPw === inputRePw)
-      setPasswordError("비밀번호가 일치하지 않습니다.");
+    if (joinData.userPw !== inputRePw)
+      setPasswordError(alert("비밀번호가 일치하지 않습니다."));
     else setPasswordError("");
 
-    if (joinData.userPw === inputRePw) {
+    if (passwordRegex.test(joinData.userPw) && joinData.userPw === inputRePw) {
       onhandlePost(joinData);
     }
   };
 
   const hstyle = {
+    backgroundColor: "black",
     display: "flex",
     justifContent: "center",
     alignItems: "center",
     width: "100%",
-    margin: "7rem 0 5rem 0",
-    padding: "5rem 0 5rem 0",
+    padding: "10rem 5rem 10rem 5rem",
     flexDirection: "column",
     fontSize: "30px",
   };
 
   return (
     <form style={hstyle} onSubmit={handleSubmit}>
-      <Stlabel>Id</Stlabel>
-      <StInput
-        value={inputId}
-        onChange={handleInputId}
-        type="text"
-        id="userId"
-        name="id"
-        required
-        autoComplete="id"
-        autoFocus
-      />
-      <Stlabel>Password</Stlabel>
-      <form>
-        <StInput
-          value={inputPw}
-          onChange={handleInputPw}
-          type="password"
-          id="userPassword"
+      <FormControl
+        sx={{
+          p: 2,
+          width: "40rem",
+          height: "12rem",
+          backgroundColor: "black",
+        }}
+        variant="outlined"
+      >
+        <InputLabel
+          sx={{ fontSize: "3rem", color: "white" }}
+          htmlFor="outlined-adornment-password"
+        >
+          Id
+        </InputLabel>
+        <Input
+          type="text"
+          id="userId"
+          name="id"
+          required
+          autoComplete="id"
+          autoFocus
+          onChange={handleInputId}
+          value={inputId}
+          sx={{
+            background: "transparent",
+            color: "white",
+            width: "50rem",
+            fontSize: "3rem",
+          }}
+          //autoComplete="new-password"
+          label="Id"
+        />
+      </FormControl>
+      <FormControl
+        sx={{
+          p: 2,
+          width: "40rem",
+          height: "12rem",
+          backgroundColor: "black",
+        }}
+        variant="outlined"
+      >
+        <InputLabel
+          sx={{ fontSize: "3rem", color: "white" }}
+          htmlFor="outlined-adornment-password"
+        >
+          Password
+        </InputLabel>
+        <Input
           name="password"
+          id="userPw"
+          sx={{
+            background: "transparent",
+            color: "white",
+            width: "50rem",
+            fontSize: "3rem",
+          }}
+          value={inputPw}
+          //autoComplete="new-password"
+          onChange={handleInputPw}
           error={passwordState !== "" || false}
           autoComplete="new-password"
           placeholder="영문, 숫자, 특수문자 포함 8자 이상"
+          type="password"
+          label="Password"
         />
-      </form>
-      <Stlabel>RePassword</Stlabel>
-      <StInput
-        value={inputRePw}
-        onChange={handleInputRePw}
-        type="password"
-        name="rePassword"
-        placeholder="비밀번호 재입력"
-        error={passwordError !== "" || false}
-        autoComplete="new-password"
-        id="userRePassword"
-      />
-      <Stlabel>Email</Stlabel>
-      <StInput
-        value={inputEmail}
-        onChange={handleInputEmail}
-        type="email"
-        id="userEmail"
-        name="email"
-      />
-      <Stlabel>이름</Stlabel>
-      <StInput
-        value={inputName}
-        onChange={handleInputName}
-        type="text"
-        id="userPhone"
-        name="name"
-      />
-      <Stlabel>전화번호</Stlabel>
-      <StInput
-        value={inputPhone}
-        onChange={handleInputPhone}
-        type="tel"
-        id="phone"
-        name="phone"
-        placeholder="예) 010-1111-2222"
-      />
+      </FormControl>
+      <FormControl
+        sx={{
+          p: 2,
+          width: "40rem",
+          height: "12rem",
+          backgroundColor: "black",
+        }}
+        variant="outlined"
+      >
+        <InputLabel
+          sx={{ fontSize: "3rem", color: "white" }}
+          htmlFor="outlined-adornment-password"
+        >
+          RePassword
+        </InputLabel>
+        <Input
+          value={inputRePw}
+          onChange={handleInputRePw}
+          type="password"
+          name="rePassword"
+          placeholder="비밀번호 재입력"
+          error={passwordError !== "" || false}
+          autoComplete="new-password"
+          id="userRePassword"
+          sx={{
+            background: "transparent",
+            color: "white",
+            width: "50rem",
+            fontSize: "3rem",
+          }}
+          label="Password"
+        />
+      </FormControl>
+      <FormControl
+        sx={{
+          p: 2,
+          width: "40rem",
+          height: "12rem",
+          backgroundColor: "black",
+        }}
+        variant="outlined"
+      >
+        <InputLabel
+          sx={{ fontSize: "3rem", color: "white" }}
+          htmlFor="outlined-adornment-password"
+        >
+          Email
+        </InputLabel>
+        <Input
+          value={inputEmail}
+          onChange={handleInputEmail}
+          type="email"
+          id="userEmail"
+          name="email"
+          required
+          autoFocus
+          sx={{
+            background: "transparent",
+            color: "white",
+            width: "50rem",
+            fontSize: "3rem",
+          }}
+          label="Email"
+        />
+      </FormControl>
+      <FormControl
+        sx={{
+          p: 2,
+          width: "40rem",
+          height: "12rem",
+          backgroundColor: "black",
+        }}
+        variant="outlined"
+      >
+        <InputLabel
+          sx={{ fontSize: "3rem", color: "white" }}
+          htmlFor="outlined-adornment-password"
+        >
+          이름
+        </InputLabel>
+        <Input
+          value={inputName}
+          onChange={handleInputName}
+          type="text"
+          id="userPhone"
+          name="name"
+          required
+          autoFocus
+          sx={{
+            background: "transparent",
+            color: "white",
+            width: "50rem",
+            fontSize: "3rem",
+          }}
+          label="Name"
+        />
+      </FormControl>
+      <FormControl
+        sx={{
+          p: 2,
+          width: "40rem",
+          height: "12rem",
+          backgroundColor: "black",
+        }}
+        variant="outlined"
+      >
+        <InputLabel
+          sx={{ fontSize: "3rem", color: "white" }}
+          htmlFor="outlined-adornment-password"
+        >
+          전화번호
+        </InputLabel>
+        <Input
+          value={inputPhone}
+          onChange={handleInputPhone}
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="예) 010-1111-2222"
+          required
+          autoFocus
+          sx={{
+            background: "transparent",
+            color: "white",
+            width: "50rem",
+            fontSize: "3rem",
+          }}
+          label="Phone"
+        />
+      </FormControl>
       <br />
-      <StSignupBtn id="submit" name="submit" type="submit">
+      <StSignupBtn
+        id="submit"
+        name="submit"
+        type="submit"
+        onClick={onClickSignup}
+      >
         회원가입
       </StSignupBtn>
     </form>
@@ -183,16 +338,6 @@ function Signup() {
 }
 export default Signup;
 
-// const StSignup = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100%;
-//   margin: 7rem 0 5rem 0;
-//   padding: 5rem 0 5rem 0;
-//   flex-direction: column;
-//   font-size: 30px;
-// `;
 
 const Stlabel = styled.div`
   width: 40rem;
@@ -216,8 +361,9 @@ const StSignupBtn = styled.button`
   justify-content: center;
   float: left;
   align-items: center;
-  background-color: white;
-  font-size: 2rem;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 500;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -228,7 +374,7 @@ const StSignupBtn = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #00462a;
-    color: white;
+    background-color: #e2f87b;
+    color: black;
   }
 `;

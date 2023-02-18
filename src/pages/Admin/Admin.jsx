@@ -14,14 +14,18 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import { palette } from "@mui/system";
 import { createTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "./Modal";
 import UserTable from "components/userTable";
 
-function Admin() {
+function Admin({ names, grade }) {
   const theme = createTheme({
+    palette: {
+      background: "black",
+    },
     typography: {
       fontFamily: "'Pretendard', sans-serif",
     },
@@ -33,6 +37,8 @@ function Admin() {
     axios
       .get("http://3.37.117.164:8080/admin/users")
       .then(function (response) {
+        console.log(names);
+        console.log(grade);
         setAllData(response.data);
       })
       .catch(function (error) {
@@ -50,15 +56,22 @@ function Admin() {
   const closeModal = () => {
     setModalOpen(false);
   };
+  
+  useEffect(() => {
+    if (localStorage.getItem("userId") === null) {
+      window.location.replace("http://localhost:3000/main");
+    }
+  }, []);
 
   const hstyle = {
+    //border: "10px solid white",
     display: "flex",
-    width: "100rem",
     justifyContent: "center",
     margin: "auto",
-    padding: "5rem 0 5rem 0",
+    padding: "5rem 63rem 5rem 63rem",
     flexDirection: "column",
     fontSize: "30px",
+    backgroundColor: "black",
   };
 
   return (
@@ -66,18 +79,25 @@ function Admin() {
       <div style={hstyle}>
         <Button
           sx={{
+            backgroundColor: "#474544",
+            color: "white",
             mb: 2,
             flexDirection: "row",
             alignItems: "flex-start",
             width: "10rem",
-            fontSize: "1.35rem",
+            fontWeight: "600",
+            fontSize: "1.5rem",
           }}
           variant="contained"
-          color="success"
+          //color="success"
           onClick={openModal}
         >
-          등급변경
+          등급 변경
         </Button>
+        <p style={{ fontSize: 30, fontFamily: "KyoboHand" }}>
+          {localStorage.getItem("userId")} 님 어서오세요! 회원님의 등급은{" "}
+          {localStorage.getItem("grade")}입니다
+        </p>
         <Modal
           open={modalOpen}
           close={closeModal}
