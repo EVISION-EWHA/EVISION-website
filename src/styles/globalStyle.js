@@ -3,7 +3,6 @@ import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
-  
   html,
   body {
     width: 100%;
@@ -19,7 +18,9 @@ const GlobalStyle = createGlobalStyle`
   }
   
   * {
+    color: white;
     box-sizing: border-box;
+    font-family: 'Pretendard', sans-serif
   }
 
   body, button {
