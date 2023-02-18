@@ -14,6 +14,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import { palette } from "@mui/system";
 import { createTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -22,6 +23,9 @@ import UserTable from "components/userTable";
 
 function Admin() {
   const theme = createTheme({
+    palette: {
+      background: "black",
+    },
     typography: {
       fontFamily: "'Pretendard', sans-serif",
     },
@@ -52,13 +56,14 @@ function Admin() {
   };
 
   const hstyle = {
+    //border: "10px solid white",
     display: "flex",
-    width: "100rem",
     justifyContent: "center",
     margin: "auto",
-    padding: "5rem 0 5rem 0",
+    padding: "5rem 63rem 5rem 63rem",
     flexDirection: "column",
     fontSize: "30px",
+    backgroundColor: "black",
   };
 
   return (
@@ -66,17 +71,20 @@ function Admin() {
       <div style={hstyle}>
         <Button
           sx={{
+            backgroundColor: "#474544",
+            color: "white",
             mb: 2,
             flexDirection: "row",
             alignItems: "flex-start",
             width: "10rem",
-            fontSize: "1.35rem",
+            fontWeight: "600",
+            fontSize: "1.5rem",
           }}
           variant="contained"
-          color="success"
+          //color="success"
           onClick={openModal}
         >
-          등급변경
+          등급 변경
         </Button>
         <Modal
           open={modalOpen}

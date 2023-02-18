@@ -36,6 +36,7 @@ function UserTable({ data }) {
             <TableRow>
               <TableCell
                 sx={{
+                  color: "white",
                   textAlign: "center",
                   width: "20rem",
                   fontSize: "2.5rem",
@@ -47,6 +48,7 @@ function UserTable({ data }) {
               <TableCell
                 align="right"
                 sx={{
+                  color: "white",
                   textAlign: "center",
                   width: "20rem",
                   fontSize: "2.5rem",
@@ -58,6 +60,7 @@ function UserTable({ data }) {
               <TableCell
                 align="right"
                 sx={{
+                  color: "white",
                   textAlign: "center",
                   width: "20rem",
                   fontSize: "2.5rem",
@@ -69,6 +72,7 @@ function UserTable({ data }) {
               <TableCell
                 align="right"
                 sx={{
+                  color: "white",
                   textAlign: "center",
                   width: "20rem",
                   fontSize: "2.5rem",
@@ -87,6 +91,7 @@ function UserTable({ data }) {
                     component="th"
                     scope="row"
                     sx={{
+                      color: "white",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",
@@ -103,6 +108,7 @@ function UserTable({ data }) {
                   <TableCell
                     align="right"
                     sx={{
+                      color: "white",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",
@@ -116,6 +122,7 @@ function UserTable({ data }) {
                   <TableCell
                     align="right"
                     sx={{
+                      color: "white",
                       paddingLeft: 8,
                       paddingRight: 7,
                       maxWidth: "10rem",
@@ -132,6 +139,7 @@ function UserTable({ data }) {
                   <TableCell
                     align="right"
                     sx={{
+                      color: "white",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",
