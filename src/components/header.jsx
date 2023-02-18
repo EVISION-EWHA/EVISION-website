@@ -7,10 +7,7 @@ const Header = ({ isLogin, setIsLogin }) => {
       <HeaderBlock>
         <Wrapper>
           <Logo>
-            <NavLink
-              style={{ color: "white", textDecoration: "none" }}
-              to="/main"
-            >
+            <NavLink style={{ color: "white", textDecoration: "none" }} to="/">
               EVI$ION
             </NavLink>
           </Logo>

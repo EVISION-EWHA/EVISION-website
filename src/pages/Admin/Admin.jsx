@@ -56,10 +56,10 @@ function Admin({ names, grade }) {
   const closeModal = () => {
     setModalOpen(false);
   };
-  
+
   useEffect(() => {
     if (localStorage.getItem("userId") === null) {
-      window.location.replace("http://localhost:3000/main");
+      window.location.replace("http://localhost:3000");
     }
   }, []);
 
