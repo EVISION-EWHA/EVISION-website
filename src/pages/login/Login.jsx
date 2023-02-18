@@ -57,7 +57,7 @@ function Login() {
             setIsLogin(true);
             console.log("login 성공");
             alert("login 성공");
-            navigate("/");
+            window.location.replace("/");
           } else if (status === 0) {
             setIsLogin(false);
             console.log("login실패. 대기 상태");
