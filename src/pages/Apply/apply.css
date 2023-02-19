@@ -1,51 +1,73 @@
-.ApplyInfo {
-  margin: 10% 5% 10% 5%;
-  padding: 30px;
+.ApplyInfo,.ApplyForm,.Modify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10rem 0 5rem 0;
+  padding: 5rem 0 5rem 0;
+  flex-direction: column;
+  font-size: 25px;
+  line-height : 4rem;
 }
 
-.ApplyInfo form {
+.ApplyInfo form{
   display: flex;
   flex-direction: column;
-  background-color: lightgray;
   padding: 20px;
 }
 
 .ApplyInfo button,
-.ApplyForm button {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
+.ApplyForm button,
+.Modify button {
   width: 30%;
+  height: 50px;
+  border: 2px solid #34495e;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 30px 0px 30px 0px;
+  border-radius: 0.8rem;
   cursor: pointer;
 }
 
-.ApplyForm {
-  margin: 0% 5% 0% 1%;
+.ApplyInfo button:hover,
+.ApplyForm button:hover,
+.Modify button:hover{
+  background-color: #00462a;
+  color: white;
 }
+
 
 .ApplyForm form {
   display: flex;
   flex-direction: column;
-  background-color: lightgray;
   padding: 20px;
 }
 
 .ApplyForm textArea {
   margin-top: 10px;
+  font-size: 2rem;
   width: 95%;
-  height: 10em;
+  height: 20rem;
   border: none;
   resize: none;
 }
 
-.ApplyForm input {
-  margin-top: 5px;
-  width: 95;
+.ApplyInfo input:not([type="radio"],[type="checkbox"]){
+  font-size: 2rem;
+  width: 95%;
+  height: 5rem;
+  margin-top: 10px;
   border: none;
   resize: none;
 }
 
 .ApplyInfo p {
+  border: 2px double white;
   border-style: double;
-  padding: 10px;
+  padding : 20px;
 }

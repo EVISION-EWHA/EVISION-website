@@ -14,6 +14,7 @@ import ApplyInfo from "pages/Apply/ApplyInfo";
 import ApplyForm from "pages/Apply/ApplyForm";
 import Admin from "pages/Admin/Admin";
 
+
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
   let [names, setNames] = React.useState("");
@@ -32,9 +33,9 @@ const App = () => {
         <Route path="/postview/:no" element={<PostView></PostView>} />
         <Route path="/postmain" element={<PostMain></PostMain>} />
         <Route path="/postlist" element={<PostList></PostList>} />
-        <Route path="/admin"element={<Admin></Admin>} />
-        <Route path="/Applyinfo" element={<ApplyInfo></ApplyInfo>} />
-        <Route path="/Applyform" element={<ApplyForm></ApplyForm>} />
+        <Route path="/admin" element={<Admin></Admin>} />
+        <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
+        <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
       </Routes>
       <Footer />
     </>
