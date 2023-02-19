@@ -69,7 +69,7 @@ function Signup() {
         if (status === 0) {
           console.log("회원가입 성공");
           alert("회원가입을 성공했습니다");
-          navigate("/main");
+          navigate("/");
         } else if (status === -1) {
           console.log("회원가입 실패(아이디 중복)");
           alert("이미 존재하는 아이디입니다");
@@ -337,7 +337,6 @@ function Signup() {
   );
 }
 export default Signup;
-
 
 const Stlabel = styled.div`
   width: 40rem;
