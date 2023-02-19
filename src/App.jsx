@@ -31,7 +31,6 @@ const App = () => {
         <Route path="/admin"element={<Admin></Admin>} />
         <Route path="/Applyinfo" element={<ApplyInfo></ApplyInfo>} />
         <Route path="/Applyform" element={<ApplyForm></ApplyForm>} />
-
       </Routes>
       <Footer />
     </>

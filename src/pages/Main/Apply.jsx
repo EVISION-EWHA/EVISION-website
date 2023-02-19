@@ -31,11 +31,12 @@ const S = {
     margin: 20px;
   `,
   Button: styled.button`
+    color: black;
     width: 200px;
     height: 80px;
     background-color: white;
     font-size: 2rem;
-    margin: 10px;
+    margin: 20px;
     border-radius: 0.8rem;
 
     &:hover {
@@ -58,7 +59,7 @@ const Apply = () => {
         <img src={logo} alt="로고사진" /> {/*소개 영상*/}
       </div>
       <S.Label {...animatedItem[1]}>
-        APPLY (8/22~8/29) <br />
+        APPLY (2/25~3/1) <br />
         하단 버튼을 누르면 폼 링크로 접속됩니다.
       </S.Label>
       <div {...animatedItem[2]}>
