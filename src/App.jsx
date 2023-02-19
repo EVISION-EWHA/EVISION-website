@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import Login from "pages/login/Login";
 import Signup from "pages/sign/Signup";
 import MainPage from "pages/Main/MainPage";
@@ -17,13 +17,18 @@ import Admin from "pages/Admin/Admin";
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
+  let [names, setNames] = React.useState("");
+  let [grade, setGrade] = React.useState(0);
   return (
     <>
       <Header isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
-        <Route path="/login" element={<Login></Login>} />
+        <Route
+          path="/login"
+          element={<Login></Login>}
+        />
         <Route path="/signup" element={<Signup></Signup>} />
-        <Route path="/main" element={<MainPage></MainPage>} />
+        <Route path="/" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
         <Route path="/postview/:no" element={<PostView></PostView>} />
         <Route path="/postmain" element={<PostMain></PostMain>} />
@@ -31,8 +36,6 @@ const App = () => {
         <Route path="/admin" element={<Admin></Admin>} />
         <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
         <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
-
-
       </Routes>
       <Footer />
     </>

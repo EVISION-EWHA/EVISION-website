@@ -1,23 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
-import Box from "@mui/material/Box";
 import Input from "@mui/material/Input";
-import IconButton from "@mui/material/IconButton";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import DeleteIcon from "@mui/icons-material/Delete";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function Login({}) {
+function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setinputPw] = useState("");
   const [isLogin, setIsLogin] = React.useState(false);
+  // let [name, setName] = useState("");
+  // let [grade, setGrade] = useState(0);
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -51,11 +46,18 @@ function Login({}) {
           //navigate("/");
           const status = res.data;
           console.log(status);
+          // grade = status;
+          // name = postData.userId;
+          // console.log(grade, name);
+          // names = postData.userId;
+          // grade = status;
+          localStorage.setItem("grade", status);
+          console.log(localStorage);
           if (status === 1 || status === 5) {
             setIsLogin(true);
             console.log("login 성공");
             alert("login 성공");
-            navigate("/main");
+            window.location.replace("/");
           } else if (status === 0) {
             setIsLogin(false);
             console.log("login실패. 대기 상태");
@@ -64,6 +66,10 @@ function Login({}) {
             setIsLogin(false);
             console.log("login실패. 거부당함");
             alert("가입 요청이 거부되었습니다");
+          } else if (status === 3) {
+            setIsLogin(false);
+            console.log("login실패. 거부당함");
+            alert("회원 등급이 추방당하셨습니다..?");
           } else if (status === -1) {
             setIsLogin(false);
             console.log("login실패. 비밀번호 오류");
@@ -86,18 +92,22 @@ function Login({}) {
       userId: inputId,
       userPw: inputPw,
     };
-    console.log("loginData", loginData);
-    onhandlePost(loginData);
+    localStorage.setItem("userId", loginData.userId);
+    localStorage.setItem("userPw", loginData.userPw);
+    //console.log("loginData", loginData);
+    console.log(localStorage);
+    onhandlePost(localStorage);
   };
 
   const hstyle = {
+    backgroundColor: "black",
     fontColor: "white",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    margin: "10rem 0 5rem 0",
-    padding: "5rem 0 5rem 0",
+    //margin: "10rem 0 5rem 0",
+    padding: "20rem 5rem 25rem 5rem",
     flexDirection: "column",
     fontSize: "30px",
   };
@@ -112,17 +122,6 @@ function Login({}) {
 
   return (
     <form style={hstyle} onSubmit={handleSubmit}>
-      {/* <Stlabel>
-        Id
-        <StInput
-          type="text"
-          id="userId"
-          name="id"
-          onChange={handleInputId}
-          value={inputId}
-          autoComplete="id"
-        />
-      </Stlabel> */}
       <FormControl
         sx={{
           p: 2,
@@ -195,6 +194,7 @@ function Login({}) {
 export default Login;
 
 const form = styled.form`
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,7 +229,8 @@ const StLoginBtn = styled.button`
   float: left;
   align-items: center;
   color: white;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 500;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -240,7 +241,7 @@ const StLoginBtn = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #00462a;
-    color: white;
+    background-color: #e2f87b;
+    color: black;
   }
 `;

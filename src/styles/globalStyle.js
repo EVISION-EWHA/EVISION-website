@@ -19,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
   
   * {
     color: white;
-    background-color: black;
     box-sizing: border-box;
     font-family: 'Pretendard', sans-serif
   }

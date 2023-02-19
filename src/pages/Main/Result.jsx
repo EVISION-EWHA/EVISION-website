@@ -27,6 +27,7 @@ const S = {
     margin: 20px;
   `,
   Button: styled.button`
+    color: black;
     width: 200px;
     height: 80px;
     background-color: white;

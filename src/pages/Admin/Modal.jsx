@@ -27,7 +27,7 @@ const Modal = (props) => {
   const [selctedGrade, setSelectedGrade] = React.useState("");
 
   const onClickStatus = () => {
-    console.log("click login");
+    console.log("click modal");
   };
 
   const onhandlePost = async (data) => {
@@ -50,6 +50,7 @@ const Modal = (props) => {
           console.log(test);
           alert("회원 등급 변경이 처리되었습니다");
           close();
+          window.location.reload();
         });
     } catch (err) {
       console.log(err);
@@ -90,10 +91,10 @@ const Modal = (props) => {
               <FormControl
                 size="large"
                 variant="standard"
-                sx={{ ml: 3, minWidth: 200, fontSize: "4rem" }}
+                sx={{ ml: 3, minWidth: 200, fontSize: "4rem", color: "white" }}
               >
                 <InputLabel
-                  sx={{ fontSize: "2.5rem" }}
+                  sx={{ fontSize: "2.5rem", color: "white" }}
                   id="demo-simple-select-standard-label"
                 >
                   Id
@@ -107,12 +108,17 @@ const Modal = (props) => {
                   sx={{
                     p: 1,
                     fontSize: "2.5rem",
+                    color: "white",
                   }}
                 >
                   {data.length > 0 &&
                     data.map((info) => (
                       <MenuItem
-                        sx={{ fontSize: "2.5rem" }}
+                        sx={{
+                          fontSize: "2.5rem",
+                          color: "white",
+                          backgroundColor: "black",
+                        }}
                         key={info.userId}
                         value={info.userId}
                       >
@@ -124,10 +130,16 @@ const Modal = (props) => {
               <FormControl
                 size="large"
                 variant="standard"
-                sx={{ ml: 7, minWidth: 200, fontSize: "4rem" }}
+                sx={{
+                  ml: 7,
+                  minWidth: 200,
+                  fontSize: "4rem",
+                  color: "white",
+                  backgroundColor: "black",
+                }}
               >
                 <InputLabel
-                  sx={{ fontSize: "2.5rem" }}
+                  sx={{ fontSize: "2.5rem", color: "white" }}
                   id="demo-simple-select-standard-label"
                 >
                   Status
@@ -141,21 +153,57 @@ const Modal = (props) => {
                   sx={{
                     p: 1,
                     fontSize: "2.5rem",
+                    color: "white",
                   }}
                 >
-                  <MenuItem sx={{ fontSize: "2.5rem" }} value={0}>
+                  <MenuItem
+                    sx={{
+                      fontSize: "2.5rem",
+                      color: "white",
+                      backgroundColor: "black",
+                    }}
+                    value={0}
+                  >
                     0(승인 대기 중)
                   </MenuItem>
-                  <MenuItem sx={{ fontSize: "2.5rem" }} value={1}>
+                  <MenuItem
+                    sx={{
+                      fontSize: "2.5rem",
+                      color: "white",
+                      backgroundColor: "black",
+                    }}
+                    value={1}
+                  >
                     1(승인 완료)
                   </MenuItem>
-                  <MenuItem sx={{ fontSize: "2.5rem" }} value={2}>
+                  <MenuItem
+                    sx={{
+                      fontSize: "2.5rem",
+                      color: "white",
+                      backgroundColor: "black",
+                    }}
+                    value={2}
+                  >
                     2(승인 거절)
                   </MenuItem>
-                  <MenuItem sx={{ fontSize: "2.5rem" }} value={3}>
+                  <MenuItem
+                    sx={{
+                      fontSize: "2.5rem",
+                      color: "white",
+                      backgroundColor: "black",
+                    }}
+                    value={3}
+                  >
                     3(추방)
                   </MenuItem>
-                  <MenuItem sx={{ fontSize: "2.5rem" }} value={5}>
+                  <MenuItem
+                    sx={{
+                      fontSize: "2.5rem",
+                      color: "white",
+                      backgroundColor: "black",
+                    }}
+                    value={5}
+                  >
                     5(관리자)
                   </MenuItem>
                 </Select>
