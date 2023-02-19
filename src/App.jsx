@@ -14,23 +14,20 @@ import ApplyInfo from "pages/Apply/ApplyInfo";
 import ApplyForm from "pages/Apply/ApplyForm";
 import Admin from "pages/Admin/Admin";
 
-
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
   return (
     <>
       <Header isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
-        <Route
-          path="/login"
-          element={<Login></Login>}
-        />
+        <Route path="/login" element={<Login></Login>} />
         <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
         <Route path="/postview/:no" element={<PostView></PostView>} />
         <Route path="/postmain" element={<PostMain></PostMain>} />
         <Route path="/postlist" element={<PostList></PostList>} />
+        <Route path="/board" element={<Post></Post>} />
         <Route path="/admin" element={<Admin></Admin>} />
         <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
         <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
