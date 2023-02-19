@@ -16,25 +16,21 @@ import Admin from "pages/Admin/Admin";
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
-  let [names, setNames] = React.useState("");
-  let [grade, setGrade] = React.useState(0);
   return (
     <>
       <Header isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
-        <Route
-          path="/login"
-          element={<Login></Login>}
-        />
+        <Route path="/login" element={<Login></Login>} />
         <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
         <Route path="/postview/:no" element={<PostView></PostView>} />
         <Route path="/postmain" element={<PostMain></PostMain>} />
         <Route path="/postlist" element={<PostList></PostList>} />
-        <Route path="/admin"element={<Admin></Admin>} />
-        <Route path="/Applyinfo" element={<ApplyInfo></ApplyInfo>} />
-        <Route path="/Applyform" element={<ApplyForm></ApplyForm>} />
+        <Route path="/board" element={<Post></Post>} />
+        <Route path="/admin" element={<Admin></Admin>} />
+        <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
+        <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
       </Routes>
       <Footer />
     </>

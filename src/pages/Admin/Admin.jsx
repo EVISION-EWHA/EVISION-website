@@ -107,11 +107,16 @@ function Admin({ names, grade }) {
         <Box
           sx={{
             fontSize: "2rem",
+            color: "white",
             p: 3,
+            height: "15rem",
           }}
         >
-          승인 대기 중 : 0 승인 완료(부원) : 1 승인 거절 : 2 추방 : 3 관리자
-          계정 : 5
+          승인 대기 중 : 0<br />
+          승인 완료(부원) : 1 <br />
+          승인 거절 : 2 <br />
+          추방 : 3 <br />
+          관리자 계정 : 5
         </Box>
       </div>
     </ThemeProvider>
