@@ -5,6 +5,9 @@ import Signup from "pages/sign/Signup";
 import MainPage from "pages/Main/MainPage";
 import CurriculumPage from "pages/Curriculum/CurriculumPage";
 import Post from "pages/board/post";
+import PostMain from "pages/Post/PostMain";
+import PostView from "pages/Post/PostView";
+import PostList from "pages/Post/PostList";
 import Header from "components/header";
 import Footer from "components/footer";
 import ApplyInfo from "pages/Apply/ApplyInfo";
@@ -27,10 +30,12 @@ const App = () => {
         <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
-        <Route path="/board" element={<Post></Post>}/>
-        <Route path="/admin"element={<Admin></Admin>} />
-        <Route path="/Applyinfo" element={<ApplyInfo></ApplyInfo>} />
-        <Route path="/Applyform" element={<ApplyForm></ApplyForm>} />
+        <Route path="/postview/:no" element={<PostView></PostView>} />
+        <Route path="/postmain" element={<PostMain></PostMain>} />
+        <Route path="/postlist" element={<PostList></PostList>} />
+        <Route path="/admin" element={<Admin></Admin>} />
+        <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
+        <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
       </Routes>
       <Footer />
     </>
