@@ -1,44 +1,8 @@
-import { useState, useEffect } from 'react';
-import './import.css';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import ReactHtmlParser from 'react-html-parser';
-import Axios from 'axios';
-
+import styled from "styled-components";
+import "./import.css";
+import { useState } from "react";
 
 function Post() {
-  const [Content, setContent] = useState({
-    title: '',
-    content: '',
-    user: ''
-  })
-
-  const [viewContent, setViewContent] = useState([]);
-
-  useEffect(()=>{
-    Axios.get('http://3.37.117.164:8080/board').then((response)=>{
-      setViewContent(response.data);
-    })
-  },[viewContent])
-  
-  const submitReview = ()=>{
-    Axios.post('http://3.37.117.164:8080/board', {
-      title: Content.title,
-      content: Content.content
-    }).then(()=>{
-      alert('등록 완료!');
-    })
-  };
-
-  const getValue = e => {
-    const { name, value } = e.target;
-    setContent({
-      ...Content,
-      [name]: value
-    })
-  };
-
-
   return (
     <div className="Post">
       <h1>게시글</h1>
@@ -92,3 +56,4 @@ function Post() {
 }
 
 export default Post;
+
