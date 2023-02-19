@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 import {
   Box,
   Button,
@@ -19,6 +18,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
+import { API } from "../../config";
 import "./modal.css";
 
 const Modal = (props) => {
@@ -37,7 +37,7 @@ const Modal = (props) => {
     postData.authStatus = data.authStatus;
     try {
       await axios
-        .put("http://3.37.117.164:8080/admin/requests", postData)
+        .put(`${API.AdminRequests}`, postData)
         .then((res) => {
           console.log(res);
           let submitBtn = document.getElementById("submit");

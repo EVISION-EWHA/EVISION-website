@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Swal from "sweetalert2";
 import {
   Box,
   Button,
@@ -20,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "./Modal";
 import UserTable from "components/userTable";
+import { API } from "../../config";
 
 function Admin({ names, grade }) {
   const theme = createTheme({
@@ -35,7 +35,7 @@ function Admin({ names, grade }) {
 
   useEffect(() => {
     axios
-      .get("http://3.37.117.164:8080/admin/users")
+      .get(`${API.AdminUsers}`)
       .then(function (response) {
         console.log(names);
         console.log(grade);
