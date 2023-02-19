@@ -43,8 +43,6 @@ function Post() {
     <div className="Post">
       <h1>게시글</h1>
       <div className='container'>
-        <br></br>
-        <br></br>
         {viewContent.map(element =>
           <div style={{ border: '1px solid black' }}>
             <h2>{element.title}</h2>
@@ -63,7 +61,7 @@ function Post() {
         />
         <CKEditor
           editor={ClassicEditor}
-          data="<p>내용을 적어주세요.</p>"
+          // data="<p>내용을 적어주세요.</p>"
           onReady={editor => {
       
             console.log('Editor is ready to use!', editor);
