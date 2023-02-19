@@ -2,7 +2,7 @@
 import React, {useRef, useState}  from "react";
 import "./apply.css";
 import { useNavigate } from 'react-router-dom';
-import Radio from "@mui/material/Radio"
+// import Radio from "@mui/material/Radio"
 
 function ApplyInfo(){
         
@@ -146,15 +146,6 @@ return (
                         checked={state.management === "0"}
                         onChange={handleChange}/>아니요</label>
 
-                {/* <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="female"
-                name="radio-buttons-group"
-                >
-                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                <FormControlLabel value="other" control={<Radio />} label="Other" />
-                </RadioGroup> */}
 
                 <br/>
 
@@ -162,7 +153,7 @@ return (
                 <label>개인정보 이용에 동의하시나요? 응답내용은 동아리 신입부원 선발을 위해서만 사용될 예정이며, 지원 종료 후 모든 정보는 폐기될 예정입니다.<br/></label>
                 <p>1. 수집목적 : EVI$ION 신입부원 선발<br/>
                 2. 수집항목 : 이름, 휴대폰 전화번호, 학번, 전공<br/>
-                3. 보유 및 이용 기간 : 신입생 선발 후 OT까지 3/9</p>
+                3. 보유 및 이용 기간 : 신입생 선발 후 OT(3/9)까지 </p>
                 <label name = "checkout"><input type="checkbox" name = "isAgee" id= "checkAgree" value=""/> 개인정보 수집에 동의하시겠습니까? <br />
                 </label><br />
         </form>
