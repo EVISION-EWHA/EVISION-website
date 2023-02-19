@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Box,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  Paper,
-  TableHead,
-  TableRow,
-  ThemeProvider,
-  Typography,
-} from "@mui/material";
+import { Button } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
 import { API } from "../../config";
-import "./modal.css";
+import "./ChangeStatusModal.css";
 
 const Modal = (props) => {
   const { open, close, header, data } = props;
@@ -36,22 +24,20 @@ const Modal = (props) => {
     postData.userId = data.userId;
     postData.authStatus = data.authStatus;
     try {
-      await axios
-        .put(`${API.AdminRequests}`, postData)
-        .then((res) => {
-          console.log(res);
-          let submitBtn = document.getElementById("submit");
-          submitBtn.addEventListener("click", function (e) {
-            this.setAttribute("disabled", "true");
-            this.setAttribute("disabledElevation", "true");
-            this.setAttribute("disabledRipple", "true");
-          });
-          const test = res.data;
-          console.log(test);
-          alert("회원 등급 변경이 처리되었습니다");
-          close();
-          window.location.reload();
+      await axios.put(`${API.AdminRequests}`, postData).then((res) => {
+        console.log(res);
+        let submitBtn = document.getElementById("submit");
+        submitBtn.addEventListener("click", function (e) {
+          this.setAttribute("disabled", "true");
+          this.setAttribute("disabledElevation", "true");
+          this.setAttribute("disabledRipple", "true");
         });
+        const test = res.data;
+        console.log(test);
+        alert("회원 등급 변경이 처리되었습니다");
+        close();
+        window.location.reload();
+      });
     } catch (err) {
       console.log(err);
     }
