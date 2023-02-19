@@ -17,8 +17,6 @@ import Admin from "pages/Admin/Admin";
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
-  let [names, setNames] = React.useState("");
-  let [grade, setGrade] = React.useState(0);
   return (
     <>
       <Header isLogin={isLogin} setIsLogin={setIsLogin} />

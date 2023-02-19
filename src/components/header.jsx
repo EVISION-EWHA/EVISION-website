@@ -120,7 +120,7 @@ export default Header;
 const menus = [
   { name: "Curriculum", link: "/curriculum" },
   { name: "Recruit", link: "/recruit" },
-  { name: "Board", link: "/borad" },
+  { name: "Board", link: "/board" },
 ];
 
 const Logo = styled.div`

@@ -18,7 +18,6 @@ const GlobalStyle = createGlobalStyle`
   }
   
   * {
-    color: white;
     box-sizing: border-box;
     font-family: 'Pretendard', sans-serif
   }
