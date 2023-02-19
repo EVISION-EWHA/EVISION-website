@@ -5,10 +5,12 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ReactHtmlParser from 'react-html-parser';
 import Axios from 'axios';
 
+
 function Post() {
   const [Content, setContent] = useState({
     title: '',
-    content: ''
+    content: '',
+    user: ''
   })
 
   const [viewContent, setViewContent] = useState([]);
@@ -18,7 +20,7 @@ function Post() {
       setViewContent(response.data);
     })
   },[viewContent])
-
+  
   const submitReview = ()=>{
     Axios.post('http://3.37.117.164:8080/board', {
       title: Content.title,
@@ -39,8 +41,10 @@ function Post() {
 
   return (
     <div className="Post">
-      <h1>게시판</h1>
+      <h1>게시글</h1>
       <div className='container'>
+        <br></br>
+        <br></br>
         {viewContent.map(element =>
           <div style={{ border: '1px solid black' }}>
             <h2>{element.title}</h2>
@@ -80,11 +84,12 @@ function Post() {
           }}
         />
       </div>
-      <button
+      <div><button
         className="submit-button"
         onClick={submitReview}
-        >입력</button>
-    </div>
+        >입력</button></div>
+      </div>
+    
   );
 }
 
