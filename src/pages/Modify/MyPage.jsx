@@ -27,16 +27,13 @@ const MyPage = () => {
     function handleModify(){
         console.log(state);
         
-    //     navigate('/Modify', { state :{
-    //     userId: state.userId,
-    //     userPw : state.userPw,
-    //     userRePw: "",
-    //     email : state.email,
-    // } });
-
-    navigate('/modify', { state :{
-        email : state.email
+        navigate('/modify', { state :{
+        userId: state.userId,
+        userPw : state.userPw,
+        userRePw: "",
+        email : state.email,
     } });
+
 }
 
     useEffect(() => {
