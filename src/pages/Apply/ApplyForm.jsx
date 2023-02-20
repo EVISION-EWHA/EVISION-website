@@ -3,8 +3,8 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
 import "./apply.css";
+import { API } from "../../config";
 
-//부모
 function ApplyForm() {
     const location = useLocation();
     const [state,setState]=useState({
@@ -51,7 +51,7 @@ function ApplyForm() {
         postData.contentA = data.contentA;         postData.contentB = data.contentB; 
 
         await axios
-        .post("http://3.37.117.164:8080/application", postData)
+        .post(`${API.Application}`, postData)
         .then((res) => {
             console.log(res);
             let submitBtn = document.getElementById("submit");
@@ -67,7 +67,7 @@ function ApplyForm() {
             if (status === 0) {
                 console.log("지원완료");
                 alert("지원이 완료되었습니다!");
-                // window.location.href = './main';
+                window.location.href = './main';
             } else if (status === -1) {
                 console.log("지원 실패(학번 중복)");
                 alert("이미 제출된 지원서입니다.");

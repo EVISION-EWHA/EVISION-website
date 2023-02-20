@@ -10,10 +10,10 @@ import Footer from "components/footer";
 import ApplyInfo from "pages/Apply/ApplyInfo";
 import ApplyForm from "pages/Apply/ApplyForm";
 import Admin from "pages/Admin/Admin";
-import BoardPage from "components/views/BoardPage/BoardPage";
-import { SwipeableDrawer } from "@material-ui/core";
-import ArticlePage from "components/views/ArticlePage/ArticlePage";
-import RegisterOrEdit from "components/views/RegisterPage/Sections/RegisterOrEdit";
+import MyPage from "pages/Modify/MyPage";
+import Modify from "pages/Modify/Modify";
+import Showingapplicant from "pages/Admin/ShowingApplicant";
+import Application from "pages/Admin/Application";
 
 
 const App = () => {
@@ -31,8 +31,18 @@ const App = () => {
         <Route path="/board" element={<RegisterOrEdit></RegisterOrEdit>} />
         {/* <Route path="/board" element={<Post></Post>} /> */}
         <Route path="/admin" element={<Admin></Admin>} />
+        <Route
+          path="/admin/showingapplicant"
+          element={<Showingapplicant></Showingapplicant>}
+        />
+        <Route
+          path="/admin/applications/:studentId"
+          element={<Application></Application>}
+        />
         <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
         <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
+        <Route path="/mypage" element={<MyPage></MyPage>} />
+        <Route path="/modify" element={<Modify></Modify>} />
       </Routes>
       <Footer />
     </>

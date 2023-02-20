@@ -1,13 +1,14 @@
-.ApplyInfo,.ApplyForm,.Modify {
+.ApplyInfo,.ApplyForm{
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 10rem 0 5rem 0;
   padding: 5rem 0 5rem 0;
   flex-direction: column;
   font-size: 25px;
   line-height : 4rem;
+  color : white;
+  background-color: black;
 }
 
 .ApplyInfo form{
@@ -55,6 +56,8 @@
   height: 20rem;
   border: none;
   resize: none;
+  color : white;
+  background-color: black;
 }
 
 .ApplyInfo input:not([type="radio"],[type="checkbox"]){
@@ -64,6 +67,8 @@
   margin-top: 10px;
   border: none;
   resize: none;
+  color : white;
+  background-color: black;
 }
 
 .ApplyInfo p {

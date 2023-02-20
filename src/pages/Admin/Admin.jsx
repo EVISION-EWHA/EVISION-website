@@ -17,7 +17,9 @@ import { palette } from "@mui/system";
 import { createTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Modal from "./Modal";
+import Modal from "./ChangeStatusModal";
+import Modal2 from "./Status0Modal";
+import { Link } from "react-router-dom";
 import UserTable from "components/userTable";
 import { API } from "../../styles/config";
 
@@ -32,6 +34,7 @@ function Admin({ names, grade }) {
   });
   const navigate = useNavigate();
   const [allData, setAllData] = React.useState({});
+  const [newData, setNewData] = React.useState({});
 
   useEffect(() => {
     axios
@@ -46,7 +49,19 @@ function Admin({ names, grade }) {
       });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`${API.AdminRequests}`)
+      .then(function (response) {
+        setNewData(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   const data = allData ?? [];
+  const newdata = newData ?? [];
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -55,6 +70,14 @@ function Admin({ names, grade }) {
   };
   const closeModal = () => {
     setModalOpen(false);
+  };
+  const [modal2Open, setModal2Open] = useState(false);
+
+  const open2Modal = () => {
+    setModal2Open(true);
+  };
+  const close2Modal = () => {
+    setModal2Open(false);
   };
 
   useEffect(() => {
@@ -77,33 +100,77 @@ function Admin({ names, grade }) {
   return (
     <ThemeProvider theme={theme}>
       <div style={hstyle}>
-        <Button
+        <Box
           sx={{
-            backgroundColor: "#474544",
-            color: "white",
-            mb: 2,
-            flexDirection: "row",
             alignItems: "flex-start",
-            width: "10rem",
-            fontWeight: "600",
-            fontSize: "1.5rem",
           }}
-          variant="contained"
-          //color="success"
-          onClick={openModal}
         >
-          등급 변경
-        </Button>
-        <p style={{ fontSize: 30, fontFamily: "KyoboHand" }}>
-          {localStorage.getItem("userId")} 님 어서오세요! 회원님의 등급은{" "}
-          {localStorage.getItem("grade")}입니다
-        </p>
-        <Modal
-          open={modalOpen}
-          close={closeModal}
-          header="부원 등급 변경"
-          data={data}
-        ></Modal>
+          <Button
+            sx={{
+              backgroundColor: "#474544",
+              color: "white",
+              mb: 2,
+              mr: 3,
+              flexDirection: "row",
+              alignItems: "flex-start",
+              width: "10rem",
+              fontWeight: "600",
+              fontSize: "1.5rem",
+            }}
+            variant="contained"
+            //color="success"
+            onClick={openModal}
+          >
+            등급 변경
+          </Button>
+          <Modal
+            open={modalOpen}
+            close={closeModal}
+            header="승인 대기중 회원 보기"
+            data={data}
+          ></Modal>
+          <Button
+            sx={{
+              backgroundColor: "#474544",
+              color: "white",
+              mb: 2,
+              mr: 3,
+              flexDirection: "row",
+              alignItems: "flex-start",
+              width: "22rem",
+              fontWeight: "600",
+              fontSize: "1.5rem",
+            }}
+            variant="contained"
+            onClick={open2Modal}
+          >
+            승인 대기중 회원 목록
+          </Button>
+          <Modal2
+            open={modal2Open}
+            close={close2Modal}
+            header="승인 대기중 회원 목록"
+            data={newdata}
+          ></Modal2>
+          <Link to="/admin/showingapplicant">
+            <Button
+              sx={{
+                backgroundColor: "#474544",
+                color: "white",
+                mb: 2,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                width: "15rem",
+                fontWeight: "600",
+                fontSize: "1.5rem",
+              }}
+              variant="contained"
+              onclick="location.href='showingappliment'"
+            >
+              지원서 열람
+            </Button>{" "}
+          </Link>
+        </Box>
         <UserTable data={data}></UserTable>
         <Box
           sx={{
