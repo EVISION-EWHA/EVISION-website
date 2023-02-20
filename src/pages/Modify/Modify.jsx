@@ -12,6 +12,7 @@ function Modify(){
     
 
     const [ state, setState]=useState({
+        userId : localStorage.getItem("userId"),
         userPw : localStorage.getItem("userPw"),
         userRePw : "",
         email : "",
@@ -32,24 +33,36 @@ function Modify(){
 
     //이거는 데이터 전송
     const onhandlePost = async (data) => {
-        const { userPw, email } = data;
-        const postData = { userPw, email };
+
+        const { userId, userPw, email } = data;
+        const postData = {userId, userPw, email };
+        postData.userId = data.userId;
         postData.userPw = data.userPw;
         postData.email = data.email;
         
         try {
         await axios
-            .put(`${API.Modification}`, postData)
+            .put(`${API.Modification}/${postData.userId}`, postData)
             .then((res) => {
+                const test = res.data;
+                test.userId = data.userId;
                 console.log(res);
+
+
+                localStorage.setItem("userId", postData.userId);
+                localStorage.setItem("userPw", postData.userPw);
+                console.log(test);
+
                 let submitBtn = document.getElementById("button");
                 submitBtn.addEventListener("click", function (e) {
                 this.setAttribute("disabled", "true");
                 this.setAttribute("disabledElevation", "true");
                 this.setAttribute("disabledRipple", "true");
-                });
-                const test = res.data;
-                console.log(test);
+                
+
+            });
+                
+
                 alert("수정이 완료되었습니다!");
                 window.location.href = './';
             });
@@ -71,6 +84,7 @@ function Modify(){
         }
 
         const modifyData={
+            userId : state.userId,
             userPw : state.userPw,
             email : state.email,
         };
