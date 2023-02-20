@@ -18,7 +18,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
-import { API } from "../../config";
+import { API } from "../../styles/config";
 import "./modal.css";
 
 const Modal = (props) => {

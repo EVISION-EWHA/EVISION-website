@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "./Modal";
 import UserTable from "components/userTable";
-import { API } from "../../config";
+import { API } from "../../styles/config";
 
 function Admin({ names, grade }) {
   const theme = createTheme({

@@ -5,14 +5,16 @@ import Signup from "pages/sign/Signup";
 import MainPage from "pages/Main/MainPage";
 import CurriculumPage from "pages/Curriculum/CurriculumPage";
 import Post from "pages/board/post";
-import PostMain from "pages/Post/PostMain";
-import PostView from "pages/Post/PostView";
-import PostList from "pages/Post/PostList";
 import Header from "components/header";
 import Footer from "components/footer";
 import ApplyInfo from "pages/Apply/ApplyInfo";
 import ApplyForm from "pages/Apply/ApplyForm";
 import Admin from "pages/Admin/Admin";
+import BoardPage from "components/views/BoardPage/BoardPage";
+import { SwipeableDrawer } from "@material-ui/core";
+import ArticlePage from "components/views/ArticlePage/ArticlePage";
+import RegisterOrEdit from "components/views/RegisterPage/Sections/RegisterOrEdit";
+
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
@@ -24,10 +26,10 @@ const App = () => {
         <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
-        <Route path="/postview/:no" element={<PostView></PostView>} />
-        <Route path="/postmain" element={<PostMain></PostMain>} />
-        <Route path="/postlist" element={<PostList></PostList>} />
-        <Route path="/board" element={<Post></Post>} />
+        <Route path="/view" element={<BoardPage></BoardPage>} />
+        <Route path="/article/:articleId" element={<ArticlePage></ArticlePage>} />
+        <Route path="/board" element={<RegisterOrEdit></RegisterOrEdit>} />
+        {/* <Route path="/board" element={<Post></Post>} /> */}
         <Route path="/admin" element={<Admin></Admin>} />
         <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
         <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
