@@ -43,14 +43,8 @@ function Login() {
             this.setAttribute("disabledElevation", "true");
             this.setAttribute("disabledRipple", "true");
           });
-          //navigate("/");
           const status = res.data;
           console.log(status);
-          // grade = status;
-          // name = postData.userId;
-          // console.log(grade, name);
-          // names = postData.userId;
-          // grade = status;
           localStorage.setItem("grade", status);
           console.log(localStorage);
           if (status === 1 || status === 5) {

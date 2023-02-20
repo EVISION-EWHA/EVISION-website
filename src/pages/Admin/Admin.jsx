@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "./ChangeStatusModal";
 import Modal2 from "./Status0Modal";
+import { Link } from "react-router-dom";
 import UserTable from "components/userTable";
 import { API } from "../../config";
 
@@ -133,6 +134,7 @@ function Admin({ names, grade }) {
               backgroundColor: "#474544",
               color: "white",
               mb: 2,
+              mr: 3,
               flexDirection: "row",
               alignItems: "flex-start",
               width: "22rem",
@@ -140,7 +142,6 @@ function Admin({ names, grade }) {
               fontSize: "1.5rem",
             }}
             variant="contained"
-            //color="success"
             onClick={open2Modal}
           >
             승인 대기중 회원 목록
@@ -151,6 +152,24 @@ function Admin({ names, grade }) {
             header="승인 대기중 회원 목록"
             data={newdata}
           ></Modal2>
+          <Link to="/admin/showingapplicant">
+            <Button
+              sx={{
+                backgroundColor: "#474544",
+                color: "white",
+                mb: 2,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                width: "15rem",
+                fontWeight: "600",
+                fontSize: "1.5rem",
+              }}
+              variant="contained"
+              onclick="location.href='showingappliment'"
+            >
+              지원서 열람
+            </Button>{" "}
+          </Link>
         </Box>
         <UserTable data={data}></UserTable>
         <Box
@@ -172,10 +191,3 @@ function Admin({ names, grade }) {
   );
 }
 export default Admin;
-
-{
-  /* <p style={{ fontSize: 30, fontFamily: "KyoboHand" }}>
-            {localStorage.getItem("userId")} 님 어서오세요! 회원님의 등급은{" "}
-            {localStorage.getItem("grade")}입니다
-          </p> */
-}
