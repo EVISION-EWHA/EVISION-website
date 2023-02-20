@@ -32,7 +32,6 @@ const App = () => {
         <Route path="/article/:articleId" element={<ArticlePage></ArticlePage>} />
         <Route path="/edit/:articleId" element={<RegisterPage></RegisterPage>} />
         <Route path="/board" element={<RegisterPage></RegisterPage>} />
-        {/* <Route path="/board" element={<Post></Post>} /> */}
         <Route path="/admin" element={<Admin></Admin>} />
         <Route
           path="/admin/showingapplicant"
