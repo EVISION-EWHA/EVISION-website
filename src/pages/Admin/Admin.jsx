@@ -21,7 +21,7 @@ import Modal from "./ChangeStatusModal";
 import Modal2 from "./Status0Modal";
 import { Link } from "react-router-dom";
 import UserTable from "components/userTable";
-import { API } from "../../config";
+import { API } from "../../styles/config";
 
 function Admin({ names, grade }) {
   const theme = createTheme({
