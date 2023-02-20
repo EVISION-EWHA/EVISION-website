@@ -67,7 +67,7 @@ function ApplyForm() {
             if (status === 0) {
                 console.log("지원완료");
                 alert("지원이 완료되었습니다!");
-                // window.location.href = './main';
+                window.location.href = './main';
             } else if (status === -1) {
                 console.log("지원 실패(학번 중복)");
                 alert("이미 제출된 지원서입니다.");

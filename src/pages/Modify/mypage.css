@@ -11,7 +11,7 @@
     background-color: black;
 }
 
-.MyPage form, .Modify form{
+.MyPage form, .form{
     display: flex;
     margin-top : 5rem;
     flex-direction: column;

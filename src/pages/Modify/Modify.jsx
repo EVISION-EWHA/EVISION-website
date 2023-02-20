@@ -1,6 +1,3 @@
-//mypage페이지에서 넘어가는 modal같은 페이지
-// 실질적 수정페이지라 보면 됨
-
 import React, { useRef,useState}  from "react";
 import axios from "axios";
 import "./mypage.css";
@@ -12,7 +9,6 @@ function Modify(){
     
     const pwInput = useRef();
     const rePwInput = useRef();
-    //mypage에서 받은 state 전달
     
 
     const [ state, setState]=useState({
@@ -21,10 +17,7 @@ function Modify(){
         email : "",
     }); 
 
-
-    console.log('지금상태',state);
-    
-
+    // console.log('지금상태',state);
     
     const handleChange = (e)=>{ // 작성내용 객체에 저장 
         // console.log(e.target.name);
@@ -49,7 +42,7 @@ function Modify(){
             .put(`${API.Modification}`, postData)
             .then((res) => {
                 console.log(res);
-                let submitBtn = document.getElementById("submit");
+                let submitBtn = document.getElementById("button");
                 submitBtn.addEventListener("click", function (e) {
                 this.setAttribute("disabled", "true");
                 this.setAttribute("disabledElevation", "true");
@@ -58,7 +51,7 @@ function Modify(){
                 const test = res.data;
                 console.log(test);
                 alert("수정이 완료되었습니다!");
-                // window.location.reload();
+                window.location.href = './';
             });
         } catch(err) {
             console.log(err);
@@ -73,32 +66,37 @@ function Modify(){
         // event.preventDefault();
         console.log("change submit");
 
-        //여기서 유효성 검사 
+        if(state.email === ""){
+            state.email = location.state.email;
+        }
+
+        const modifyData={
+            userPw : state.userPw,
+            email : state.email,
+        };
+
+
+        //비밀번호 유효성 검사 
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/; // 비밀번호 유효성
-        if(!passwordRegex.test(state.userPw)){
+        
+        
+        if(state.userRePw===""){
+            state.userRePw = modifyData.userPw;
+        }
+
+        if(!passwordRegex.test(modifyData.userPw)){
             pwInput.current.focus();
             alert("영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요. ");   
             return false;
         }
 
-        if(state.userPw !== state.userRePw){
+        if(modifyData.userPw !== state.userRePw){
             rePwInput.current.focus();
             alert("비밀번호가 일치하지 않습니다!");
             return false;
-
         }
 
-        if(state.email === null){
-            state.email = location.state.email;
-            console.log(state.email);
-        }
-
-        if(passwordRegex.test(state.userPw) && (state.userPw === state.userRePw)){
-            //이거는 막바지 작업
-            const modifyData={
-                userPw : state.userPw,
-                email : state.email,
-            };
+        if(passwordRegex.test(state.userPw) && (state.userPw === state.userRePw)){    
         console.log("modifyData", modifyData);
         onhandlePost(modifyData);
         }
@@ -108,7 +106,7 @@ function Modify(){
     return (
         <div className = "Modify">
             <br/><h2 style = {{ textAlign : "center", fontSize : "35px", color : "white", backgroundColor : "black"}}>수정 페이지</h2>
-            <form>
+            <div className = "form">
             <label>아이디</label>
             <label>
                 {localStorage.getItem("userId")}<br />
@@ -141,9 +139,9 @@ function Modify(){
                 value = {state.email}
                 onChange={handleChange} 
                 placeholder = "수정할 이메일을 입력해주세요!"></input><br/>
-
-            <button onClick = {()=>{handleSubmit()}}>수정하기</button>
-        </form>
+            
+            <button type = "button" id = "button" onClick = {()=>{handleSubmit()}}>수정하기</button>
+        </div>
         </div>
     );
 }
