@@ -15,6 +15,8 @@ import ApplyForm from "pages/Apply/ApplyForm";
 import Admin from "pages/Admin/Admin";
 import MyPage from "pages/Modify/MyPage";
 import Modify from "pages/Modify/Modify";
+import Showingapplicant from "pages/Admin/ShowingApplicant";
+import Application from "pages/Admin/Application";
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
@@ -31,12 +33,18 @@ const App = () => {
         <Route path="/postlist" element={<PostList></PostList>} />
         <Route path="/board" element={<Post></Post>} />
         <Route path="/admin" element={<Admin></Admin>} />
+        <Route
+          path="/admin/showingapplicant"
+          element={<Showingapplicant></Showingapplicant>}
+        />
+        <Route
+          path="/admin/applications/:studentId"
+          element={<Application></Application>}
+        />
         <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
         <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
-        <Route path="/mypage" element ={<MyPage></MyPage>}/>
-        <Route path="/modify" element={<Modify></Modify>}/>
-
-
+        <Route path="/mypage" element={<MyPage></MyPage>} />
+        <Route path="/modify" element={<Modify></Modify>} />
       </Routes>
       <Footer />
     </>
