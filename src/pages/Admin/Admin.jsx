@@ -13,7 +13,6 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { palette } from "@mui/system";
 import { createTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -21,7 +20,7 @@ import Modal from "./ChangeStatusModal";
 import Modal2 from "./Status0Modal";
 import { Link } from "react-router-dom";
 import UserTable from "components/userTable";
-import { API } from "../../styles/config";
+import { API } from "config";
 
 function Admin({ names, grade }) {
   const theme = createTheme({
