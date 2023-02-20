@@ -3,8 +3,8 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
 import "./apply.css";
+import { API } from "../../config";
 
-//부모
 function ApplyForm() {
     const location = useLocation();
     const [state,setState]=useState({
@@ -51,7 +51,7 @@ function ApplyForm() {
         postData.contentA = data.contentA;         postData.contentB = data.contentB; 
 
         await axios
-        .post("http://3.37.117.164:8080/application", postData)
+        .post(`${API.Application}`, postData)
         .then((res) => {
             console.log(res);
             let submitBtn = document.getElementById("submit");

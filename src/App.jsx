@@ -13,6 +13,8 @@ import Footer from "components/footer";
 import ApplyInfo from "pages/Apply/ApplyInfo";
 import ApplyForm from "pages/Apply/ApplyForm";
 import Admin from "pages/Admin/Admin";
+import MyPage from "pages/Modify/MyPage";
+import Modify from "pages/Modify/Modify";
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
@@ -31,6 +33,10 @@ const App = () => {
         <Route path="/admin" element={<Admin></Admin>} />
         <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />
         <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
+        <Route path="/mypage" element ={<MyPage></MyPage>}/>
+        <Route path="/modify" element={<Modify></Modify>}/>
+
+
       </Routes>
       <Footer />
     </>
