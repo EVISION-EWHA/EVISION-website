@@ -37,12 +37,8 @@ const MyPage = () => {
     navigate('/modify', { state :{
         email : state.email
     } });
+}
 
-
-    }
-
-
-//
     useEffect(() => {
     axios
         .get(`${API.AdminUsers}`)
