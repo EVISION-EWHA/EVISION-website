@@ -6,13 +6,9 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD:src/pages/Admin/Modal.jsx
-import { API } from "../../styles/config";
-import "./modal.css";
-=======
 import { API } from "../../config";
 import "./ChangeStatusModal.css";
->>>>>>> 942691a78902967ede9017c2639da0e5a4776573:src/pages/Admin/ChangeStatusModal.jsx
+
 
 const Modal = (props) => {
   const { open, close, header, data } = props;
