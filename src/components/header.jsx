@@ -102,8 +102,10 @@ const Header = ({ isLogin, setIsLogin }) => {
                 </NavStyle>
               ))}
             </MenusBlock>
-
             <LoginBlock>
+              <NavStyle to={"/signup"}>
+                <Menu>Signup</Menu>
+              </NavStyle>
               <NavStyle to={"/login"}>
                 <Menu>Login</Menu>
               </NavStyle>
