@@ -19,15 +19,8 @@ import {
   import { createTheme } from "@mui/material/styles";
 
 function VocView({match}) {
-//   const [question, setQuestion] = useState({});
-//   const [answer, setAnswer] = useState({});
+const { contentId } = useParams();
 
-//   useEffect(() => {
-//     axios.get(`${API.Board}`+writerId).then((response)=> {
-//         setQuestion(response.data.question);
-//         setAnswer(response.data.answer);
-//     })
-//   }, []);
 const theme = createTheme({
     palette: {
       background: "black",
@@ -36,13 +29,13 @@ const theme = createTheme({
       fontFamily: "'Pretendard', sans-serif",
     },
   });
-  const { contentId } = useParams();
+
+  
 const [allData, setAllData] = React.useState({});
 useEffect(() => {
     axios
       .get(`${API.Board}/` + contentId)
       .then(function (response) {
-        
         setAllData(response.data);
         console.log(allData);
     })
