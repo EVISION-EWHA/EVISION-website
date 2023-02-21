@@ -109,8 +109,8 @@ function VocView({ match }) {
     display: "flex",
     justifyContent: "center",
     margin: "auto",
-    padding: "5rem 63rem 5rem 63rem",
-    height: "100rem",
+    padding: "25rem 20rem 50rem 30rem",
+    height: "80rem",
     flexDirection: "column",
     fontSize: "30px",
     color: "white",
@@ -133,7 +133,13 @@ function VocView({ match }) {
             {/* <button type="submit" id="submit" onClick={onClickRevise}>
               수정
             </button> */}
-            <button type="submit" id="submit" onClick={onClickDelete}>
+            <button
+              type="submit"
+              id="submit"
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
               삭제
             </button>
           </div>

@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Input from "@mui/material/Input";
 import { API } from "../../config";
-import './VocView.css';
+import "./VocView.css";
 
 function VocQuestion() {
-    const [inputContent, setInputContent] = useState("");
+  const [inputContent, setInputContent] = useState("");
 
-    const handleInputContent = (e) => {
-        setInputContent(e.target.value);
-      };
+  const handleInputContent = (e) => {
+    setInputContent(e.target.value);
+  };
 
-    const onClickPosting= () => {
-        console.log("click post");
-      };
+  const onClickPosting = () => {
+    console.log("click post");
+  };
 
-const [allData, setAllData] = React.useState({});
+  const [allData, setAllData] = React.useState({});
 
-const onhandlePost = async (data) => {
+  const onhandlePost = async (data) => {
     const { content, writerId } = data;
     const postData = { content, writerId };
     postData.content = data.content;
     postData.writerId = data.writerId;
     try {
-      await axios
-        .post(`${API.Board}`, postData)
-        .then((res) => {
-          console.log(res);
-          let submitBtn = document.getElementById("submit");
-          submitBtn.addEventListener("click", function (e) {
-            this.setAttribute("disabled", "true");
-            this.setAttribute("disabledElevation", "true");
-            this.setAttribute("disabledRipple", "true");
-          });
-          const status = res.data;
-          console.log(status);
+      await axios.post(`${API.Board}`, postData).then((res) => {
+        console.log(res);
+        let submitBtn = document.getElementById("submit");
+        submitBtn.addEventListener("click", function (e) {
+          this.setAttribute("disabled", "true");
+          this.setAttribute("disabledElevation", "true");
+          this.setAttribute("disabledRipple", "true");
         });
+        const status = res.data;
+        console.log(status);
+        alert("글이 정상적으로 작성되었습니다");
+        window.location.replace("/board");
+      });
     } catch (err) {
       console.log(err);
     }
@@ -54,37 +54,39 @@ const onhandlePost = async (data) => {
       content: inputContent,
       writerId: localStorage.getItem("userId"),
     };
-    console.log(loginData)
+    console.log(loginData);
     onhandlePost(loginData);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-    <div className="title">
+      <div className="title">
         <h2>게시글 작성</h2>
-    </div>
-    <div className="voc-view-wrapper">
+      </div>
+      <div className="voc-view-wrapper">
         <div className="voc-view-row">
-            {/* <label>제목</label>
+          {/* <label>제목</label>
             <input onChange={(event) => setTitle(event.target.value)}></input> */}
         </div>
         <div className="voc-view-row">
-            <label>내용</label>
-            <Input
-          name="content"
-          id="content"
-          sx={{
-            background: "transparent",
-            color: "white",
-            width: "40rem",
-            fontSize: "3rem",
-          }}
-          value={inputContent}
-          onChange={handleInputContent}
-        />
+          <label>내용</label>
+          <Input
+            name="content"
+            id="content"
+            sx={{
+              background: "transparent",
+              color: "white",
+              width: "40rem",
+              fontSize: "3rem",
+            }}
+            value={inputContent}
+            onChange={handleInputContent}
+          />
         </div>
-    <button type="submit" id="submit" onClick={onClickPosting}>등록</button>
-    </div>
+        <button type="submit" id="submit" onClick={onClickPosting}>
+          등록
+        </button>
+      </div>
     </form>
   );
 }
