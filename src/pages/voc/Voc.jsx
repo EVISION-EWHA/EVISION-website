@@ -44,7 +44,7 @@ function Voc() {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    padding: "5rem 5rem 40rem 5rem",
+    padding: "5rem 5rem 10rem 10rem",
     flexDirection: "column",
     fontSize: "30px",
   };
@@ -54,11 +54,18 @@ function Voc() {
       <TableContainer
         sx={{
           backgroundColor: "black",
+<<<<<<< HEAD
           p: "5rem 12rem 3rem 30rem",
           display: "center",
           justifyContent: "center",
           alignItems: "left",
           display: "flex",
+=======
+          p: "5rem 12rem 3rem 22rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "left",
+>>>>>>> 0154dabd7bb0a75d6bbd7cd37371d64d1b84796b
           flexDirection: "column",
         }}
       >
@@ -161,6 +168,7 @@ function Voc() {
           <TableBody>
             {data.length > 0 &&
               data.map((info) => (
+                
                 <TableRow key={info.contentId}>
                   <TableCell
                     component="th"
@@ -207,7 +215,8 @@ function Voc() {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    <Link to={`/board/${info.contentId}`}>{info.content}</Link>
+                    <Link 
+                    to={`/board/${info.contentId}`}>{info.content}</Link>
                   </TableCell>
                   <TableCell
                     align="right"
