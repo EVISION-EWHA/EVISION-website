@@ -44,7 +44,7 @@ function Voc() {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    padding: "20rem 5rem 25rem 5rem",
+    padding: "5rem 5rem 40rem 5rem",
     flexDirection: "column",
     fontSize: "30px",
   };

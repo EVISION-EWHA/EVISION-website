@@ -91,7 +91,7 @@ function Admin({ names, grade }) {
     display: "flex",
     justifyContent: "center",
     margin: "auto",
-    padding: "5rem 63rem 5rem 63rem",
+    padding: "5rem 40rem 5rem 40rem",
     flexDirection: "column",
     fontSize: "30px",
     backgroundColor: "black",
@@ -126,7 +126,7 @@ function Admin({ names, grade }) {
           <Modal
             open={modalOpen}
             close={closeModal}
-            header="승인 대기중 회원 보기"
+            header="등급 변경"
             data={data}
           ></Modal>
           <Button

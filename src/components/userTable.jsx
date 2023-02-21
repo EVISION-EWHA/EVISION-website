@@ -23,6 +23,7 @@ function UserTable({ data }) {
         <Table
           sx={{
             backgroundColor: "background.default",
+            mb: 50,
           }}
           aria-label="simple table"
         >
