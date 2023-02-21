@@ -1,11 +1,35 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Input from "@mui/material/Input";
+import {
+  Box,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+
 import { API } from "../../config";
 import "./VocView.css";
 
 function VocQuestion() {
   const [inputContent, setInputContent] = useState("");
+
+  const theme = createTheme({
+    palette: {
+      background: "black",
+    },
+    typography: {
+      fontFamily: "'Pretendard', sans-serif",
+    },
+  });
 
   const handleInputContent = (e) => {
     setInputContent(e.target.value);
@@ -57,37 +81,53 @@ function VocQuestion() {
     console.log(loginData);
     onhandlePost(loginData);
   };
+  const hstyle = {
+    //border: "10px solid white",
+    display: "flex",
+    justifyContent: "center",
+    margin: "auto",
+    padding: "25rem 20rem 50rem 30rem",
+    height: "80rem",
+    flexDirection: "column",
+    fontSize: "30px",
+    color: "white",
+    backgroundColor: "black",
+    lineHeight: 1.8,
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="title">
-        <h2>게시글 작성</h2>
-      </div>
-      <div className="voc-view-wrapper">
-        <div className="voc-view-row">
-          {/* <label>제목</label>
-            <input onChange={(event) => setTitle(event.target.value)}></input> */}
+    <ThemeProvider theme={theme}>
+      <form style={hstyle} onSubmit={handleSubmit}>
+        <Box sx={{ fontSize: "3.4rem", pb: "3rem" }}>게시글 작성</Box>
+        <div>
+          <div>
+            <label>내용</label>
+            <br />
+            <Box sx={{ border: "3rem", borderColor: "white" }}>
+              <Input
+                name="content"
+                id="content"
+                sx={{
+                  border: "3rem",
+                  borderColor: "white",
+                  background: "transparent",
+                  color: "white",
+                  width: "70%",
+                  fontSize: "3rem",
+                }}
+                value={inputContent}
+                onChange={handleInputContent}
+              />
+            </Box>
+          </div>
+          <div className="revise_button">
+            <button type="submit" id="submit" onClick={onClickPosting}>
+              등록
+            </button>
+          </div>
         </div>
-        <div className="voc-view-row">
-          <label>내용</label>
-          <Input
-            name="content"
-            id="content"
-            sx={{
-              background: "transparent",
-              color: "white",
-              width: "40rem",
-              fontSize: "3rem",
-            }}
-            value={inputContent}
-            onChange={handleInputContent}
-          />
-        </div>
-        <button type="submit" id="submit" onClick={onClickPosting}>
-          등록
-        </button>
-      </div>
-    </form>
+      </form>
+    </ThemeProvider>
   );
 }
 export default VocQuestion;
