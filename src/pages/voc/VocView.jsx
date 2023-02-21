@@ -71,17 +71,7 @@ function VocView({ match }) {
       console.log(err);
     }
   };
-  // useEffect(() => {
-  //     axios
-  //     .post(`${API.Board}` , contentId)
-  //     .then(function (response) {
-  //     setAllData(response.data);
-  //     console.log(allData);
-  //     })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   }, []);
+
 
   const data = allData ?? [];
 
@@ -125,9 +115,9 @@ function VocView({ match }) {
   //   console.log(deleteData);
   //   onhandlePost(deleteData);
   // };
-
+  // const writeDate=data.writeDate.slice(0,10);
   const hstyle = {
-    //border: "10px solid white",
+    
     display: "flex",
     justifyContent: "center",
     margin: "auto",
