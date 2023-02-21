@@ -151,11 +151,11 @@ function VocView({ match }) {
           <br />
           내용 : {data.content}
           <br />
-          <div className="revise_button">
-            {/* <button type="submit" id="submit" onClick={onClickRevise}>
+          {/* <button type="submit" id="submit" onClick={onClickRevise}>
               수정
             </button> */}
-            <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
+            <div className="revise_button">
               <button
                 type="submit"
                 id="submit"
@@ -165,31 +165,17 @@ function VocView({ match }) {
               >
                 삭제
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
           <div className="revise_button">
-            {/* <button type="submit" id="submit" onClick={onClickRevise}>
-              수정
-            </button> */}
-            {/* <form onSubmit={handleSubmit2}>
-              <button
-                type="submit"
-                id="submit"
-                onClick={() => {
-                  handleSubmit2();
-                }}
-              >
-                수정
-              </button>
-            </form> */}
-            <Button
+            <button
               type="submit"
               id="submit"
               variant="contained"
               onClick={openModal}
             >
               수정하기
-            </Button>
+            </button>
             <Modal
               open={modalOpen}
               close={closeModal}
