@@ -88,10 +88,11 @@ function VocQuestion() {
   };
   const hstyle = {
     //border: "10px solid white",
+    alignItems: "center",
     display: "flex",
     justifyContent: "center",
     margin: "auto",
-    padding: "25rem 20rem 50rem 30rem",
+    padding: "25rem 20rem 20rem 20rem",
     height: "80rem",
     flexDirection: "column",
     fontSize: "30px",
@@ -124,6 +125,7 @@ function VocQuestion() {
               onChange={handleInputContent}
             />
           </Box>
+
           <div className="revise_button">
             <button type="submit" id="submit" onClick={onClickPosting}>
               등록
