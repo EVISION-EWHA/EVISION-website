@@ -71,9 +71,8 @@ function ApplyForm() {
     postData.contentA = data.contentA;
     postData.contentB = data.contentB;
 
-    await axios
-      .post(`${API.Application}`, postData)
-      .then((res) => {
+    try {
+      await axios.post(`${API.Application}`, postData).then((res) => {
         console.log(res);
         let submitBtn = document.getElementById("submit");
         submitBtn.addEventListener("click", function (e) {
@@ -93,10 +92,10 @@ function ApplyForm() {
           console.log("지원 실패(학번 중복)");
           alert("이미 제출된 지원서입니다.");
         }
-      })
-      .catch((err) => {
-        console.log("error", err);
       });
+    } catch (err) {
+      console.log("error", err);
+    }
   };
 
   // 버튼 {제출하기}

@@ -1,8 +1,6 @@
-//지원 클릭 시 나타나는 지원정보 페이지
 import React, { useRef, useState } from "react";
 import "./apply.css";
 import { useNavigate } from "react-router-dom";
-import { borderBottom, borderColor } from "@mui/system";
 
 function ApplyInfo() {
   const [state, setState] = useState({
@@ -89,7 +87,6 @@ function ApplyInfo() {
         <br />
         <br />
       </h2>
-      <br />
       <h2
         style={{
           textAlign: "center",
@@ -98,8 +95,10 @@ function ApplyInfo() {
           fontWeight: 800,
         }}
       >
-        2023-1 신입부원 모집
+        ✎ 2023-1 신입부원 모집 ✎
       </h2>
+      <br />
+
       <form>
         <label>
           이화여자대학교 엘텍공과대학 사이버보안전공 과동아리 EVI$ION이 새로운
@@ -109,27 +108,27 @@ function ApplyInfo() {
         </label>
         <br />
         <label>✔ 지원 기간 : 2/25 ~ 3/1 </label>
-        <br />
+        <br />{" "}
         <label>
-          ✔ 지원 조건 : 엘텍공과대학 소프트웨어학부 사이버보안전공
-          주전공/복수전공 및 진입예정자
+          ✔ 지원 조건 : 엘텍공과대학 소프트웨어학부 사이버보안전공 //
+          주전공/복수전공 및 진입예정자 //{" "}
         </label>
-        <br />
+        <br />{" "}
         <label>
           ✔ 테스트 일정 : 3/5 10:00~22:00 (12시간) 온라인 테스트 링크는 추후
-          공개
+          공개{" "}
         </label>
         <br />
         <label>✔ 지원 결과 : 3/7 이전 sms를 통해 공지됩니다.</label>
-        <br />
+        <br />{" "}
         <label>
-          ✔ 전체세션 장소 : 이화여자대학교 교내 강의실(세부건물 및 호수는 미정)
+          ✔ 전체세션 장소 : 이화여자대학교 교내 강의실(세부건물 및 호수는 미정){" "}
         </label>
         <br />
         <label>✔ 전체세션 시간 : 목요일 오후 6시 반 ~ 오후 8시 반</label>
-        <br />
+        <br />{" "}
         <label style={{ marginBottom: "8rem" }}>
-          ✔ 동아리 OT : 3/9 오후 6시 30분~ [온라인]
+          ✔ 동아리 OT : 3/9 오후 6시 30분~ [온라인]{" "}
         </label>
         <br />
         <label />
@@ -172,9 +171,8 @@ function ApplyInfo() {
         ></input>
         <br />
         <label />
-        운영진 희망여부를 선택해주세요. 운영진을 희망하시는 경우 신입부원 선발
+        운영진 희망여부를 선택해주세요. 운영진을 희망하시는 경우 신입생 선발
         시에 가산점이 부여될 예정입니다.
-        <br />
         <label>
           <input
             type="radio"
@@ -209,22 +207,18 @@ function ApplyInfo() {
           3. 보유 및 이용 기간 : 신입생 선발 후 OT까지 3/9
         </p>
         <label name="checkout">
-          <input
-            type="checkbox"
-            name="isAgee"
-            id="checkAgree"
-            value=""
-          />{" "}
+          <input type="checkbox" name="isAgee" id="checkAgree" value="" />{" "}
           개인정보 수집에 동의하시겠습니까? <br />
         </label>
         <br />
       </form>
+
       <button
         onClick={() => {
           handleSubmit();
         }}
       >
-        지원서 작성하기
+        지원하기
       </button>
     </div>
   );
