@@ -84,13 +84,13 @@ const Modal = (props) => {
               sx={{
                 background: "transparent",
                 color: "white",
-                width: "40rem",
+                ml: 3,
+                height: "10rem",
+                width: "70rem",
                 fontSize: "3rem",
               }}
               label="text"
-            >
-              dfd
-            </Input>
+            ></Input>
             <Button
               type="submit"
               id="submit"
