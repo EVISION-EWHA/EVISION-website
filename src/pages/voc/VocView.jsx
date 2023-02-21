@@ -34,18 +34,73 @@ const theme = createTheme({
 const [allData, setAllData] = React.useState({});
 useEffect(() => {
     axios
-      .get(`${API.Board}/` + contentId)
+      .get(`${API.Board}` + contentId)
       .then(function (response) {
         setAllData(response.data);
         console.log(allData);
     })
+    // axios
+    //   .post(`${API.Board}` , contentId)
+    //   .then(function (response) {
+    //     setAllData(response.data);
+    //     console.log(allData);
+    // })
+    // axios
+    //   .delete(`${API.Board}` , contentId)
+    //   .then(function (response) {
+    //     setAllData(response.data);
+    //     alert('게시물이 삭제되었습니다.')
+    // return window.location.href = '/board'
+
+    // })
     .catch(function (error) {
       console.log(error);
     });
 }, []);
+const onhandlePost = async (data) => {
+    const { content, writerId } = data;
+    const postData = { content, writerId };
+    postData.content = data.content;
+    postData.writerId = data.writerId;
+    try {
+      await axios
+        .delete(`${API.Board}`, postData)
+        .then((res) => {
+          console.log(res);
+          let submitBtn = document.getElementById("submit");
+          submitBtn.addEventListener("click", function (e) {
+            this.setAttribute("disabled", "true");
+            this.setAttribute("disabledElevation", "true");
+            this.setAttribute("disabledRipple", "true");
+          });
+          const status = res.data;
+          console.log(status);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+useEffect(() => {
+    axios
+    .post(`${API.Board}` , contentId)
+    .then(function (response) {
+    setAllData(response.data);
+    console.log(allData);
+    })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 const data = allData ?? [];
 
 const userdata = data[contentId];
+
+const onClickRevise= () => {
+    console.log("click revise");
+  };
+  const onClickDelete= () => {
+    console.log("click delete");
+  };
 
 const hstyle = {
   //border: "10px solid white",
@@ -72,49 +127,15 @@ return (
         <br />
         내용 : {data.content}
         <br />
+        <div className='revise_button'>
+         <button type="submit" id="submit" onClick={onClickRevise}>수정</button>
+         <button type="submit" id="submit" onClick={onClickDelete}>삭제</button>
+        </div>
         
       </Box>
     </div>
   </ThemeProvider>
 );
 }
-//   const item =  (<>
-//     <h2 align="center">게시글 </h2>
-//     <div className="voc-view-wrapper">
-//         <div className="voc-view-row">
-//             <label>게시글 번호</label>
-//             <label>{ writer.id }</label>
-//         </div>
-//         <div className="voc-view-row">
-//             <label>제목</label>
-//             <label>{ writer.title }</label>
-//         </div>
-//         <div className="voc-view-row">
-//             <label>작성일</label>
-//             <label>{ writer.createDate }</label>
-//         </div>
-//         <div className="voc-view-row">
-//             <label>내용</label>
-//             <div>
-//                 {
-//                 writer.content
-//                 }
-//             </div>
-//         </div>
-//     </div></>)
 
-//     return item;
-// }
-
-// function VocView() {
-//   const{writerId} = useParams();
-//   const item = GetData(vocId);
-
-//   return (<>
-//     <div>
-//         {item}
-//     </div>
-//   </>);
-// }
-  
 export default VocView;
