@@ -36,7 +36,7 @@ const App = () => {
         <Route path="/post" element={<RegisterPage></RegisterPage>} />
         <Route path="/board" element={<Voc></Voc>}/> */}
         <Route path="/board" element={<Voc></Voc>} />
-        <Route path="/board/:vocId" element={<VocView></VocView>} />
+        <Route path="/board/:contentId" element={<VocView></VocView>} />
         <Route path='/board/question' element={<VocQuestion />}  />
         <Route path="/admin" element={<Admin></Admin>} />
         <Route

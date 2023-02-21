@@ -7,8 +7,9 @@ function GetCategory() {
   const [category, setCategory] = useState({});
 
   useEffect(() => {
-    axios.get(`${API.Board}`).then((response)=> {
+    axios.post(`${API.Board}`).then((response)=> {
       setCategory(response.data);
+      alert("등록됐습니다.");
     })
   }, []);
 
