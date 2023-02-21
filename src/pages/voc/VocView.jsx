@@ -16,6 +16,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import Modal from "./ReviceModal";
 import { createTheme } from "@mui/material/styles";
 
 function VocView({ match }) {
@@ -104,6 +105,15 @@ function VocView({ match }) {
     onhandlePost(deleteData);
   };
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   // const handleSubmit2 = (event) => {
   //   event.preventDefault();
   //   console.log("click drevicebutton");
@@ -172,6 +182,21 @@ function VocView({ match }) {
                 수정
               </button>
             </form> */}
+            <Button
+              type="submit"
+              id="submit"
+              variant="contained"
+              onClick={openModal}
+            >
+              수정하기
+            </Button>
+            <Modal
+              open={modalOpen}
+              close={closeModal}
+              header="수정하기"
+              userId={localStorage.getItem("userId")}
+              contentId={contentId}
+            ></Modal>
           </div>
         </Box>
       </div>
