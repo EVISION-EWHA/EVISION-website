@@ -104,6 +104,18 @@ function VocView({ match }) {
     onhandlePost(deleteData);
   };
 
+  // const handleSubmit2 = (event) => {
+  //   event.preventDefault();
+  //   console.log("click drevicebutton");
+  //   const reviceData = {
+  //     userId: localStorage.getItem("userId"),
+  //     contentId: contentId,
+  //     content:""
+  //   };
+  //   console.log(deleteData);
+  //   onhandlePost(deleteData);
+  // };
+
   const hstyle = {
     //border: "10px solid white",
     display: "flex",
@@ -119,7 +131,7 @@ function VocView({ match }) {
   };
   return (
     <ThemeProvider theme={theme}>
-      <form style={hstyle} onSubmit={handleSubmit}>
+      <div style={hstyle}>
         <Box sx={{ color: "white", width: "100rem" }}>
           작성자: {data.writerId}
           <br />
@@ -133,18 +145,36 @@ function VocView({ match }) {
             {/* <button type="submit" id="submit" onClick={onClickRevise}>
               수정
             </button> */}
-            <button
-              type="submit"
-              id="submit"
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
-              삭제
-            </button>
+            <form onSubmit={handleSubmit}>
+              <button
+                type="submit"
+                id="submit"
+                onClick={() => {
+                  handleSubmit();
+                }}
+              >
+                삭제
+              </button>
+            </form>
+          </div>
+          <div className="revise_button">
+            {/* <button type="submit" id="submit" onClick={onClickRevise}>
+              수정
+            </button> */}
+            {/* <form onSubmit={handleSubmit2}>
+              <button
+                type="submit"
+                id="submit"
+                onClick={() => {
+                  handleSubmit2();
+                }}
+              >
+                수정
+              </button>
+            </form> */}
           </div>
         </Box>
-      </form>
+      </div>
     </ThemeProvider>
   );
 }
