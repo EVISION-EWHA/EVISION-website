@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import {
   Box,
   Button,
@@ -14,12 +14,11 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import CommonTable from 'components/table/CommonTable';
-import CommonTableColumn from 'components/table/CommonTableColumn';
-import CommonTableRow from 'components/table/CommonTableRow';
-import VocHeader from '../../components/voc/VocHeader'; 
+import CommonTable from "components/table/CommonTable";
+import CommonTableColumn from "components/table/CommonTableColumn";
+import CommonTableRow from "components/table/CommonTableRow";
+import VocHeader from "../../components/voc/VocHeader";
 import { API } from "../../config";
-
 
 function Voc() {
   //const item = GetData();
@@ -38,20 +37,55 @@ function Voc() {
 
   const data = allData ?? [];
 
+  const hstyle = {
+    backgroundColor: "black",
+    fontColor: "white",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    padding: "20rem 5rem 25rem 5rem",
+    flexDirection: "column",
+    fontSize: "30px",
+  };
+
   return (
-  
-    
-    <div>
-      <TableContainer component={Paper}>
-      <Link to="/board/question">
-          <button
-          >게시글 작성</button>
+    <div style={hstyle}>
+      <TableContainer
+        sx={{
+          backgroundColor: "black",
+          p: "3rem 10rem 3rem 10rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Link to="/board/question">
+          <Button
+            sx={{
+              backgroundColor: "#474544",
+              color: "white",
+              mb: 2,
+              alignItems: "left",
+              flexDirection: "row",
+              alignItems: "flex-start",
+              width: "15rem",
+              fontWeight: "600",
+              fontSize: "1.5rem",
+            }}
+            variant="contained"
+          >
+            게시글 작성
+          </Button>{" "}
         </Link>
-        <form onSubmit>
-          </form>
+        <form onSubmit></form>
         <Table
           sx={{
-            backgroundColor: "black"
+            width: "75%",
+            backgroundColor: "black",
           }}
           aria-label="simple table"
         >
@@ -60,13 +94,13 @@ function Voc() {
               borderTop: "1px solid white",
               borderBottom: "1px solid white",
             }}
-          > 
+          >
             <TableRow>
               <TableCell
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "15rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -78,14 +112,14 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "15rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
               >
                 작성자
               </TableCell>
-              
+
               <TableCell
                 align="right"
                 sx={{
@@ -103,7 +137,7 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "10rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -115,7 +149,7 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "10rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -159,7 +193,6 @@ function Voc() {
                     }}
                   >
                     {info.writerId}
-                  
                   </TableCell>
                   <TableCell
                     align="right"
@@ -172,10 +205,8 @@ function Voc() {
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                     }}
-                  ><Link to={`/board/${info.contentId}`}>
-                    {info.content}
-                     </Link>
-                  
+                  >
+                    <Link to={`/board/${info.contentId}`}>{info.content}</Link>
                   </TableCell>
                   <TableCell
                     align="right"
@@ -183,7 +214,7 @@ function Voc() {
                       color: "white",
                       paddingLeft: 8,
                       paddingRight: 7,
-                      maxWidth: "10rem",
+                      maxWidth: "14rem",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",
@@ -193,12 +224,14 @@ function Voc() {
                     }}
                   >
                     {info.writeDate}
-                  
                   </TableCell>
                   <TableCell
                     align="right"
                     sx={{
                       color: "white",
+                      paddingLeft: 8,
+                      paddingRight: 7,
+                      maxWidth: "14rem",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",
@@ -209,9 +242,7 @@ function Voc() {
                   >
                     {info.updateDate}
                   </TableCell>
-                  
                 </TableRow>
-                
               ))}
           </TableBody>
         </Table>
@@ -219,5 +250,5 @@ function Voc() {
     </div>
   );
 }
-  
+
 export default Voc;

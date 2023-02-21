@@ -118,7 +118,7 @@ function ApplyForm() {
           fontWeight: 800,
         }}
       >
-        EVI$ION 지원서 작성
+        ✎ EVI$ION 지원서 작성 ✎
       </h2>
       <br></br>
       <form className="mainform">
