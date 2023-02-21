@@ -17,6 +17,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import Modal from "./ReviceModal";
 import { createTheme } from "@mui/material/styles";
 
 function VocView({ match }) {
@@ -175,6 +176,15 @@ function VocView({ match }) {
     onhandlePost(deleteData);
   };
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   // const handleSubmit2 = (event) => {
   //   event.preventDefault();
   //   console.log("click drevicebutton");
@@ -212,11 +222,11 @@ function VocView({ match }) {
           <br />
           내용 : {data.content}
           <br />
-          <div className="revise_button">
-            {/* <button type="submit" id="submit" onClick={onClickRevise}>
+          {/* <button type="submit" id="submit" onClick={onClickRevise}>
               수정
             </button> */}
-            <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
+            <div className="revise_button">
               <button
                 type="submit"
                 id="submit"
@@ -226,24 +236,24 @@ function VocView({ match }) {
               >
                 삭제
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
           <div className="revise_button">
-            {/* <button type="submit" id="submit" onClick={onClickRevise}>
-              수정
-            </button> */}
-            <form onSubmit={handleSubmit}>
-              <button
-                type="submit"
-                id="submit"
-                onClick={() => {
-                  handleModify();
-                }}
-              >
-                수정
-              </button>
-            </form>
-
+            <button
+              type="submit"
+              id="submit"
+              variant="contained"
+              onClick={openModal}
+            >
+              수정하기
+            </button>
+            <Modal
+              open={modalOpen}
+              close={closeModal}
+              header="수정하기"
+              userId={localStorage.getItem("userId")}
+              contentId={contentId}
+            ></Modal>
           </div>
         </Box>
       </div>
