@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Input from "@mui/material/Input";
+import { TextField } from "@material-ui/core";
 import {
   Box,
   Button,
@@ -78,8 +79,12 @@ function VocQuestion() {
       content: inputContent,
       writerId: localStorage.getItem("userId"),
     };
-    console.log(loginData);
-    onhandlePost(loginData);
+    if (loginData.content.length > 0) {
+      console.log(loginData);
+      onhandlePost(loginData);
+    } else {
+      alert("내용이 작성되지 않았습니다");
+    }
   };
   const hstyle = {
     //border: "10px solid white",
@@ -99,27 +104,28 @@ function VocQuestion() {
   return (
     <ThemeProvider theme={theme}>
       <form style={hstyle} onSubmit={handleSubmit}>
-        <Box sx={{ fontSize: "3.4rem", pb: "3rem" ,alignItems: "center"}}>게시글 작성</Box>
-        <div>
-          <div>
-            <label>내용</label>
-            <br />
-            <Box sx={{ border: "3rem", borderColor: "white" }}>
+        <Box sx={{ fontSize: "3.4rem", pb: "3rem" }}>게시글 작성</Box>
+        <div className="test">
+          <label>내용</label>
+          <br />
+          <Box sx={{ border: "3rem", borderColor: "white" }}>
             <Input
-          name="content"
-          id="content"
-          sx={{
-            background: "white",
-            color: "black",
-            width: "60rem",
-            height:"30rem",
-            fontSize: "15pt",
-          }}
-                value={inputContent}
-                onChange={handleInputContent}
-              />
-            </Box>
-          </div>
+              name="content"
+              id="content"
+              sx={{
+                border: "3rem",
+                borderColor: "white",
+                background: "transparent",
+                color: "white",
+                height: "10rem",
+                width: "70%",
+                fontSize: "3rem",
+              }}
+              value={inputContent}
+              onChange={handleInputContent}
+            />
+          </Box>
+
           <div className="revise_button">
             <button type="submit" id="submit" onClick={onClickPosting}>
               등록

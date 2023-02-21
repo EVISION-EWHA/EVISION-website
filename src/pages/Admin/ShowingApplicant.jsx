@@ -72,7 +72,7 @@ function ShowingAppliment() {
                 key={info}
               >
                 {info}
-                <Link to={`/admin/applications/${info}`}>
+                <Link to={`/h8Jd62Ks/applications/${info}`}>
                   <Button
                     type="submit"
                     id="submit"

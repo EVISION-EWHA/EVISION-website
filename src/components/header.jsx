@@ -27,7 +27,7 @@ const Header = ({ isLogin, setIsLogin }) => {
                   <Menu key={m.link}>{m.name}</Menu>
                 </NavStyle>
               ))}
-              <NavStyle to="/admin">
+              <NavStyle to="/h8Jd62Ks">
                 <Menu>Admin</Menu>
               </NavStyle>
             </MenusBlock>

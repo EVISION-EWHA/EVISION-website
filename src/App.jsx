@@ -19,7 +19,7 @@ import Application from "pages/Admin/Application";
 // import BoardPage from "components/views/BoardPage/BoardPage";
 import Voc from "pages/voc/Voc";
 import VocView from "pages/voc/VocView";
-import VocQuestion from './pages/voc/VocQuestion';
+import VocQuestion from "./pages/voc/VocQuestion";
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
@@ -37,14 +37,14 @@ const App = () => {
         <Route path="/board" element={<Voc></Voc>}/> */}
         <Route path="/board" element={<Voc></Voc>} />
         <Route path="/board/:contentId" element={<VocView></VocView>} />
-        <Route path='/board/question' element={<VocQuestion />}  />
-        <Route path="/admin" element={<Admin></Admin>} />
+        <Route path="/board/question" element={<VocQuestion />} />
+        <Route path="/h8Jd62Ks" element={<Admin></Admin>} />
         <Route
-          path="/admin/showingapplicant"
+          path="/h8Jd62Ks/showingapplicant"
           element={<Showingapplicant></Showingapplicant>}
         />
         <Route
-          path="/admin/applications/:studentId"
+          path="/h8Jd62Ks/applications/:studentId"
           element={<Application></Application>}
         />
         <Route path="/recruit" element={<ApplyInfo></ApplyInfo>} />

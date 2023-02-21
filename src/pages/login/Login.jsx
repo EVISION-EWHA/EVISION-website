@@ -6,6 +6,7 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { API } from "config";
 
 function Login() {
   const [inputId, setInputId] = useState("");
@@ -34,7 +35,7 @@ function Login() {
     postData.userPw = data.userPw;
     try {
       await axios
-        .post("http://3.37.117.164:8080/login", postData)
+        .post(`${API.Login}`, postData)
         .then((res) => {
           console.log(res);
           let submitBtn = document.getElementById("submit");
