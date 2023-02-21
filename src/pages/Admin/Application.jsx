@@ -70,8 +70,8 @@ function Application({ match }) {
     display: "flex",
     justifyContent: "center",
     margin: "auto",
-    padding: "5rem 63rem 5rem 63rem",
-    height: "100rem",
+    padding: "5rem 40rem 5rem 40rem",
+    //height: "100rem",
     flexDirection: "column",
     fontSize: "30px",
     color: "white",
@@ -81,14 +81,18 @@ function Application({ match }) {
   return (
     <ThemeProvider theme={theme}>
       <div style={hstyle}>
-        <Box sx={{ color: "white", width: "100rem" }}>
+        <Box sx={{ color: "white", width: "100%", fontSize: "2rem" }}>
           이름: {data.name}
+          <br />
           <br />
           학번: {data.studentId}
           <br />
+          <br />
           학과 : {data.department}
           <br />
+          <br />
           핸드폰 번호 : {data.phone}
+          <br />
           <br />
           1번 답변 : {data.contentA}
           <br />
@@ -98,9 +102,11 @@ function Application({ match }) {
           <br />
           운영진 지원 여부 : {Management}
           <br />
-          생성한 날짜:{data.createdDate}
           <br />
-          수정한 날짜:{data.modifiedDate}
+          생성한 날짜: {data.createdDate}
+          <br />
+          <br />
+          수정한 날짜: {data.modifiedDate}
         </Box>
       </div>
     </ThemeProvider>

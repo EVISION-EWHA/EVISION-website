@@ -87,6 +87,7 @@ function Admin({ names, grade }) {
 
   const hstyle = {
     //border: "10px solid white",
+    //minHeight: "100rem",
     display: "flex",
     justifyContent: "center",
     margin: "auto",

@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import './VocView.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import "./VocView.css";
 import { API } from "../../config";
 import {
-    Box,
-    Button,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    Paper,
-    TableHead,
-    TableRow,
-    ThemeProvider,
-    Typography,
-  } from "@mui/material";
-  import { createTheme } from "@mui/material/styles";
+  Box,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 
-function VocView({match}) {
-const { contentId } = useParams();
+function VocView({ match }) {
+  const { contentId } = useParams();
 
-const theme = createTheme({
+  const theme = createTheme({
     palette: {
       background: "black",
     },
@@ -30,112 +30,117 @@ const theme = createTheme({
     },
   });
 
-  
-const [allData, setAllData] = React.useState({});
-useEffect(() => {
+  const [allData, setAllData] = React.useState({});
+  useEffect(() => {
+    //게시글 내용 받아오기
     axios
-      .get(`${API.Board}` + contentId)
+      .get(`${API.Board}/` + contentId)
       .then(function (response) {
         setAllData(response.data);
         console.log(allData);
-    })
-    // axios
-    //   .post(`${API.Board}` , contentId)
-    //   .then(function (response) {
-    //     setAllData(response.data);
-    //     console.log(allData);
-    // })
-    // axios
-    //   .delete(`${API.Board}` , contentId)
-    //   .then(function (response) {
-    //     setAllData(response.data);
-    //     alert('게시물이 삭제되었습니다.')
-    // return window.location.href = '/board'
-
-    // })
-    .catch(function (error) {
-      console.log(error);
-    });
-}, []);
-const onhandlePost = async (data) => {
-    const { content, writerId } = data;
-    const postData = { content, writerId };
-    postData.content = data.content;
-    postData.writerId = data.writerId;
-    try {
-      await axios
-        .delete(`${API.Board}`, postData)
-        .then((res) => {
-          console.log(res);
-          let submitBtn = document.getElementById("submit");
-          submitBtn.addEventListener("click", function (e) {
-            this.setAttribute("disabled", "true");
-            this.setAttribute("disabledElevation", "true");
-            this.setAttribute("disabledRipple", "true");
-          });
-          const status = res.data;
-          console.log(status);
-        });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-useEffect(() => {
-    axios
-    .post(`${API.Board}` , contentId)
-    .then(function (response) {
-    setAllData(response.data);
-    console.log(allData);
-    })
+      })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
-const data = allData ?? [];
 
-const userdata = data[contentId];
+  const onhandlePost = async (deleteData) => {
+    const { userId, contentId } = deleteData;
+    const postData = { userId, contentId };
+    postData.userId = deleteData.userId;
+    postData.contentId = deleteData.contentId;
+    try {
+      await axios.delete(`${API.Board}`, { data: postData }).then((res) => {
+        console.log(res);
+        let submitBtn = document.getElementById("submit");
+        submitBtn.addEventListener("click", function (e) {
+          this.setAttribute("disabled", "true");
+          this.setAttribute("disabledElevation", "true");
+          this.setAttribute("disabledRipple", "true");
+        });
+        const status = res.data;
+        if (status === 1) {
+          alert("삭제되었습니다");
+          window.location.replace("/board");
+        } else if (status === 0) {
+          alert("삭제할 권한이 존재하지 않습니다");
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  // useEffect(() => {
+  //     axios
+  //     .post(`${API.Board}` , contentId)
+  //     .then(function (response) {
+  //     setAllData(response.data);
+  //     console.log(allData);
+  //     })
+  //       .catch(function (error) {
+  //         console.log(error);
+  //       });
+  //   }, []);
 
-const onClickRevise= () => {
+  const data = allData ?? [];
+
+  const userdata = data[contentId];
+
+  const onClickRevise = () => {
     console.log("click revise");
   };
-  const onClickDelete= () => {
+  const onClickDelete = () => {
     console.log("click delete");
   };
 
-const hstyle = {
-  //border: "10px solid white",
-  display: "flex",
-  justifyContent: "center",
-  margin: "auto",
-  padding: "5rem 63rem 5rem 63rem",
-  height: "100rem",
-  flexDirection: "column",
-  fontSize: "30px",
-  color: "white",
-  backgroundColor: "black",
-  lineHeight: 1.8,
-};
-return (
-  <ThemeProvider theme={theme}>
-    <div style={hstyle}>
-      <Box sx={{ color: "white", width: "100rem" }}>
-        작성자: {data.writerId}
-        <br />
-        작성일자: {data.writeDate}
-        <br />
-        수정일자 : {data.updateDate}
-        <br />
-        내용 : {data.content}
-        <br />
-        <div className='revise_button'>
-         <button type="submit" id="submit" onClick={onClickRevise}>수정</button>
-         <button type="submit" id="submit" onClick={onClickDelete}>삭제</button>
-        </div>
-        
-      </Box>
-    </div>
-  </ThemeProvider>
-);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("click deletebutton");
+    const deleteData = {
+      userId: localStorage.getItem("userId"),
+      contentId: contentId,
+    };
+    console.log(deleteData);
+    onhandlePost(deleteData);
+  };
+
+  const hstyle = {
+    //border: "10px solid white",
+    display: "flex",
+    justifyContent: "center",
+    margin: "auto",
+    padding: "5rem 63rem 5rem 63rem",
+    height: "100rem",
+    flexDirection: "column",
+    fontSize: "30px",
+    color: "white",
+    backgroundColor: "black",
+    lineHeight: 1.8,
+  };
+  return (
+    <ThemeProvider theme={theme}>
+      <form style={hstyle} onSubmit={handleSubmit}>
+        <Box sx={{ color: "white", width: "100rem" }}>
+          작성자: {data.writerId}
+          <br />
+          작성일자: {data.writeDate}
+          <br />
+          수정일자 : {data.updateDate}
+          <br />
+          내용 : {data.content}
+          <br />
+          <div className="revise_button">
+            {/* <button type="submit" id="submit" onClick={onClickRevise}>
+              수정
+            </button> */}
+            <button type="submit" id="submit" onClick={onClickDelete}>
+              삭제
+            </button>
+          </div>
+        </Box>
+      </form>
+    </ThemeProvider>
+  );
 }
 
 export default VocView;
