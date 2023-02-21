@@ -44,7 +44,7 @@ function Voc() {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    padding: "5rem 5rem 40rem 5rem",
+    padding: "5rem 5rem 10rem 10rem",
     flexDirection: "column",
     fontSize: "30px",
   };
@@ -54,11 +54,10 @@ function Voc() {
       <TableContainer
         sx={{
           backgroundColor: "black",
-          p: "3rem 10rem 3rem 10rem",
+          p: "5rem 12rem 3rem 22rem",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
-          display: "flex",
+          alignItems: "left",
           flexDirection: "column",
           justifyContent: "center",
         }}
@@ -161,6 +160,7 @@ function Voc() {
           <TableBody>
             {data.length > 0 &&
               data.map((info) => (
+                
                 <TableRow key={info.contentId}>
                   <TableCell
                     component="th"
@@ -206,7 +206,8 @@ function Voc() {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    <Link to={`/board/${info.contentId}`}>{info.content}</Link>
+                    <Link 
+                    to={`/board/${info.contentId}`}>{info.content}</Link>
                   </TableCell>
                   <TableCell
                     align="right"
@@ -223,7 +224,7 @@ function Voc() {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {info.writeDate}
+                    {info.writeDate.slice(0,10)}
                   </TableCell>
                   <TableCell
                     align="right"
@@ -240,7 +241,7 @@ function Voc() {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {info.updateDate}
+                    {info.updateDate.slice(0,10)}
                   </TableCell>
                 </TableRow>
               ))}
