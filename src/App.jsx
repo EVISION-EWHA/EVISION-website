@@ -14,9 +14,12 @@ import MyPage from "pages/Modify/MyPage";
 import Modify from "pages/Modify/Modify";
 import Showingapplicant from "pages/Admin/ShowingApplicant";
 import Application from "pages/Admin/Application";
-import RegisterPage from "components/views/RegisterPage/Sections/RegisterOrEdit";
-import ArticlePage from "components/views/ArticlePage/ArticlePage";
-import BoardPage from "components/views/BoardPage/BoardPage";
+// import RegisterPage from "components/views/RegisterPage/Sections/RegisterOrEdit";
+// import ArticlePage from "components/views/ArticlePage/ArticlePage";
+// import BoardPage from "components/views/BoardPage/BoardPage";
+import Voc from "pages/voc/Voc";
+import VocView from "pages/voc/VocView";
+import VocQuestion from './pages/voc/VocQuestion';
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
@@ -28,10 +31,13 @@ const App = () => {
         <Route path="/signup" element={<Signup></Signup>} />
         <Route path="/" element={<MainPage></MainPage>} />
         <Route path="/curriculum" element={<CurriculumPage></CurriculumPage>} />
-        <Route path="/view" element={<BoardPage></BoardPage>} />
-        <Route path="/article/:articleId" element={<ArticlePage></ArticlePage>} />
+        {/* <Route path="/article/:articleId" element={<ArticlePage></ArticlePage>} />
         <Route path="/edit/:articleId" element={<RegisterPage></RegisterPage>} />
-        <Route path="/board" element={<RegisterPage></RegisterPage>} />
+        <Route path="/post" element={<RegisterPage></RegisterPage>} />
+        <Route path="/board" element={<Voc></Voc>}/> */}
+        <Route path="/board" element={<Voc></Voc>} />
+        <Route path="/board/:vocId" element={<VocView></VocView>} />
+        <Route path='/board/question' element={<VocQuestion />}  />
         <Route path="/admin" element={<Admin></Admin>} />
         <Route
           path="/admin/showingapplicant"
