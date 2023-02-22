@@ -2,14 +2,13 @@ import React from "react";
 import "./apply.css";
 
 function ApplyInfo() {
-
-  const handleApply = (event)=>{
+  const handleApply = (event) => {
     window.location.href = "./applyform";
-  }
+  };
 
-  const handleCheck = (event)=>{
+  const handleCheck = (event) => {
     window.location.href = "./checkpw";
-  }
+  };
 
   return (
     <div className="ApplyInfo">
@@ -41,8 +40,8 @@ function ApplyInfo() {
         <label>✔ 지원 기간 : 2/25 ~ 3/1 </label>
         <br />{" "}
         <label>
-          ✔ 지원 조건 : 엘텍공과대학 소프트웨어학부 사이버보안전공 //
-          주전공/복수전공 및 진입예정자 //{" "}
+          ✔ 지원 조건 : 엘텍공과대학 소프트웨어학부 사이버보안전공
+          (주전공/복수전공 및 진입예정자)
         </label>
         <br />{" "}
         <label>
@@ -62,25 +61,25 @@ function ApplyInfo() {
           ✔ 동아리 OT : 3/9 오후 6시 30분~{" "}
         </label>
         <br />
-        
-      
-      <div className="apply_btn">
-      <button
-          type="button"
-          onClick={() => {
-          handleApply();
-        }}>
-        지원하기
-      </button>
+        <div className="apply_btn">
+          <button
+            type="button"
+            onClick={() => {
+              handleApply();
+            }}
+          >
+            지원하기
+          </button>
 
-      <button 
-        type="button"
-        onClick={() => {
-          handleCheck();
-        }}>
-        지원서 확인하기
-      </button>
-      </div>
+          <button
+            type="button"
+            onClick={() => {
+              handleCheck();
+            }}
+          >
+            지원서 확인하기
+          </button>
+        </div>
       </form>
     </div>
   );

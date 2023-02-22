@@ -43,14 +43,6 @@ function CheckApplication({ match }) {
       .then(function (response) {
         setAllData(response.data);
         const test = response.data.management;
-        // console.log(test);
-        // console.log(test == true);
-        // if (test == true) {
-        //   amanagement = "운영진 지원함";
-        //   console.log({ amanagement });
-        // } else {
-        //   amanagement = "운영진 지원하지 않음";
-        // }
       })
       .catch(function (error) {
         console.log(error);

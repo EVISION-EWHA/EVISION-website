@@ -173,7 +173,16 @@ function VocView({ match }) {
           수정일자 : {data.updateDate}
           <br />
           <Box sx={{ width: "100%", border: 1, mb: 3, mt: 3 }}></Box>
-          <Box>내용 : {data.content}</Box>
+          <Box
+            sx={{
+              maxWidth: "100rem",
+              hiehgt: "39rem",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            내용 : {data.content}
+          </Box>
           <br />
           {/* <button type="submit" id="submit" onClick={onClickRevise}>
               수정
