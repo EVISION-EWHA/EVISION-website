@@ -14,10 +14,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import CommonTable from "components/table/CommonTable";
-import CommonTableColumn from "components/table/CommonTableColumn";
-import CommonTableRow from "components/table/CommonTableRow";
-import VocHeader from "../../components/voc/VocHeader";
+import "./Voc.css";
 import { API } from "../../config";
 
 function Voc() {
@@ -34,9 +31,10 @@ function Voc() {
         console.log(error);
       });
   }, []);
-
+  // const StyledLink={color: "white", }
+    
+  //   ;
   const data = allData ?? [];
-
   const hstyle = {
     backgroundColor: "black",
     fontColor: "white",
@@ -99,7 +97,7 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "15rem",
+                  width: "8rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -111,7 +109,7 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "15rem",
+                  width: "10rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -124,7 +122,7 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "25rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -204,8 +202,16 @@ function Voc() {
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                     }}
+                   >
+                    <Link
+                    style={{
+                    display: 'block',
+                    color: 'white'
+                    }}
+                    to={`/board/${info.contentId}`}
                   >
-                    <Link to={`/board/${info.contentId}`}>{info.content}</Link>
+                   {info.content}
+                  </Link>
                   </TableCell>
                   <TableCell
                     align="right"
