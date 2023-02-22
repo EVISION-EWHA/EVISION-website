@@ -52,26 +52,27 @@ function Voc() {
       <TableContainer
         sx={{
           backgroundColor: "black",
-          p: "5rem 12rem 3rem 22rem",
-          display: "flex",
+          p: "5rem 12rem 3rem 30rem",
+          display: "center",
           justifyContent: "center",
           alignItems: "left",
+          display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
         }}
       >
         <Link to="/board/question">
           <Button
             sx={{
+              display:"center",
+              alignItems: "right",
               backgroundColor: "#474544",
               color: "white",
               mb: 2,
-              alignItems: "left",
               flexDirection: "row",
-              alignItems: "flex-start",
               width: "15rem",
               fontWeight: "600",
               fontSize: "1.5rem",
+              justifyContent: "center",
             }}
             variant="contained"
           >
@@ -163,6 +164,7 @@ function Voc() {
                     component="th"
                     scope="row"
                     sx={{
+                      fontColor:"white",
                       color: "white",
                       fontSize: "2rem",
                       textAlign: "center",
@@ -243,7 +245,8 @@ function Voc() {
                       fontWeight: "400",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
-                      textOverflow: "ellipsis",
+                      textOverflow: "revert",
+                    
                     }}
                   >
                     {info.updateDate.slice(0, 10)}

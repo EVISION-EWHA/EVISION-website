@@ -2,6 +2,8 @@
   width: 30rem;
   margin: 0 auto;
   font-size: 20pt;
+  align-items: center;
+  display: center;
 }
 
 .voc-view-go-list-btn {
