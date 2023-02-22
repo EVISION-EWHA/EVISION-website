@@ -14,10 +14,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import CommonTable from "components/table/CommonTable";
-import CommonTableColumn from "components/table/CommonTableColumn";
-import CommonTableRow from "components/table/CommonTableRow";
-import VocHeader from "../../components/voc/VocHeader";
+import "./Voc.css";
 import { API } from "../../config";
 
 function Voc() {
@@ -34,9 +31,10 @@ function Voc() {
         console.log(error);
       });
   }, []);
+  // const StyledLink={color: "white", }
 
+  //   ;
   const data = allData ?? [];
-
   const hstyle = {
     backgroundColor: "black",
     fontColor: "white",
@@ -44,7 +42,7 @@ function Voc() {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    padding: "5rem 5rem 10rem 10rem",
+    padding: "5rem 5rem 10rem 30rem",
     flexDirection: "column",
     fontSize: "30px",
   };
@@ -99,7 +97,7 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "15rem",
+                  width: "8rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -111,7 +109,7 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "15rem",
+                  width: "10rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -124,7 +122,7 @@ function Voc() {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "25rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
@@ -141,7 +139,7 @@ function Voc() {
                   fontWeight: "340",
                 }}
               >
-                작성시간
+                작성일자
               </TableCell>
               <TableCell
                 align="right"
@@ -153,14 +151,13 @@ function Voc() {
                   fontWeight: "340",
                 }}
               >
-                수정시간
+                수정일자
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.length > 0 &&
               data.map((info) => (
-                
                 <TableRow key={info.contentId}>
                   <TableCell
                     component="th"
@@ -202,12 +199,20 @@ function Voc() {
                       textAlign: "center",
                       fontWeight: "400",
                       whiteSpace: "nowrap",
+                      maxWidth: "10rem",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                     }}
                   >
-                    <Link 
-                    to={`/board/${info.contentId}`}>{info.content}</Link>
+                    <Link
+                      style={{
+                        display: "block",
+                        color: "white",
+                      }}
+                      to={`/board/${info.contentId}`}
+                    >
+                      {info.content}
+                    </Link>
                   </TableCell>
                   <TableCell
                     align="right"
@@ -224,7 +229,7 @@ function Voc() {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {info.writeDate.slice(0,10)}
+                    {info.writeDate.slice(0, 10)}
                   </TableCell>
                   <TableCell
                     align="right"
@@ -241,7 +246,7 @@ function Voc() {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {info.updateDate.slice(0,10)}
+                    {info.updateDate.slice(0, 10)}
                   </TableCell>
                 </TableRow>
               ))}

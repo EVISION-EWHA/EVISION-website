@@ -89,6 +89,7 @@ const Modal = (props) => {
                 width: "70rem",
                 fontSize: "3rem",
               }}
+              placeholder="수정할 내용을 입력해주세요."
               label="text"
             ></Input>
             <Button
