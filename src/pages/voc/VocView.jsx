@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./VocView.css";
 import { API } from "../../config";
+import { Link } from "react-router-dom";
 import {
   Box,
   Button,
@@ -120,8 +121,9 @@ function VocView({ match }) {
     
     display: "flex",
     justifyContent: "center",
+    alignItems:"center",
     margin: "auto",
-    padding: "25rem 20rem 50rem 30rem",
+    padding: "5rem 20rem 40rem 30rem",
     height: "80rem",
     flexDirection: "column",
     fontSize: "30px",
@@ -129,8 +131,41 @@ function VocView({ match }) {
     backgroundColor: "black",
     lineHeight: 1.8,
   };
+  const hstyle1 = {
+    
+    display: "flex",
+    alignItems:"right",
+    justifyContent: "center",
+    padding: "10rem 0rem 0rem 70rem",
+    flexDirection: "column",
+    fontSize: "30px",
+    color: "white",
+    backgroundColor: "black"
+  };
   return (
     <ThemeProvider theme={theme}>
+      <div style={hstyle1}>
+      <div>
+      <Link to="/board">
+          <Button
+            sx={{
+              backgroundColor: "#474544",
+              color: "white",
+              mb: 2,
+              alignItems: "left",
+              flexDirection: "row",
+              alignItems: "flex-start",
+              width: "10rem",
+              fontWeight: "600",
+              fontSize: "2rem",
+            }}
+            variant="contained"
+          >
+           ←
+          </Button>{" "}
+        </Link>
+            </div>
+      </div>
       <div style={hstyle}>
         <Box sx={{ color: "white", width: "100rem" }}>
           작성자: {data.writerId}
