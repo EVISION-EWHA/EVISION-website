@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import {
   Box,
   Button,
@@ -13,17 +14,77 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import CommonTable from "components/table/CommonTable";
+import CommonTableColumn from "components/table/CommonTableColumn";
+import CommonTableRow from "components/table/CommonTableRow";
+import VocHeader from "../../components/voc/VocHeader";
+import { API } from "../../config";
 
-function UserTable({ data }) {
+function Voc() {
+  //const item = GetData();
+  const [allData, setAllData] = React.useState({});
+  useEffect(() => {
+    axios
+      .get(`${API.Board}`)
+      .then(function (response) {
+        setAllData(response.data);
+        console.log(allData);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+  const data = allData ?? [];
+
+  const hstyle = {
+    backgroundColor: "black",
+    fontColor: "white",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    padding: "5rem 5rem 10rem 10rem",
+    flexDirection: "column",
+    fontSize: "30px",
+  };
+
   return (
-    <div>
-      <TableContainer component={Paper}>
+    <div style={hstyle}>
+      <TableContainer
+        sx={{
+          backgroundColor: "black",
+          p: "5rem 12rem 3rem 22rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "left",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Link to="/board/question">
+          <Button
+            sx={{
+              backgroundColor: "#474544",
+              color: "white",
+              mb: 2,
+              alignItems: "left",
+              flexDirection: "row",
+              alignItems: "flex-start",
+              width: "15rem",
+              fontWeight: "600",
+              fontSize: "1.5rem",
+            }}
+            variant="contained"
+          >
+            게시글 작성
+          </Button>{" "}
+        </Link>
+        <form onSubmit></form>
         <Table
           sx={{
-            backgroundColor: "background.default",
-            mb: 50,
+            width: "75%",
+            backgroundColor: "black",
           }}
           aria-label="simple table"
         >
@@ -38,13 +99,26 @@ function UserTable({ data }) {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "15rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
               >
-                Id
+                글번호
               </TableCell>
+              <TableCell
+                align="right"
+                sx={{
+                  color: "white",
+                  textAlign: "center",
+                  width: "15rem",
+                  fontSize: "2.5rem",
+                  fontWeight: "340",
+                }}
+              >
+                작성자
+              </TableCell>
+
               <TableCell
                 align="right"
                 sx={{
@@ -55,38 +129,39 @@ function UserTable({ data }) {
                   fontWeight: "340",
                 }}
               >
-                이메일
+                내용
               </TableCell>
               <TableCell
                 align="right"
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "10rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
               >
-                가입일
+                작성시간
               </TableCell>
               <TableCell
                 align="right"
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  width: "20rem",
+                  width: "10rem",
                   fontSize: "2.5rem",
                   fontWeight: "340",
                 }}
               >
-                회원 등급
+                수정시간
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.length > 0 &&
               data.map((info) => (
-                <TableRow key={info.userId}>
+                
+                <TableRow key={info.contentId}>
                   <TableCell
                     component="th"
                     scope="row"
@@ -103,7 +178,7 @@ function UserTable({ data }) {
                       },
                     }}
                   >
-                    <div>{info.userId}</div>
+                    <div>{info.contentId}</div>
                   </TableCell>
                   <TableCell
                     align="right"
@@ -117,7 +192,22 @@ function UserTable({ data }) {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {info.email}
+                    {info.writerId}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    sx={{
+                      color: "white",
+                      fontSize: "2rem",
+                      textAlign: "center",
+                      fontWeight: "400",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    <Link 
+                    to={`/board/${info.contentId}`}>{info.content}</Link>
                   </TableCell>
                   <TableCell
                     align="right"
@@ -125,7 +215,7 @@ function UserTable({ data }) {
                       color: "white",
                       paddingLeft: 8,
                       paddingRight: 7,
-                      maxWidth: "10rem",
+                      maxWidth: "14rem",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",
@@ -134,12 +224,15 @@ function UserTable({ data }) {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {info.signupDate}
+                    {info.writeDate.slice(0,10)}
                   </TableCell>
                   <TableCell
                     align="right"
                     sx={{
                       color: "white",
+                      paddingLeft: 8,
+                      paddingRight: 7,
+                      maxWidth: "14rem",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",
@@ -148,7 +241,7 @@ function UserTable({ data }) {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {info.authStatus}
+                    {info.updateDate.slice(0,10)}
                   </TableCell>
                 </TableRow>
               ))}
@@ -158,4 +251,5 @@ function UserTable({ data }) {
     </div>
   );
 }
-export default UserTable;
+
+export default Voc;

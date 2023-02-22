@@ -2,12 +2,9 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = ({ isLogin, setIsLogin }) => {
-  // console.log(localStorage.getItem("grade"));
-  // console.log(typeof localStorage.getItem("grade"));
-
   const logout = () => {
     localStorage.clear();
-    window.location.replace("http://localhost:3000");
+    window.location.replace("/");
   };
 
   if (localStorage.getItem("grade") === "5") {
@@ -26,20 +23,22 @@ const Header = ({ isLogin, setIsLogin }) => {
             </Logo>
             <MenusBlock>
               {menus.map((m) => (
-                <NavLink key={m.link} to={m.link}>
+                <NavStyle key={m.link} to={m.link}>
                   <Menu key={m.link}>{m.name}</Menu>
-                </NavLink>
+                </NavStyle>
               ))}
-              <NavLink to="/admin">
+              <NavStyle to="/h8Jd62Ks">
                 <Menu>Admin</Menu>
-              </NavLink>
+              </NavStyle>
             </MenusBlock>
             <LoginBlock>
-              <NavLink to={"/mypage"}>
+              <NavStyle to={"/mypage"}>
                 <Menu>MyPage</Menu>
-              </NavLink>
+              </NavStyle>
               <LoginButton onClick={logout}>
-                <Menu>Logout</Menu>
+                <StLogout to={"/"}>
+                  <Menu>Logout</Menu>
+                </StLogout>
               </LoginButton>
             </LoginBlock>
           </Wrapper>
@@ -63,17 +62,19 @@ const Header = ({ isLogin, setIsLogin }) => {
             </Logo>
             <MenusBlock>
               {menus.map((m) => (
-                <NavLink key={m.link} to={m.link}>
+                <NavStyle key={m.link} to={m.link}>
                   <Menu key={m.link}>{m.name}</Menu>
-                </NavLink>
+                </NavStyle>
               ))}
             </MenusBlock>
             <LoginBlock>
-              <NavLink to={"/mypage"}>
+              <NavStyle to={"/mypage"}>
                 <Menu>MyPage</Menu>
-              </NavLink>
+              </NavStyle>
               <LoginButton onClick={logout}>
-                <Menu>Logout</Menu>
+                <StLogout to={"/"}>
+                  <Menu>Logout</Menu>
+                </StLogout>
               </LoginButton>
             </LoginBlock>
           </Wrapper>
@@ -96,16 +97,18 @@ const Header = ({ isLogin, setIsLogin }) => {
             </Logo>
             <MenusBlock>
               {menus.map((m) => (
-                <NavLink key={m.link} to={m.link}>
+                <NavStyle key={m.link} to={m.link}>
                   <Menu key={m.link}>{m.name}</Menu>
-                </NavLink>
+                </NavStyle>
               ))}
             </MenusBlock>
-
             <LoginBlock>
-              <NavLink to={"/login"}>
+              <NavStyle to={"/signup"}>
+                <Menu>Signup</Menu>
+              </NavStyle>
+              <NavStyle to={"/login"}>
                 <Menu>Login</Menu>
-              </NavLink>
+              </NavStyle>
             </LoginBlock>
           </Wrapper>
         </HeaderBlock>
@@ -149,9 +152,12 @@ const Wrapper = styled.div`
 const MenusBlock = styled.div`
   padding-left: 4rem;
   display: flex;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
-const Menu = styled.div`
+const NavStyle = styled(NavLink)`
   color: gray;
   &:link {
     transition: 0.5s;
@@ -164,6 +170,9 @@ const Menu = styled.div`
     color: white;
     position: relative;
   }
+`;
+
+const Menu = styled.div`
   font-size: 30px;
   display: flex;
   align-items: center;
@@ -176,10 +185,24 @@ const LoginBlock = styled.div`
   padding-right: 3rem;
   display: flex;
   align-items: center;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 const LoginButton = styled.button`
   font-size: 30px;
   display: flex;
+`;
+
+const StLogout = styled(NavLink)`
+  color: gray;
+  &:link {
+    transition: 0.5s;
+    text-decoration: none;
+  }
+  &:hover {
+    color: white;
+  }
 `;
 
 const Spacer = styled.div`
