@@ -12,17 +12,9 @@ function CheckPw(){
     const [inputPw,setInputPw] = useState("");
 
 
-    const handleInputId = (e) => {
-        setInputId(e.target.value);
-    };
-    
-    const handleInputPw = (e) => {
-        setInputPw(e.target.value);
-    };
-    const [allData, setAllData] = React.useState({});
 
-    const onHandleCheck=async()=> {    //확인하기 버튼 - 데이터받자
-        
+
+    const onHandleCheck=()=> {    //확인하기 버튼 - 데이터받기
         const data={
             userId : inputId,
             userPw : inputPw,
@@ -37,36 +29,51 @@ function CheckPw(){
         console.log("받은id",getData.userId);
         console.log("받은pw",getData.userPw);
 
-        try {
-            await axios.get(`${API.Application}`, {params: {
-                'userId': getData.userId,
-                'userPw' : getData.userPw
-            }})
-            .then((res) => {
-                console.log("then은 응답함")
-                setAllData(res.data);
-                console.log(allData);    
-               // for (let i = 0; i < allData.length; i++) {
-                // if (allData[i].studentPw === inputPw) {
-                //     const myId = allData[i].studentId
-                //     window.location.replace("http://localhost:3000/"+{myId});       
-                // }else{
-                //     console.log(allData);
-                //     alert("비밀번호가 일치하지 않거나 지원서가 존재하지 않습니다.")
-                // }
-            });
-        }catch (err) {
-                console.log("error", err);
-        }
+
+        
+        
+        // fetch(`${API.Application}`,{
+        //     method : "GET",
+        //     body: JSON.stringify({
+        //         userId : getData.userId,
+        //         userPw : getData.userPw,
+        //     }),
+        // })
+        // .then((response)=>response.json())
+        // .then((response)=>{
+        //     console.log(response.data);
+        // });
+
+
+        axios
+        .get(`${API.Application}`, {
+            // params: { userId : getData.userId, userPw : getData.userPw },
+            body : {
+                userId : getData.userId,
+                userPw : getData.userPw
+            }
+        })
+        .then(function (response) {
+            setAllData(response.data);
+            console.log(allData);
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.error("error",error);
+        });
+
+
         }//버튼 끝
+
     
-
-    // useEffect(() => {
-    //     if ( === null) {
-    //       window.location.replace("http://localhost:3000");
-    //     }
-    //   }, []);
-
+    const handleInputId = (e) => {
+        setInputId(e.target.value);
+    };
+    
+    const handleInputPw = (e) => {
+        setInputPw(e.target.value);
+    };
+    const [allData, setAllData] = React.useState({});
 
 
 
@@ -94,7 +101,6 @@ function CheckPw(){
             </button>
         </div>
     );
-}//전체function끝
-
+}
 
 export default CheckPw;
