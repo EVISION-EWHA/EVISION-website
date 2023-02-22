@@ -73,7 +73,6 @@ function VocView({ match }) {
     }
   };
 
-
   const data = allData ?? [];
 
   const userdata = data[contentId];
@@ -118,10 +117,9 @@ function VocView({ match }) {
   // };
   // const writeDate=data.writeDate.slice(0,10);
   const hstyle = {
-    
     display: "flex",
     justifyContent: "center",
-    alignItems:"center",
+    alignItems: "center",
     margin: "auto",
     padding: "5rem 20rem 40rem 30rem",
     height: "80rem",
@@ -132,39 +130,39 @@ function VocView({ match }) {
     lineHeight: 1.8,
   };
   const hstyle1 = {
-    
     display: "flex",
-    alignItems:"right",
+    alignItems: "right",
     justifyContent: "center",
     padding: "10rem 0rem 0rem 70rem",
     flexDirection: "column",
     fontSize: "30px",
     color: "white",
-    backgroundColor: "black"
+    backgroundColor: "black",
   };
   return (
     <ThemeProvider theme={theme}>
       <div style={hstyle1}>
-      <div>
-      <Link to="/board">
-          <Button
-            sx={{
-              backgroundColor: "#474544",
-              color: "white",
-              mb: 2,
-              alignItems: "left",
-              flexDirection: "row",
-              alignItems: "flex-start",
-              width: "10rem",
-              fontWeight: "600",
-              fontSize: "2rem",
-            }}
-            variant="contained"
-          >
-           ←
-          </Button>{" "}
-        </Link>
-            </div>
+        <div>
+          <Link to="/board">
+            <Button
+              sx={{
+                backgroundColor: "#474544",
+                color: "white",
+                mb: 7,
+                ml: -3,
+                alignItems: "left",
+                flexDirection: "row",
+                alignItems: "flex-start",
+                width: "10rem",
+                fontWeight: "600",
+                fontSize: "2rem",
+              }}
+              variant="contained"
+            >
+              ←
+            </Button>{" "}
+          </Link>
+        </div>
       </div>
       <div style={hstyle}>
         <Box sx={{ color: "white", width: "100rem" }}>
@@ -174,7 +172,8 @@ function VocView({ match }) {
           <br />
           수정일자 : {data.updateDate}
           <br />
-          내용 : {data.content}
+          <Box sx={{ width: "100%", border: 1, mb: 3, mt: 3 }}></Box>
+          <Box>내용 : {data.content}</Box>
           <br />
           {/* <button type="submit" id="submit" onClick={onClickRevise}>
               수정

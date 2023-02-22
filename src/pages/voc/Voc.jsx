@@ -32,7 +32,7 @@ function Voc() {
       });
   }, []);
   // const StyledLink={color: "white", }
-    
+
   //   ;
   const data = allData ?? [];
   const hstyle = {
@@ -139,7 +139,7 @@ function Voc() {
                   fontWeight: "340",
                 }}
               >
-                작성시간
+                작성일자
               </TableCell>
               <TableCell
                 align="right"
@@ -151,7 +151,7 @@ function Voc() {
                   fontWeight: "340",
                 }}
               >
-                수정시간
+                수정일자
               </TableCell>
             </TableRow>
           </TableHead>
@@ -199,19 +199,20 @@ function Voc() {
                       textAlign: "center",
                       fontWeight: "400",
                       whiteSpace: "nowrap",
+                      maxWidth: "10rem",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                     }}
-                   >
-                    <Link
-                    style={{
-                    display: 'block',
-                    color: 'white'
-                    }}
-                    to={`/board/${info.contentId}`}
                   >
-                   {info.content}
-                  </Link>
+                    <Link
+                      style={{
+                        display: "block",
+                        color: "white",
+                      }}
+                      to={`/board/${info.contentId}`}
+                    >
+                      {info.content}
+                    </Link>
                   </TableCell>
                   <TableCell
                     align="right"
