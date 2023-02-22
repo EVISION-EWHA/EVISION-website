@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
+import styled from "styled-components";
+
 import Login from "pages/login/Login";
 import Signup from "pages/sign/Signup";
 import MainPage from "pages/Main/MainPage";
@@ -25,7 +27,7 @@ const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
   return (
     <>
-      <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+      <Header isLogin={isLogin} style={header} setIsLogin={setIsLogin} />
       <Routes>
         <Route path="/login" element={<Login></Login>} />
         <Route path="/signup" element={<Signup></Signup>} />
@@ -58,3 +60,7 @@ const App = () => {
 };
 
 export default App;
+
+const header = styled.form`
+  position: fixed;
+`;

@@ -152,6 +152,9 @@ const Wrapper = styled.div`
 const MenusBlock = styled.div`
   padding-left: 4rem;
   display: flex;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const NavStyle = styled(NavLink)`
@@ -182,6 +185,9 @@ const LoginBlock = styled.div`
   padding-right: 3rem;
   display: flex;
   align-items: center;
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 const LoginButton = styled.button`
   font-size: 30px;

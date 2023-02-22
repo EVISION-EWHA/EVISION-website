@@ -6,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     width: 100%;
-    height: 100%;
   }
 
   #root {
@@ -18,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
   }
   
   * {
-    
     box-sizing: border-box;
     font-family: 'Pretendard', sans-serif
   }
@@ -29,8 +27,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     @media (max-width: 1919px) {
-    zoom: 67%;
-  }
+      zoom: 67%;
+    }
 
     @media (min-width: 1920px) {
       zoom: 100%;
