@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -183,4 +181,3 @@ function VocView({ match }) {
 }
 
 export default VocView;
->>>>>>> 0154dabd7bb0a75d6bbd7cd37371d64d1b84796b

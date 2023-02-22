@@ -20,6 +20,7 @@ import Application from "pages/Admin/Application";
 import Voc from "pages/voc/Voc";
 import VocView from "pages/voc/VocView";
 import VocQuestion from "./pages/voc/VocQuestion";
+import CheckPw from "./pages/Apply/CheckPw";
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
         <Route path="/mypage" element={<MyPage></MyPage>} />
         <Route path="/modify" element={<Modify></Modify>} />
+        <Route path="/checkpw" element={<CheckPw></CheckPw>}/>
       </Routes>
       <Footer />
     </>

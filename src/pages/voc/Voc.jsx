@@ -54,18 +54,11 @@ function Voc() {
       <TableContainer
         sx={{
           backgroundColor: "black",
-<<<<<<< HEAD
           p: "5rem 12rem 3rem 30rem",
           display: "center",
           justifyContent: "center",
           alignItems: "left",
           display: "flex",
-=======
-          p: "5rem 12rem 3rem 22rem",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "left",
->>>>>>> 0154dabd7bb0a75d6bbd7cd37371d64d1b84796b
           flexDirection: "column",
         }}
       >
