@@ -45,6 +45,13 @@ const Wrapper = styled.section`
     width: 120rem;
     margin: 20px;
   }
+
+  @media (max-width: 700px) {
+    img {
+      width: 80rem;
+      margin: 20px;
+    }
+  }
 `;
 
 const StTitle = styled.h2`
@@ -52,11 +59,17 @@ const StTitle = styled.h2`
   margin: 2rem;
   font-weight: bold;
   color: #dfdfdf;
+  @media (max-width: 700px) {
+    font-size: 30px;
+  }
 `;
 
 const StContent = styled.p`
   font-size: 25px;
   margin: 2rem;
+  @media (max-width: 700px) {
+    font-size: 21px;
+  }
 `;
 
 const StLabel = styled.label`
@@ -64,4 +77,9 @@ const StLabel = styled.label`
   margin: 1.5rem;
   flex-direction: row;
   font-size: 27px;
+
+  @media (max-width: 700px) {
+    width: 28rem;
+    font-size: 23px;
+  }
 `;
