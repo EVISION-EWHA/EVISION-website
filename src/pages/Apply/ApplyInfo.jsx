@@ -1,5 +1,6 @@
 import React from "react";
 import "./apply.css";
+import time_line from "assets/time_line.png";
 
 function ApplyInfo() {
   const handleApply = (event) => {
@@ -37,29 +38,19 @@ function ApplyInfo() {
           아래의 사항을 꼭 확인하시고 지원부탁드립니다.
         </label>
         <br />
-        <label>✔ 지원 기간 : 2/25 ~ 3/1 </label>
         <br />{" "}
         <label>
           ✔ 지원 조건 : 엘텍공과대학 소프트웨어학부 사이버보안전공
-          (주전공/복수전공 및 진입예정자)
+          (주전공/복수전공 및 진입예정자){" "}
         </label>
-        <br />{" "}
         <label>
-          ✔ 테스트 일정 : 3/5 10:00~22:00 (12시간) 온라인 테스트 링크는 추후
-          공개{" "}
+          ✔ 전체세션 장소 : 이화여자대학교 교내 강의실 (세부건물 및 호수는 미정){" "}
         </label>
-        <br />
-        <label>✔ 지원 결과 : 3/7 이전 sms를 통해 공지됩니다.</label>
-        <br />{" "}
         <label>
-          ✔ 전체세션 장소 : 이화여자대학교 교내 강의실(세부건물 및 호수는 미정){" "}
+          ✔ 전체세션 시간 : 매주 목요일 오후 6시 반 ~ 오후 8시 반 (시험기간
+          제외)
         </label>
-        <br />
-        <label>✔ 전체세션 시간 : 목요일 오후 6시 반 ~ 오후 8시 반</label>
-        <br />{" "}
-        <label style={{ marginBottom: "8rem" }}>
-          ✔ 동아리 OT : 3/9 오후 6시 30분~{" "}
-        </label>
+        <img src={time_line} />
         <br />
         <div className="apply_btn">
           <button
