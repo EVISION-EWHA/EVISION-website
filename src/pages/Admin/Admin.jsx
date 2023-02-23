@@ -91,7 +91,7 @@ function Admin({ names, grade }) {
     display: "flex",
     justifyContent: "center",
     margin: "auto",
-    padding: "5rem 40rem 5rem 40rem",
+    padding: "5rem 40rem 5rem 45rem",
     flexDirection: "column",
     fontSize: "30px",
     backgroundColor: "black",
