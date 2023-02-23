@@ -24,9 +24,9 @@ function CheckPw() {
         .get(
           `${API.Application}`,
           {
-            params: {
-              userId: getData.id,
-              userPw: getData.pw,
+            parms: {
+              studentId: getData.id,
+              studentPw: getData.pw,
             },
           },
           { withCredentials: true }
@@ -41,6 +41,7 @@ function CheckPw() {
           });
           const status = res.data;
           console.log(status);
+          alert("확인되었습니다");
         });
     } catch (err) {
       console.log(err);
