@@ -134,7 +134,7 @@ function UserTable({ data }) {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {info.signupDate}
+                    {info.signupDate?.slice(0, 10)}
                   </TableCell>
                   <TableCell
                     align="right"

@@ -3,7 +3,7 @@ function Footer() {
   return (
     <StFooter>
       <p>지원 및 기타 문의</p>
-      <p>010-5178-5316(회장 주송아)</p>
+      <p>ewhaevision@gmail.com</p>
     </StFooter>
   );
 }
@@ -21,7 +21,7 @@ const StFooter = styled.div`
   background-color: black;
 
   p {
-    font-size: 17px;
+    font-size: 20px;
     line-height: 30px;
     color: #cccccc;
   }

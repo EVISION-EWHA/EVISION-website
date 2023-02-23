@@ -40,6 +40,7 @@ const MyPage = () => {
       .get(`${API.AdminUsers}`)
       .then(function (response) {
         setAllData(response.data);
+        console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);

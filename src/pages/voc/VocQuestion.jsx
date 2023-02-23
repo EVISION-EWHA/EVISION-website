@@ -69,6 +69,7 @@ function VocQuestion() {
   useEffect(() => {
     if (localStorage.getItem("userId") === null) {
       window.location.replace("http://localhost:3000");
+      alert("게시글을 작성할 권한이 없습니다. 로그인을 해주세요");
     }
   }, []);
 
@@ -79,7 +80,7 @@ function VocQuestion() {
       content: inputContent,
       writerId: localStorage.getItem("userId"),
     };
-    if (loginData.content.length > 0) {
+    if (loginData.content.length > 0 && loginData.writerId.length != null) {
       console.log(loginData);
       onhandlePost(loginData);
     } else {
@@ -88,13 +89,14 @@ function VocQuestion() {
   };
   const hstyle = {
     //border: "10px solid white",
+    alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    margin: "auto",
-    padding: "25rem 20rem 50rem 30rem",
+    height: "140rem",
+    padding: "5rem 20rem 20rem 20rem",
     height: "80rem",
     flexDirection: "column",
-    fontSize: "30px",
+    //fontSize: "30px",
     color: "white",
     backgroundColor: "black",
     lineHeight: 1.8,
@@ -104,32 +106,47 @@ function VocQuestion() {
     <ThemeProvider theme={theme}>
       <form style={hstyle} onSubmit={handleSubmit}>
         <Box sx={{ fontSize: "3.4rem", pb: "3rem" }}>게시글 작성</Box>
-        <div className="test">
-          <label>내용</label>
-          <br />
-          <Box sx={{ border: "3rem", borderColor: "white" }}>
-            <Input
-              name="content"
-              id="content"
-              sx={{
-                border: "3rem",
-                borderColor: "white",
-                background: "transparent",
-                color: "white",
-                height: "10rem",
-                width: "70%",
-                fontSize: "3rem",
-              }}
-              value={inputContent}
-              onChange={handleInputContent}
-            />
-          </Box>
-          <div className="revise_button">
-            <button type="submit" id="submit" onClick={onClickPosting}>
-              등록
-            </button>
-          </div>
-        </div>
+        <br />
+        <Box sx={{ border: "3rem", borderColor: "white" }}>
+          <textarea
+            name="content"
+            id="content"
+            style={{
+              padding: "1rem",
+              marginTop: "5rem",
+              fontSize: "3rem",
+              width: "120rem",
+              height: "20rem",
+              bordeer: "none",
+              resize: "none",
+              color: "white",
+              backgroundColor: "black",
+            }}
+            value={inputContent}
+            onChange={handleInputContent}
+            placeholder="내용을 입력해주세요."
+          ></textarea>{" "}
+        </Box>
+        <Button
+          sx={{
+            mt: 10,
+            display: "center",
+            alignItems: "right",
+            backgroundColor: "#474544",
+            color: "white",
+            mb: 2,
+            flexDirection: "row",
+            width: "15rem",
+            fontWeight: "600",
+            fontSize: "2rem",
+            justifyContent: "center",
+          }}
+          type="submit"
+          id="submit"
+          onClick={onClickPosting}
+        >
+          등록
+        </Button>
       </form>
     </ThemeProvider>
   );

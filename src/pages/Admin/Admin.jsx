@@ -91,7 +91,7 @@ function Admin({ names, grade }) {
     display: "flex",
     justifyContent: "center",
     margin: "auto",
-    padding: "5rem 40rem 5rem 40rem",
+    padding: "5rem 40rem 5rem 45rem",
     flexDirection: "column",
     fontSize: "30px",
     backgroundColor: "black",
@@ -152,7 +152,7 @@ function Admin({ names, grade }) {
             header="승인 대기중 회원 목록"
             data={newdata}
           ></Modal2>
-          <Link to="/h8Jd62Ks/showingapplicant">
+          <Link to="/h8Jd62Ks/newmembers">
             <Button
               sx={{
                 backgroundColor: "#474544",

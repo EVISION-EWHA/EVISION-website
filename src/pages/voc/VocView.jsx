@@ -22,6 +22,7 @@ import { createTheme } from "@mui/material/styles";
 
 function VocView({ match }) {
   const { contentId } = useParams();
+  let UpdateDate = "";
 
   const theme = createTheme({
     palette: {
@@ -39,12 +40,19 @@ function VocView({ match }) {
       .get(`${API.Board}/` + contentId)
       .then(function (response) {
         setAllData(response.data);
-        console.log(allData);
+        console.log(allData.writeDate);
+        console.log(data.writeDate);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
+  const data = allData ?? [];
+  data.writeDate = allData.writeDate?.slice(0, 10);
+  data.updateDate = allData.updateDate?.slice(0, 10);
+  // if (data.updateDate.length > 0) {
+  //   UpdateDate = data.updateDate?.slice(0, 10);
+  // }
 
   const onhandlePost = async (deleteData) => {
     const { userId, contentId } = deleteData;
@@ -73,9 +81,7 @@ function VocView({ match }) {
     }
   };
 
-  const data = allData ?? [];
-
-  const userdata = data[contentId];
+  //const userdata = data[contentId];
 
   const onClickRevise = () => {
     console.log("click revise");
@@ -104,55 +110,29 @@ function VocView({ match }) {
     setModalOpen(false);
   };
 
-  // const handleSubmit2 = (event) => {
-  //   event.preventDefault();
-  //   console.log("click drevicebutton");
-  //   const reviceData = {
-  //     userId: localStorage.getItem("userId"),
-  //     contentId: contentId,
-  //     content:""
-  //   };
-  //   console.log(deleteData);
-  //   onhandlePost(deleteData);
-  // };
-  // const writeDate=data.writeDate.slice(0,10);
   const hstyle = {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    margin: "auto",
-    padding: "5rem 20rem 40rem 30rem",
-    height: "80rem",
     flexDirection: "column",
-    fontSize: "30px",
+    fontSize: "2.3rem",
     color: "white",
     backgroundColor: "black",
-    lineHeight: 1.8,
-  };
-  const hstyle1 = {
-    display: "flex",
-    alignItems: "right",
+    padding: "5rem 12rem 3rem 45rem",
     justifyContent: "center",
-    padding: "10rem 0rem 0rem 70rem",
-    flexDirection: "column",
-    fontSize: "30px",
-    color: "white",
-    backgroundColor: "black",
+    lineHeight: 1.8,
   };
   return (
     <ThemeProvider theme={theme}>
-      <div style={hstyle1}>
-        <div>
+      <div style={hstyle}>
+        <Box sx={{ color: "white", width: "80%" }}>
           <Link to="/board">
             <Button
               sx={{
+                alignContent: "space-between",
                 backgroundColor: "#474544",
                 color: "white",
+                height: "3.5rem",
                 mb: 7,
-                ml: -3,
-                alignItems: "left",
-                flexDirection: "row",
-                alignItems: "flex-start",
                 width: "10rem",
                 fontWeight: "600",
                 fontSize: "2rem",
@@ -162,18 +142,23 @@ function VocView({ match }) {
               ←
             </Button>{" "}
           </Link>
-        </div>
-      </div>
-      <div style={hstyle}>
-        <Box sx={{ color: "white", width: "100rem" }}>
+          <br></br>
           작성자: {data.writerId}
           <br />
           작성일자: {data.writeDate}
           <br />
           수정일자 : {data.updateDate}
           <br />
-          <Box sx={{ width: "100%", border: 1, mb: 3, mt: 3 }}></Box>
-          <Box>내용 : {data.content}</Box>
+          <Box
+            sx={{
+              width: "100%",
+              height: "20rem",
+              mb: 3,
+              mt: 3,
+            }}
+          >
+            {data.content}
+          </Box>
           <br />
           {/* <button type="submit" id="submit" onClick={onClickRevise}>
               수정

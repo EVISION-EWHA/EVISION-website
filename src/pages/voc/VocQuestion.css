@@ -4,7 +4,6 @@
   padding: 10rem 10rem 10rem 20rem;
 }
 .revise_button {
-  margin-top: 20rem;
   display: flex;
   width: 10rem;
   height: 4.5rem;
@@ -21,8 +20,13 @@
 
   border-radius: 0.8rem;
   cursor: pointer;
+  margin-top: 10rem;
 }
 .revise_button:hover {
   background-color: white;
   color: black;
+}
+
+.contentLabel {
+  font-size: 29rem;
 }
