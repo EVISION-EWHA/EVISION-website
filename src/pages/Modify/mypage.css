@@ -45,18 +45,17 @@
 .MyPage button:hover,
 .Modify button:hover {
   background-color: #00462a;
-  color: white;
+  color: rgb(62, 52, 52);
 }
 
 .Modify input {
   font-size: 2rem;
   text-align: center;
-  width: 80rem;
+  width: 50rem;
   height: 5rem;
   margin-top: 10px;
   background-color: black;
   color: white;
   border: none;
   resize: none;
-  
 }

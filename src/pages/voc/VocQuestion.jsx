@@ -69,6 +69,7 @@ function VocQuestion() {
   useEffect(() => {
     if (localStorage.getItem("userId") === null) {
       window.location.replace("http://localhost:3000");
+      alert("게시글을 작성할 권한이 없습니다. 로그인을 해주세요");
     }
   }, []);
 
@@ -79,7 +80,7 @@ function VocQuestion() {
       content: inputContent,
       writerId: localStorage.getItem("userId"),
     };
-    if (loginData.content.length > 0) {
+    if (loginData.content.length > 0 && loginData.writerId.length != null) {
       console.log(loginData);
       onhandlePost(loginData);
     } else {
