@@ -12,12 +12,13 @@ function CheckPw() {
   const onHandleCheck = async (data) => {
     //확인하기 버튼 - 데이터받기
     const { id, pw } = data;
+    console.log(data);
     const getData = { id, pw };
     getData.id = data.id;
     getData.pw = data.pw;
 
     console.log("받은id", getData.id);
-    console.log("받은pw", getData.id);
+    console.log("받은pw", getData.pw);
 
     try {
       await axios
@@ -25,14 +26,14 @@ function CheckPw() {
           `${API.Application}`,
           {
             params: {
-              userId: getData.id,
-              userPw: getData.pw,
+              studentId: getData.id,
+              studentPw: getData.pw,
             },
           },
           { withCredentials: true }
         )
         .then((res) => {
-          console.log(res);
+          console.log("res",res);
           let submitBtn = document.getElementById("submit");
           submitBtn.addEventListener("click", function (e) {
             this.setAttribute("disabled", "true");
@@ -40,11 +41,21 @@ function CheckPw() {
             this.setAttribute("disabledRipple", "true");
           });
           const status = res.data;
-          console.log(status);
+          console.log("status",status); 
+          if(status===""){
+            alert("비밀번호가 일치하지 않거나 지원서가 존재하지 않습니다.");
+            return false;
+          }
+          else{
+            alert("지원서를 열람합니다!")
+            
+          }
         });
     } catch (err) {
       console.log(err);
+      // alert("비밀번호가 일치하지 않거나 지원서가 존재하지 않습니다.");
     }
+
     // fetch(`${API.Application}`,{
     //     method : "GET",
     //     body: JSON.stringify({
@@ -130,7 +141,7 @@ function CheckPw() {
         placeholder="지원 시 설정한 비밀번호를 입력해주세요."
       ></input>
       <br />
-      <button type="submit" id="submit" onClick={onHandleCheck}>
+      <button type="submit" id="submit" onClick={handleSubmit}>
         확인하기
       </button>
     </form>
