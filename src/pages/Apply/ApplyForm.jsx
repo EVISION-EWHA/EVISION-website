@@ -27,7 +27,6 @@ function ApplyForm() {
   const phoneSt = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/; //전화번호 기준
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/; // 비밀번호 유효성
 
-
   const handleChange = (e) => {
     // 작성내용 객체에 저장
     // console.log(e.target.name);
@@ -45,8 +44,6 @@ function ApplyForm() {
     if (content.length === 600) alert("최대 600자까지 입력가능합니다.");
     return;
   };
-
-  
 
   //데이터전송..
   const onhandlePost = async (data) => {
@@ -136,12 +133,11 @@ function ApplyForm() {
       return false;
     }
 
-    if(state.department === ""){
+    if (state.department === "") {
       departmentInput.current.focus();
       alert("학과를 입력해주세요!");
       return false;
     }
-
 
     if (state.contentA === "") {
       contentAInput.current.focus();
@@ -171,7 +167,6 @@ function ApplyForm() {
       state.management = !!parseInt("0");
     }
 
-
     // event.preventDefault();
     console.log("click submit");
 
@@ -184,7 +179,7 @@ function ApplyForm() {
       <h2
         style={{
           textAlign: "center",
-          marginBottom: "8rem",
+          //marginBottom: "8rem",
           fontSize: "4rem",
           color: "#c7b0c2",
           fontWeight: 800,
@@ -204,7 +199,6 @@ function ApplyForm() {
           placeholder="예) 홍길동"
         ></input>
         <br />
-
         <label />
         전화번호를 입력해주세요
         <input
@@ -215,7 +209,6 @@ function ApplyForm() {
           placeholder="예) 010-xxxx-xxxx"
         ></input>
         <br />
-
         <label />
         학번을 입력해주세요
         <input
@@ -226,7 +219,6 @@ function ApplyForm() {
           placeholder="예) 2XXXXXX(7자리)"
         ></input>
         <br />
-
         <label />
         비밀번호를 입력해주세요
         <input
@@ -237,11 +229,10 @@ function ApplyForm() {
           placeholder="영문, 숫자, 특수문자를 포함한 8자 이상의 비밀번호를 설정해주세요."
         ></input>
         <br />
-
         <label />
         전공을 입력해주세요
         <input
-          ref = {departmentInput}
+          ref={departmentInput}
           name="department"
           value={state.department}
           onChange={handleChange}
@@ -271,16 +262,15 @@ function ApplyForm() {
           />
           아니요
         </label>
-        <br /><br/>
-
-        
+        <br />
+        <br />
         <label>
           1. 자신이 몰입해서 공부해본 분야가 있나요? 있다면 어떤 분야였고,
           결과는 어땠으며, 그 과정을 통해 무엇을 얻었는 지 이야기해주세요.
           <br /> 꼭 보안이 아니어도 좋습니다. (최대 600자)
         </label>
         <textarea
-          ref = {contentAInput}
+          ref={contentAInput}
           name="contentA"
           value={state.contentA}
           onChange={handleChange}
@@ -288,22 +278,20 @@ function ApplyForm() {
           maxLength={600}
         ></textarea>{" "}
         <br />
-
         <label>
           2. EVI$ION에서 특히 공부해보고 싶은 활동이나 분야가 있나요? (최대
           600자){" "}
         </label>
         <textarea
-          ref = {contentBInput}
+          ref={contentBInput}
           name="contentB"
           value={state.contentB}
           onChange={handleChange}
           placeholder="내용을 입력해주세요."
           maxLength={600}
         ></textarea>
-        <br /><br/>
-
-
+        <br />
+        <br />
         <label>
           개인정보 이용에 동의하시나요? 응답내용은 동아리 신입부원 선발을
           위해서만 사용될 예정이며, 지원 종료 후 모든 정보는 폐기될 예정입니다.
@@ -320,8 +308,6 @@ function ApplyForm() {
           <input type="checkbox" name="isAgee" id="checkAgree" value="" />{" "}
           개인정보 수집에 동의하시겠습니까? <br />
         </label>
-
-            
       </form>
 
       <button

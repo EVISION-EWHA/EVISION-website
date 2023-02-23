@@ -34,7 +34,7 @@ function CheckPw() {
           { withCredentials: true }
         )
         .then((res) => {
-          console.log("res",res);
+          console.log("res", res);
           let submitBtn = document.getElementById("submit");
           submitBtn.addEventListener("click", function (e) {
             this.setAttribute("disabled", "true");
@@ -42,48 +42,46 @@ function CheckPw() {
             this.setAttribute("disabledRipple", "true");
           });
           const status = res.data;
-          console.log("status",status);
+          console.log("status", status);
           // alert("확인되었습니다");
-          
-          console.log("status",status); 
-          if(status ===""){
+
+          console.log("status", status);
+          if (status === "") {
             alert("비밀번호가 일치하지 않거나 지원서가 존재하지 않습니다.");
             return false;
-          }
-          else{
-            navigate('/checkapplication',{ state: { 
-              studentId : status.studentId,
-              name : status.name,
-              phone : status.phone,
-              department : status.department,
-              management : status.management,
-              privacy : status.privacy,
-              contentA: status.contentA,
-              contentB : status.contentB,
-              createdDate :status.createdDate,
-            } });
+          } else {
+            navigate("/checkapplication", {
+              state: {
+                studentId: status.studentId,
+                name: status.name,
+                phone: status.phone,
+                department: status.department,
+                management: status.management,
+                privacy: status.privacy,
+                contentA: status.contentA,
+                contentB: status.contentB,
+                createdDate: status.createdDate,
+              },
+            });
             alert("지원서를 열람합니다!");
-          
           }
         });
     } catch (err) {
       console.log(err);
     }
-
   }; //버튼 끝
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("click checkbutton");
-    if(inputId===""){
-      alert("학번을 입력해주세요")
+    if (inputId === "") {
+      alert("학번을 입력해주세요");
       return false;
     }
-    if(inputPw===""){
-      alert("비밀번호를 입력해주세요")
+    if (inputPw === "") {
+      alert("비밀번호를 입력해주세요");
       return false;
-    }
-    else{
+    } else {
       const Data = {
         id: inputId,
         pw: inputPw,
@@ -91,7 +89,6 @@ function CheckPw() {
       console.log({ Data });
       onHandleCheck(Data);
     }
-
   };
 
   const handleInputId = (e) => {
@@ -104,13 +101,16 @@ function CheckPw() {
 
   return (
     <form className="CheckPw" onSubmit={handleSubmit}>
-      <h2 style={{
+      <h2
+        style={{
           textAlign: "center",
           fontSize: "4rem",
           marginBottom: "10rem",
-        }}>지원서 조회</h2>
-      <label />
-      학번을 입력해주세요
+        }}
+      >
+        지원서 조회
+      </h2>
+      <label>학번</label>
       <input
         type="text"
         id="userId"
@@ -120,7 +120,7 @@ function CheckPw() {
         placeholder="학번을 입력해주세요."
       ></input>
       <br />
-      <label>비밀번호를 입력하세요</label>
+      <label>비밀번호</label>
       <input
         label="Password"
         type="password"

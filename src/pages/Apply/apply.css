@@ -21,17 +21,16 @@
   padding: 20px;
 }
 
-.apply_btn{
+.apply_btn {
   text-align: center;
-  display: flex; 
+  display: flex;
   justify-content: center;
-  width : 100%;
-
+  width: 100%;
 }
 
 .ApplyInfo button,
 .ApplyForm button,
-.CheckPw button{
+.CheckPw button {
   display: flex;
   width: 28rem;
   height: 50px;
@@ -46,14 +45,14 @@
   box-sizing: border-box;
   overflow: hidden;
   padding: 0.2rem 0 0.2rem 0;
-  margin: 0 2rem 0 2rem;
+  margin: 10rem 2rem 17rem 2rem;
   border-radius: 0.8rem;
   cursor: pointer;
 }
 
 .ApplyInfo button:hover,
 .ApplyForm button:hover,
-.CheckPw button:hover{
+.CheckPw button:hover {
   background-color: #e2f87b;
   color: black;
 }
@@ -61,7 +60,7 @@
 .ApplyForm form {
   display: flex;
   flex-direction: column;
-  padding: 10rem 5rem 10rem 5rem;
+  padding: 10rem 15rem 10rem 20rem;
 }
 
 .ApplyForm textarea {
@@ -75,7 +74,8 @@
   background-color: black;
 }
 
-.ApplyForm input:not([type="radio"], [type="checkbox"]),.CheckPw input{
+.ApplyForm input:not([type="radio"], [type="checkbox"]),
+.CheckPw input {
   font-size: 2.5rem;
   width: 80rem;
   height: 5rem;
@@ -86,8 +86,12 @@
   background-color: black;
 }
 
-.CheckPw input{
-  width : 80rem;
+.CheckPw input {
+  width: 50rem;
+}
+
+.CheckPw label {
+  font-size: 3rem;
 }
 
 .ApplyForm input[type="radio"],
@@ -105,5 +109,3 @@
   border-style: double;
   padding: 20px;
 }
-
-
