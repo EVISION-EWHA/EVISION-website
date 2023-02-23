@@ -2,30 +2,28 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Box,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  Paper,
-  TableHead,
-  TableRow,
   ThemeProvider,
-  Typography,
+
 } from "@mui/material";
-import Input from "@mui/material/Input";
 import { API } from "../../config";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
 import { createTheme } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
-function CheckApplication({ match }) {
-  const { studentId } = useParams();
-
+function CheckApplication() {
+  const location = useLocation();
+  const data = {
+    studentId : location.state.studentId,
+    name : location.state.name,
+    phone : location.state.phone,
+    department : location.state.department,
+    management : location.state.management,
+    privacy :  location.state.privacy,
+    contentA: location.state.contentA,
+    contentB : location.state.contentB,
+    createdDate : location.state.createdDate,
+  }
   const theme = createTheme({
     palette: {
       background: "black",
@@ -34,28 +32,13 @@ function CheckApplication({ match }) {
       fontFamily: "'Pretendard', sans-serif",
     },
   });
-  const [allData, setAllData] = React.useState({});
+  
   let Management = "";
-
-  useEffect(() => {
-    axios
-      .get(`${API.AdminApplications}/` + studentId)
-      .then(function (response) {
-        setAllData(response.data);
-        const test = response.data.management;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
-
-  const data = allData ?? [];
-  if (data.management == true) {
+  if (data.management === true) {
     Management = "운영진 지원함";
   } else {
     Management = "운영진 지원하지 않음";
   }
-  const userdata = data[studentId];
 
   const hstyle = {
     //border: "10px solid white",
@@ -74,7 +57,7 @@ function CheckApplication({ match }) {
     <ThemeProvider theme={theme}>
       <div style={hstyle}>
         <Box sx={{ color: "white", width: "100%", fontSize: "2rem" }}>
-          이름: {data.name}
+          이름 : {data.name}
           <br />
           <br />
           학번: {data.studentId}
@@ -95,10 +78,10 @@ function CheckApplication({ match }) {
           운영진 지원 여부 : {Management}
           <br />
           <br />
-          생성한 날짜: {data.createdDate}
+          생성한 날짜 : {data.createdDate}
           <br />
-          <br />
-          수정한 날짜: {data.modifiedDate}
+          {/* <br />
+          수정한 날짜: {data.modifiedDate} */}
         </Box>
       </div>
     </ThemeProvider>
