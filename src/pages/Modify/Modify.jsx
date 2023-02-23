@@ -12,7 +12,7 @@ function Modify() {
 
   const [state, setState] = useState({
     userId: localStorage.getItem("userId"),
-    userPw: localStorage.getItem("userPw"),
+    userPw: "",
     userRePw: "",
     email: "",
   });
@@ -70,6 +70,9 @@ function Modify() {
     // event.preventDefault();
     console.log("change submit");
 
+    if(state.userId ===""){
+      state.userId = localStorage.getItem("userId");
+    }
     if (state.email === "") {
       state.email = location.state.email;
     }
