@@ -31,9 +31,6 @@ function Voc() {
         console.log(error);
       });
   }, []);
-  // const StyledLink={color: "white", }
-
-  //   ;
   const data = allData ?? [];
   const hstyle = {
     backgroundColor: "black",
@@ -42,7 +39,7 @@ function Voc() {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    padding: "5rem 5rem 10rem 30rem",
+    padding: "5rem 40rem 40rem 45rem",
     flexDirection: "column",
     fontSize: "30px",
   };
@@ -52,7 +49,6 @@ function Voc() {
       <TableContainer
         sx={{
           backgroundColor: "black",
-          p: "5rem 12rem 3rem 30rem",
           display: "center",
           justifyContent: "center",
           alignItems: "left",
@@ -63,7 +59,7 @@ function Voc() {
         <Link to="/board/question">
           <Button
             sx={{
-              display:"center",
+              display: "center",
               alignItems: "right",
               backgroundColor: "#474544",
               color: "white",
@@ -82,7 +78,7 @@ function Voc() {
         <form onSubmit></form>
         <Table
           sx={{
-            width: "75%",
+            width: "100%",
             backgroundColor: "black",
           }}
           aria-label="simple table"
@@ -164,7 +160,7 @@ function Voc() {
                     component="th"
                     scope="row"
                     sx={{
-                      fontColor:"white",
+                      fontColor: "white",
                       color: "white",
                       fontSize: "2rem",
                       textAlign: "center",
@@ -222,7 +218,7 @@ function Voc() {
                       color: "white",
                       paddingLeft: 8,
                       paddingRight: 7,
-                      maxWidth: "14rem",
+                      maxWidth: "16rem",
                       fontSize: "2rem",
                       textAlign: "center",
                       fontWeight: "400",
@@ -246,7 +242,6 @@ function Voc() {
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "revert",
-                    
                     }}
                   >
                     {info.updateDate.slice(0, 10)}

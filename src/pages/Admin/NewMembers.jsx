@@ -22,7 +22,7 @@ import { createTheme } from "@mui/material/styles";
 import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 
-function ShowingAppliment() {
+function NewMembers() {
   const theme = createTheme({
     palette: {
       background: "black",
@@ -55,7 +55,7 @@ function ShowingAppliment() {
     padding: "5rem 63rem 5rem 63rem",
     fontSize: "30px",
     color: "white",
-    height: "100rem",
+    height: "150rem",
     backgroundColor: "black",
   };
   return (
@@ -98,4 +98,4 @@ function ShowingAppliment() {
     </ThemeProvider>
   );
 }
-export default ShowingAppliment;
+export default NewMembers;

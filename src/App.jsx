@@ -14,7 +14,7 @@ import ApplyForm from "pages/Apply/ApplyForm";
 import Admin from "pages/Admin/Admin";
 import MyPage from "pages/Modify/MyPage";
 import Modify from "pages/Modify/Modify";
-import Showingapplicant from "pages/Admin/ShowingApplicant";
+import NewMembers from "pages/Admin/NewMembers";
 import Application from "pages/Admin/Application";
 // import RegisterPage from "components/views/RegisterPage/Sections/RegisterOrEdit";
 // import ArticlePage from "components/views/ArticlePage/ArticlePage";
@@ -44,8 +44,8 @@ const App = () => {
         <Route path="/board/question" element={<VocQuestion />} />
         <Route path="/h8Jd62Ks" element={<Admin></Admin>} />
         <Route
-          path="/h8Jd62Ks/showingapplicant"
-          element={<Showingapplicant></Showingapplicant>}
+          path="/h8Jd62Ks/newmembers"
+          element={<NewMembers></NewMembers>}
         />
         <Route
           path="/h8Jd62Ks/applications/:studentId"
@@ -55,8 +55,11 @@ const App = () => {
         <Route path="/applyform" element={<ApplyForm></ApplyForm>} />
         <Route path="/mypage" element={<MyPage></MyPage>} />
         <Route path="/modify" element={<Modify></Modify>} />
-        <Route path="/checkpw" element={<CheckPw></CheckPw>}/>
-        <Route path="/checkapplication" element={<CheckApplication></CheckApplication>}/>
+        <Route path="/checkpw" element={<CheckPw></CheckPw>} />
+        <Route
+          path="/checkapplication"
+          element={<CheckApplication></CheckApplication>}
+        />
       </Routes>
       <Footer />
     </>

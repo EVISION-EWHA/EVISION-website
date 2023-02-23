@@ -41,8 +41,6 @@ function CheckApplication() {
     display: "flex",
     justifyContent: "center",
     padding: "5rem 40rem 20rem 40rem",
-    //height: "100rem",
-    //flexDirection: "column",
     fontSize: "30px",
     color: "white",
     backgroundColor: "black",

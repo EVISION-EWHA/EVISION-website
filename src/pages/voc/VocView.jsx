@@ -113,21 +113,18 @@ function VocView({ match }) {
   const hstyle = {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    margin: "auto",
-    height: "80rem",
     flexDirection: "column",
     fontSize: "2.3rem",
     color: "white",
     backgroundColor: "black",
-    p: "5rem 12rem 3rem 30rem",
+    padding: "5rem 12rem 3rem 45rem",
     justifyContent: "center",
     lineHeight: 1.8,
   };
   return (
     <ThemeProvider theme={theme}>
       <div style={hstyle}>
-        <Box sx={{ color: "white", width: "107rem" }}>
+        <Box sx={{ color: "white", width: "80%" }}>
           <Link to="/board">
             <Button
               sx={{
@@ -152,16 +149,15 @@ function VocView({ match }) {
           <br />
           수정일자 : {data.updateDate}
           <br />
-          <Box sx={{ width: "100%", border: 1, mb: 3, mt: 3 }}></Box>
           <Box
             sx={{
-              maxWidth: "100rem",
-              hiehgt: "39rem",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
+              width: "100%",
+              height: "20rem",
+              mb: 3,
+              mt: 3,
             }}
           >
-            내용 : {data.content}
+            {data.content}
           </Box>
           <br />
           {/* <button type="submit" id="submit" onClick={onClickRevise}>
