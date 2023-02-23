@@ -86,6 +86,9 @@
   background-color: black;
 }
 
+.CheckPw input{
+  width : 80rem;
+}
 
 .ApplyForm input[type="radio"],
 [type="checkbox"] {
@@ -103,7 +106,4 @@
   padding: 20px;
 }
 
-.CheckPw input{
-  width: 30rem;
-  place-content : center;
-}
+
