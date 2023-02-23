@@ -63,7 +63,6 @@ function CheckPw() {
                 createdDate: status.createdDate,
               },
             });
-            alert("지원서를 열람합니다!");
           }
         });
     } catch (err) {

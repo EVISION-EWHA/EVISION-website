@@ -104,9 +104,6 @@ function Application({ match }) {
           <br />
           <br />
           생성한 날짜: {data.createdDate}
-          <br />
-          <br />
-          수정한 날짜: {data.modifiedDate}
         </Box>
       </div>
     </ThemeProvider>

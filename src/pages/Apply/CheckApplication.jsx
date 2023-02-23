@@ -143,7 +143,7 @@ function CheckApplication() {
             {Management}
           </Box>
           <br />
-          ── 생성한 날짜{" "}
+          ── 지원 날짜{" "}
           <Box
             sx={{
               pl: 0.5,
@@ -152,7 +152,7 @@ function CheckApplication() {
               color: "#d3d3d3",
             }}
           >
-            {data.createdDate}
+            {data.createdDate.slice(0, 10)}
           </Box>
           <br />
         </Box>
