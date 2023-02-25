@@ -156,6 +156,10 @@ const Result = () => {
     7: useScrollFadeIn("up", 1, 0.1),
     8: useScrollFadeIn("up", 1, 0.1),
     9: useScrollFadeIn("up", 1, 0.1),
+    10: useScrollFadeIn("up", 1, 0.1),
+    11: useScrollFadeIn("up", 1, 0.1),
+    12: useScrollFadeIn("up", 1, 0.1),
+    13: useScrollFadeIn("up", 1, 0.1),
   };
 
   return (
@@ -187,15 +191,31 @@ const Result = () => {
           </p>
         </div>
       </S.Card>
+      <S.Title {...animatedItem[5]}>2022-2 EVI$ION Winter session</S.Title>
+      <S.Label {...animatedItem[6]}>
+        <div>
+          <b>Penetrating Test</b>
+          <p>
+            시나리오 기반의 모의해킹 프로젝트를 진행했습니다. 아래 링크에서
+            자세한 영상은 확인 가능합니다.
+            <br />
+            https://drive.google.com/drive/folders/14zm_Gj-4QMJShsRovdddpZpTP2IvO2jG?usp=sharing
+          </p>
+        </div>
+        <b>
+          EVI$ION Website programming <br /> - What you're looking at right now!
+        </b>
+      </S.Label>
+
       <Link to="/curriculum">
         <S.Button>
           2023-1 <br />
           커리큘럼 보러가기
         </S.Button>
       </Link>
-      <S.Title {...animatedItem[5]}>Participate / Award</S.Title>
+      <S.Title {...animatedItem[7]}>Participate / Award</S.Title>
       <S.Label>
-        <div {...animatedItem[6]}>
+        <div {...animatedItem[8]}>
           <b>Contest</b>
           <p>
             양자암호통신 아이디어 공모전 대상
@@ -217,7 +237,7 @@ const Result = () => {
             KU 해커톤 우수상
           </p>
         </div>
-        <div {...animatedItem[7]}>
+        <div {...animatedItem[9]}>
           <b>Research / Project</b>
           <p>
             한국 IT서비스 학회 추계학술대회 우수논문상
@@ -234,14 +254,14 @@ const Result = () => {
           </p>
         </div>
       </S.Label>
-      <S.Title {...animatedItem[8]}>Career</S.Title>
-      <S.Label>
+      <S.Title {...animatedItem[10]}>Career</S.Title>
+      <S.Label {...animatedItem[11]}>
         <section>
           <img src={career} className="career" alt="" />
         </section>
       </S.Label>
-      <S.Title {...animatedItem[9]}>Partner</S.Title>
-      <S.Label>
+      <S.Title {...animatedItem[12]}>Partner</S.Title>
+      <S.Label {...animatedItem[13]}>
         <section>
           <img src={hspace} className="" alt="" />
           <h3>

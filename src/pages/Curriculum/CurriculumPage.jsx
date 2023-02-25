@@ -42,13 +42,13 @@ const Wrapper = styled.section`
   text-align: center;
   line-height: 40px;
   img {
-    width: 120rem;
-    margin: 20px;
+    width: 60%;
+    margin: 2rem;
   }
 
   @media (max-width: 700px) {
     img {
-      width: 80rem;
+      width: 90%;
       margin: 20px;
     }
   }
