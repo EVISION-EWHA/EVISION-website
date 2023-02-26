@@ -1,4 +1,4 @@
-const BASE_URL = "http://3.37.117.164:8080";
+const BASE_URL = "https://server.ewha-evision.kr";
 
 export const API = {
   Login: `${BASE_URL}/login`,
