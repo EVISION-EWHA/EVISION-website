@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import useScrollFadeIn from "./useScrollFadeIn";
-import ctf from "assets/ctf.jpeg";
+import ctf from "assets/ctf.png";
 import session from "assets/session.png";
 import contest from "assets/contest.png";
 import bugbounty from "assets/bugbounty.png";
@@ -178,10 +178,9 @@ const S = {
     }
   `,
   Title: styled.p`
-    font-size: 7rem;
-    font-weight: 600;
-
     @media (min-width: 1024px) {
+      font-size: 6rem;
+      font-weight: 600;
       margin-top: 20rem;
       margin-bottom: 7rem;
     }

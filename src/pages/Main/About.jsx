@@ -42,7 +42,7 @@ const S = {
       height: 2rem;
       z-index: 3;
       @media (max-width: 1023px) {
-        margin-top: 50rem;
+        margin-top: 40rem;
       }
     }
 
