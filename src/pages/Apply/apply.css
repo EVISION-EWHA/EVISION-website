@@ -12,6 +12,9 @@
   color: white;
   background-color: black;
 }
+.ApplyInfo h2 {
+  margin-top: 200px;
+}
 
 .ApplyInfo article {
   width: 100%;

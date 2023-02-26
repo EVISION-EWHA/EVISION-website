@@ -18,7 +18,7 @@ function ApplyInfo() {
         <br />
         <br />
       </h2>
-      <h2
+      <h3
         style={{
           textAlign: "center",
           fontSize: "4rem",
@@ -27,7 +27,7 @@ function ApplyInfo() {
         }}
       >
         ✎ 2023-1 신입부원 모집 ✎
-      </h2>
+      </h3>
       <br />
 
       <article>
