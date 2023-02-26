@@ -55,6 +55,7 @@ const Wrapper = styled.section`
 `;
 
 const StTitle = styled.h2`
+  padding-top: 10rem;
   font-size: 40px;
   margin: 2rem;
   font-weight: bold;

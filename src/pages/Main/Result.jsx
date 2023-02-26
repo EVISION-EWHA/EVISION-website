@@ -229,6 +229,7 @@ const Result = () => {
     11: useScrollFadeIn("up", 1, 0.05),
     12: useScrollFadeIn("up", 1, 0.05),
     13: useScrollFadeIn("up", 1, 0.05),
+    14: useScrollFadeIn("up", 1, 0.05),
   };
   const [opt, setOpt] = useState("1");
 
@@ -261,7 +262,7 @@ const Result = () => {
           </p>
         </div>
       </S.Card>
-      <S.Article {...animatedItem[1]}>
+      <S.Article {...animatedItem[14]}>
         <nav>
           <div
             style={

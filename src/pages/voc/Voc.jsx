@@ -54,6 +54,7 @@ function Voc() {
           alignItems: "left",
           display: "flex",
           flexDirection: "column",
+          marginTop: "10rem",
         }}
       >
         <Link to="/board/question">
