@@ -13,12 +13,15 @@
   background-color: black;
 }
 
-.ApplyInfo form {
+.ApplyInfo article {
+  width: 100%;
   font-size: 2.4rem;
   margin-top: 9rem;
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin-left: 5rem;
+  padding-left: 5rem;
 }
 
 .apply_btn {

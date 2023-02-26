@@ -30,7 +30,7 @@ function ApplyInfo() {
       </h2>
       <br />
 
-      <form>
+      <article>
         <label>
           이화여자대학교 엘텍공과대학 사이버보안전공 과동아리 EVI$ION이 새로운
           기수를 선발합니다!
@@ -38,19 +38,19 @@ function ApplyInfo() {
           아래의 사항을 꼭 확인하시고 지원부탁드립니다.
         </label>
         <br />
-        <br />{" "}
+        <br />
         <label>
           ✔ 지원 조건 : 엘텍공과대학 소프트웨어학부 사이버보안전공
-          (주전공/복수전공 및 진입예정자){" "}
+          (주전공/복수전공 및 진입예정자)
         </label>
         <label>
-          ✔ 전체세션 장소 : 이화여자대학교 교내 강의실 (세부건물 및 호수는 미정){" "}
+          ✔ 전체세션 장소 : 이화여자대학교 교내 강의실 (세부건물 및 호수는 미정)
         </label>
         <label>
           ✔ 전체세션 시간 : 매주 목요일 오후 6시 반 ~ 오후 8시 반 (시험기간
           제외)
         </label>
-        <img src={time_line} />
+        <img src={time_line} alt="" />
         <br />
         <div className="apply_btn">
           <button
@@ -71,7 +71,7 @@ function ApplyInfo() {
             지원서 확인하기
           </button>
         </div>
-      </form>
+      </article>
     </div>
   );
 }
