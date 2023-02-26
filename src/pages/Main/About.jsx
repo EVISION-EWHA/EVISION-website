@@ -20,10 +20,10 @@ const S = {
   `,
   FirstWrapper: styled.section`
     width: 100%;
-    min-height: 108rem;
+    height: 108rem;
     background: linear-gradient(#000000, #00331d);
     @media (max-width: 1023px) {
-      min-height: 85rem;
+      height: 85rem;
     }
 
     display: flex;
@@ -37,12 +37,12 @@ const S = {
 
     .arrow {
       position: absolute;
-      margin-top: 100vh;
+      top: 95rem;
       width: 2rem;
       height: 2rem;
       z-index: 3;
       @media (max-width: 1023px) {
-        margin-top: 40rem;
+        top: 73rem;
       }
     }
 
@@ -51,7 +51,8 @@ const S = {
       line-height: 12rem;
       font-weight: 600;
       @media (max-width: 1023px) {
-        font-size: 11rem;
+        width: 80%;
+        font-size: 10rem;
         line-height: 12rem;
         font-weight: 600;
       }
@@ -115,7 +116,7 @@ const About = () => {
         <b {...animatedItem[0]}>Put Your Vision to Reality</b>
         <img src={arrowDown} class="arrow" alt="" />
       </S.FirstWrapper>
-      <S.Title {...animatedItem[1]}>ABOUT</S.Title>
+      <S.Title {...animatedItem[1]}>EVI$ION</S.Title>
       <S.Label {...animatedItem[2]}>
         <img src={flag} class="flag" alt="" />
         <p>

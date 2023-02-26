@@ -398,7 +398,7 @@ const Result = () => {
           </p>
         </div>
       </S.Label>
-      <S.Title {...animatedItem[10]}>OB 커리어</S.Title>
+      <S.Title {...animatedItem[10]}>졸업 후 커리어</S.Title>
       <S.Label {...animatedItem[11]}>
         <section>
           <img src={career} className="career" alt="" />
