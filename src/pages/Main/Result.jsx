@@ -188,7 +188,8 @@ const S = {
       margin-top: 10rem;
       margin-bottom: 5rem;
 
-      font-size: 6rem;
+      font-size: 5rem;
+      line-height: 6rem;
       font-weight: 500;
       margin-top: 8rem;
       margin-bottom: 5rem;
@@ -334,7 +335,7 @@ const Result = () => {
           </p>
         </section>
       </S.Article>
-      <S.Title {...animatedItem[5]}>2022-2 방학 활동</S.Title>
+      <S.Title {...animatedItem[5]}>2022-2 방학활동</S.Title>
       <S.Label {...animatedItem[6]}>
         <div>
           <b>Penetrating Test</b>
@@ -356,7 +357,7 @@ const Result = () => {
           커리큘럼 보러가기
         </S.Button>
       </Link>
-      <S.Title {...animatedItem[7]}>수상 및 프로그램</S.Title>
+      <S.Title {...animatedItem[7]}>수상 & 프로그램</S.Title>
       <S.Label>
         <div {...animatedItem[8]}>
           <b>Contest</b>
@@ -397,7 +398,7 @@ const Result = () => {
           </p>
         </div>
       </S.Label>
-      <S.Title {...animatedItem[10]}>졸업 후 진로</S.Title>
+      <S.Title {...animatedItem[10]}>OB 커리어</S.Title>
       <S.Label {...animatedItem[11]}>
         <section>
           <img src={career} className="career" alt="" />

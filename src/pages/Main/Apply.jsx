@@ -67,7 +67,7 @@ const Apply = () => {
   return (
     <S.Wrapper>
       <div {...animatedItem[0]}>
-        <S.Title>Apply</S.Title>
+        <S.Title>5기 지원</S.Title>
         <p>
           추가모집의 경우 선발에서 기존 부원과의 실력차이를 고려하기 위해 간단한
           테스트가 있을 예정입니다. 테스트 난도는 CTF를 공부해본 경험이 있는 분
