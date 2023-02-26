@@ -66,7 +66,7 @@ const S = {
       line-height: 6rem;
       @media (max-width: 1023px) {
         font-size: 2rem;
-        line-height: 5rem;
+        line-height: 4rem;
       }
     }
 
