@@ -22,6 +22,9 @@ const S = {
     width: 100%;
     min-height: 108rem;
     background: linear-gradient(#000000, #00331d);
+    @media (max-width: 1023px) {
+      min-height: 85rem;
+    }
 
     display: flex;
     flex-direction: column;
@@ -38,12 +41,20 @@ const S = {
       width: 2rem;
       height: 2rem;
       z-index: 3;
+      @media (max-width: 1023px) {
+        margin-top: 50rem;
+      }
     }
 
     b {
       font-size: 12rem;
       line-height: 12rem;
       font-weight: 600;
+      @media (max-width: 1023px) {
+        font-size: 11rem;
+        line-height: 12rem;
+        font-weight: 600;
+      }
     }
   `,
   Label: styled.div`
@@ -53,6 +64,10 @@ const S = {
     p {
       font-size: 2.4rem;
       line-height: 6rem;
+      @media (max-width: 1023px) {
+        font-size: 2rem;
+        line-height: 5rem;
+      }
     }
 
     .flag {
@@ -61,20 +76,27 @@ const S = {
       @media (min-width: 1024px) {
         margin-right: 10rem;
       }
+      @media (max-width: 1023px) {
+        width: 25rem;
+        height: 25rem;
+      }
     }
   `,
   Title: styled.p`
     font-size: 7rem;
     font-weight: 600;
-    margin-top: 20rem;
-    margin-bottom: 20rem;
 
     @media (min-width: 1024px) {
       margin-top: 20rem;
-      margin-bottom: 15rem;
+      margin-bottom: 7rem;
     }
     @media (max-width: 1023px) {
       margin-top: 10rem;
+      margin-bottom: 5rem;
+
+      font-size: 6rem;
+      font-weight: 500;
+      margin-top: 8rem;
       margin-bottom: 5rem;
     }
   `,
@@ -83,8 +105,8 @@ const S = {
 const About = () => {
   const animatedItem = {
     0: useScrollFadeIn("up", 1, 0),
-    1: useScrollFadeIn("up", 1, 0.3),
-    2: useScrollFadeIn("up", 1, 0.3),
+    1: useScrollFadeIn("up", 1, 0.1),
+    2: useScrollFadeIn("up", 1, 0.1),
   };
 
   return (
