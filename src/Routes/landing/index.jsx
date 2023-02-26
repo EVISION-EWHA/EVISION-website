@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import NotFound from "pages/notFound";
 import MainPage from "pages/Main/MainPage";
-import Header from "components/header";
+import Header from "components/common/header";
 // import { useState, useCallback } from "react";
 import CurriculumPage from "pages/Curriculum/CurriculumPage";
 import Footer from "components/footer";
@@ -15,10 +14,6 @@ const LandingRoutes = () => {
         <Route path="/" exact element={<MainPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/curriculum" element={<CurriculumPage />} />
-        {/*}
-        <Route path="/recruit" element={<RecruitPage />} />
-        <Route path="/notice" element={<NoticePage />} />
-        <Route path="/*" element={<NotFound />} />  */}
       </Routes>
       <Footer />
     </>

@@ -1,27 +1,9 @@
 import styled from "styled-components";
-import logo from "assets/icon.png";
-import Intro from "components/Intro";
-import Curriculum from "components/curri";
-import Fade from "react-reveal/Fade";
-import Apply from "components/apply";
-import Footer from "components/footer";
 import Login from "./login/Login";
 
 function Landing() {
   return (
     <StLanding>
-      {/*  <img src={logo} alt="로고사진" />
-      <Fade>
-        <Intro />
-        <Login />
-      </Fade>
-      <Fade>
-        <Curriculum />
-      </Fade>
-      <Fade>
-        <Apply />
-      </Fade>
-      <Footer /> */}
       <Login></Login>
     </StLanding>
   );
@@ -29,7 +11,7 @@ function Landing() {
 
 export default Landing;
 
-const StLanding = styled.div` 
+const StLanding = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

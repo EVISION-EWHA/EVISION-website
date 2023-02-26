@@ -7,7 +7,7 @@ import Signup from "pages/sign/Signup";
 import MainPage from "pages/Main/MainPage";
 import CurriculumPage from "pages/Curriculum/CurriculumPage";
 // import Post from "pages/board/post";
-import Header from "components/header";
+import Header from "components/common/header";
 import Footer from "components/footer";
 import ApplyInfo from "pages/Apply/ApplyInfo";
 import ApplyForm from "pages/Apply/ApplyForm";
@@ -27,6 +27,7 @@ import CheckApplication from "pages/Apply/CheckApplication";
 
 const App = () => {
   const [isLogin, setIsLogin] = React.useState(false);
+
   return (
     <>
       <Header isLogin={isLogin} style={header} setIsLogin={setIsLogin} />
@@ -68,6 +69,6 @@ const App = () => {
 
 export default App;
 
-const header = styled.form`
+const header = styled.div`
   position: fixed;
 `;

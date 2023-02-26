@@ -12,15 +12,12 @@ const Header = ({ isLogin, setIsLogin }) => {
     return (
       <>
         <HeaderBlock>
+          <Logo>
+            <NavLink style={{ color: "white", textDecoration: "none" }} to="/">
+              EVI$ION
+            </NavLink>
+          </Logo>
           <Wrapper>
-            <Logo>
-              <NavLink
-                style={{ color: "white", textDecoration: "none" }}
-                to="/"
-              >
-                EVI$ION
-              </NavLink>
-            </Logo>
             <MenusBlock>
               {menus.map((m) => (
                 <NavStyle key={m.link} to={m.link}>
@@ -43,7 +40,6 @@ const Header = ({ isLogin, setIsLogin }) => {
             </LoginBlock>
           </Wrapper>
         </HeaderBlock>
-        <Spacer />
       </>
     );
   } else if (localStorage.getItem("grade") === "1") {
@@ -51,15 +47,12 @@ const Header = ({ isLogin, setIsLogin }) => {
     return (
       <>
         <HeaderBlock>
+          <Logo>
+            <NavLink style={{ color: "white", textDecoration: "none" }} to="/">
+              EVI$ION
+            </NavLink>
+          </Logo>
           <Wrapper>
-            <Logo>
-              <NavLink
-                style={{ color: "white", textDecoration: "none" }}
-                to="/"
-              >
-                EVI$ION
-              </NavLink>
-            </Logo>
             <MenusBlock>
               {menus.map((m) => (
                 <NavStyle key={m.link} to={m.link}>
@@ -79,22 +72,18 @@ const Header = ({ isLogin, setIsLogin }) => {
             </LoginBlock>
           </Wrapper>
         </HeaderBlock>
-        <Spacer />
       </>
     );
   } else {
     return (
       <>
         <HeaderBlock>
+          <Logo>
+            <NavLink style={{ color: "white", textDecoration: "none" }} to="/">
+              EVI$ION
+            </NavLink>
+          </Logo>
           <Wrapper>
-            <Logo>
-              <NavLink
-                style={{ color: "white", textDecoration: "none" }}
-                to="/"
-              >
-                EVI$ION
-              </NavLink>
-            </Logo>
             <MenusBlock>
               {menus.map((m) => (
                 <NavStyle key={m.link} to={m.link}>
@@ -112,7 +101,6 @@ const Header = ({ isLogin, setIsLogin }) => {
             </LoginBlock>
           </Wrapper>
         </HeaderBlock>
-        <Spacer />
       </>
     );
   }
@@ -127,8 +115,11 @@ const menus = [
 ];
 
 const Logo = styled.div`
-  font-size: 40px;
+  font-size: 4rem;
   color: white;
+  @media (max-width: 700px) {
+    font-size: 3.5rem;
+  }
 `;
 
 const HeaderBlock = styled.div`
@@ -143,15 +134,22 @@ const HeaderBlock = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: 6.5rem;
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: sticky;
+  @media (max-width: 700px) {
+    height: 4rem;
+  }
 `;
 
 const MenusBlock = styled.div`
-  padding-left: 4rem;
+  padding-left: 0.5rem;
   display: flex;
+
   @media (max-width: 700px) {
     display: none;
   }
@@ -179,9 +177,8 @@ const Menu = styled.div`
   cursor: pointer;
   padding-left: 3rem;
 `;
+
 const LoginBlock = styled.div`
-  position: absolute;
-  right: 0;
   padding-right: 3rem;
   display: flex;
   align-items: center;
@@ -203,8 +200,4 @@ const StLogout = styled(NavLink)`
   &:hover {
     color: white;
   }
-`;
-
-const Spacer = styled.div`
-  height: 11.5rem;
 `;
