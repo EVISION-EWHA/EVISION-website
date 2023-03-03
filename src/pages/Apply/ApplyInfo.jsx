@@ -1,6 +1,6 @@
 import React from "react";
 import "./apply.css";
-import time_line from "assets/time_line.png";
+import time_line from "assets/timeline.png";
 
 function ApplyInfo() {
   const handleApply = (event) => {
