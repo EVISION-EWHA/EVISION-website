@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import curri from "assets/curriculum.png";
 
 const CurriculumPage = () => {
   useEffect(() => {
@@ -15,9 +14,6 @@ const CurriculumPage = () => {
         <br />
         격주로 CTF대회 문제풀이와 토이 프로젝트를 진행합니다.
       </StContent>
-      <img src={curri} alt="Curriculum" />
-      <br />
-      <br />
       <br />
       <StTitle>토이 프로젝트의 주제</StTitle>
       <StLabel>1. 백도어 개발 및 시나리오 기반 모의해킹</StLabel>

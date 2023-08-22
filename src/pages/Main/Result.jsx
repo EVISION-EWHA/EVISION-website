@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import useScrollFadeIn from "./useScrollFadeIn";
 import ctf from "assets/ctf.png";
 import session from "assets/session.png";
 import contest from "assets/contest.png";
 import bugbounty from "assets/bugbounty.png";
+import pentest from "assets/pentest.png";
+import ctfsession from "assets/ctfsession.png";
+import projectsession from "assets/projectsession.png";
+import hspaceCTF from "assets/hspaceCTF.png";
+import medusa from "assets/medusa.png";
+import ddos from "assets/ddos.png";
+
 import career from "assets/career.png";
 import hspace from "assets/space.png";
 
@@ -78,69 +84,17 @@ const S = {
     }
 
     .award {
-      border-radius: 2rem;
       font-size: 2rem;
-      line-height: 3.5rem;
-      @media (min-width: 1023px) {
-        background-color: rgb(255, 255, 255, 0.1);
-        padding: 4rem;
-        line-height: 4rem;
+      padding: 4rem;
+      line-height: 4rem;
+      @media (max-width: 1023px) {
+        border-radius: 2rem;
+        font-size: 1.5rem;
+        line-height: 3rem;
       }
     }
   `,
-  Card: styled.div`
-    @media (max-width: 1023px) {
-      display: none;
-    }
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-
-    gap: 5rem;
-    flex-wrap: wrap;
-
-    div {
-      position: relative;
-      border-radius: 10%;
-      overflow: hidden;
-
-      margin: 5rem;
-      width: 50rem;
-      height: 30rem;
-    }
-
-    img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-
-    p {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 100%;
-      height: 100%;
-
-      background-color: rgb(0, 0, 0, 0.65);
-      font-size: 3rem;
-      font-weight: 400;
-      line-height: 6rem;
-      word-break: break-all;
-    }
-  `,
   Article: styled.article`
-    @media (min-width: 1023px) {
-      display: none;
-    }
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -148,6 +102,12 @@ const S = {
     width: 100%;
 
     nav {
+      @media (max-width: 1023px) {
+        gap: 2rem;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        margin-bottom: 1rem;
+      }
       display: flex;
       width: 90%;
       justify-content: center;
@@ -155,6 +115,11 @@ const S = {
       font-size: 2.3rem;
       line-height: 3.5rem;
       margin-bottom: 2rem;
+      div {
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
     section {
       display: flex;
@@ -163,27 +128,34 @@ const S = {
       align-items: center;
       background-color: rgb(255, 255, 255, 0.15);
       border-radius: 1.5rem;
-      width: 90%;
+      width: 70%;
       padding: 2rem;
     }
     section > img {
       width: 90%;
-      height: 20rem;
+      height: 60rem;
       margin-bottom: 1rem;
+      @media (max-width: 1023px) {
+        height: 20rem;
+      }
     }
     section > p {
+      @media (max-width: 1023px) {
+        gap: 2rem;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        margin-bottom: 1rem;
+      }
       width: 90%;
       font-size: 2.3rem;
       line-height: 3.5rem;
     }
   `,
   Title: styled.p`
-    @media (min-width: 1024px) {
-      font-size: 6rem;
-      font-weight: 600;
-      margin-top: 20rem;
-      margin-bottom: 7rem;
-    }
+    font-size: 6rem;
+    font-weight: 600;
+    margin-top: 20rem;
+    margin-bottom: 2rem;
     @media (max-width: 1023px) {
       margin-top: 10rem;
       margin-bottom: 5rem;
@@ -193,6 +165,20 @@ const S = {
       font-weight: 500;
       margin-top: 8rem;
       margin-bottom: 5rem;
+    }
+  `,
+  Subtitle: styled.p`
+    font-size: 5rem;
+    font-weight: 500;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    @media (max-width: 1023px) {
+      margin-top: 7rem;
+      margin-bottom: 2rem;
+
+      font-size: 3rem;
+      line-height: 4rem;
+      font-weight: 400;
     }
   `,
   Button: styled.div`
@@ -207,127 +193,113 @@ const S = {
     line-height: 4rem;
 
     &:hover {
-      background-color: black;
-      color: white;
+      background-color: green;
     }
   `,
 };
 
 const Result = () => {
-  const animatedItem = {
-    0: useScrollFadeIn("up", 1, 0),
-    1: useScrollFadeIn("up", 1, 0.05),
-    2: useScrollFadeIn("up", 1, 0.05),
-    3: useScrollFadeIn("up", 1, 0.05),
-    4: useScrollFadeIn("up", 1, 0.05),
-    5: useScrollFadeIn("up", 1, 0.05),
-    6: useScrollFadeIn("up", 1, 0.05),
-    7: useScrollFadeIn("up", 1, 0.05),
-    8: useScrollFadeIn("up", 1, 0.05),
-    9: useScrollFadeIn("up", 1, 0.05),
-    10: useScrollFadeIn("up", 1, 0.05),
-    11: useScrollFadeIn("up", 1, 0.05),
-    12: useScrollFadeIn("up", 1, 0.05),
-    13: useScrollFadeIn("up", 1, 0.05),
-    14: useScrollFadeIn("up", 1, 0.05),
-  };
-  const [opt, setOpt] = useState("1");
+  const [firstOpt, setFirstOpt] = useState("1");
+  const [secondOpt, setSecondOpt] = useState("1");
 
   return (
     <S.Wrapper>
-      <S.Title {...animatedItem[0]}>2022-2 활동</S.Title>
-      <S.Card>
-        <div {...animatedItem[1]}>
-          <img src={session} alt="" />
-          <p>
-            CTF
-            <br />
-            (web/pwn/crypto/forensic) <br /> 기초 교육
-          </p>
-        </div>
-        <div {...animatedItem[2]}>
-          <img src={ctf} alt="" />
-          <p>
-            동아리내부 CTF <br /> 문제 출제 및 참가
-          </p>
-        </div>
-        <div {...animatedItem[3]}>
-          <img src={contest} alt="" />
-          <p>외부 CTF 대회</p>
-        </div>
-        <div {...animatedItem[4]}>
-          <img src={bugbounty} alt="" />
-          <p>
-            버그바운티 <br /> 금융(Toss, 우리은행) 대회
-          </p>
-        </div>
-      </S.Card>
-      <S.Article {...animatedItem[14]}>
+      <S.Title>EVI$ION 5기 활동</S.Title>
+      <S.Subtitle>2022-2 + Winter</S.Subtitle>
+      <S.Article>
         <nav>
           <div
             style={
-              opt === "1"
+              firstOpt === "1"
                 ? { borderBottom: "2px solid white" }
                 : { borderBottomColor: "" }
             }
-            onClick={() => setOpt("1")}
+            onClick={() => setFirstOpt("1")}
           >
-            정규세션
+            정규세션+심화세션
           </div>
           <div
             style={
-              opt === "2"
+              firstOpt === "2"
                 ? { borderBottom: "2px solid white" }
                 : { borderBottomColor: "" }
             }
-            onClick={() => setOpt("2")}
+            onClick={() => setFirstOpt("2")}
           >
             내부CTF
           </div>
           <div
             style={
-              opt === "3"
+              firstOpt === "3"
                 ? { borderBottom: "2px solid white" }
                 : { borderBottomColor: "" }
             }
-            onClick={() => setOpt("3")}
+            onClick={() => setFirstOpt("3")}
           >
             외부CTF
           </div>
           <div
             style={
-              opt === "4"
+              firstOpt === "4"
                 ? { borderBottom: "2px solid white" }
                 : { borderBottomColor: "" }
             }
-            onClick={() => setOpt("4")}
+            onClick={() => setFirstOpt("4")}
           >
-            etc.
+            겨울방학활동
+          </div>
+          <div
+            style={
+              firstOpt === "5"
+                ? { borderBottom: "2px solid white" }
+                : { borderBottomColor: "" }
+            }
+            onClick={() => setFirstOpt("5")}
+          >
+            ETC.
           </div>
         </nav>
-        <section style={opt === "1" ? { display: "" } : { display: "none" }}>
+        <section
+          style={firstOpt === "1" ? { display: "" } : { display: "none" }}
+        >
           <img src={session} alt="" />
           <p>
-            선후배 멘토링 프로그램을 통한 web/pwn/crypto/forensic 주제의 ctf
-            문제풀이 및 보안 기초 다지기
+            선후배 멘토링 프로그램을 통한 web/pwnable/reversing/forensic 주제의
+            <br />
+            오펜시브 시큐리티 개념 다지기 및 CTF 문제풀이를 통한 해킹 기법 공부
           </p>
         </section>
-        <section style={opt === "2" ? { display: "" } : { display: "none" }}>
+        <section
+          style={firstOpt === "2" ? { display: "" } : { display: "none" }}
+        >
           <img src={ctf} alt="" />
           <p>
-            세션&심화스터디를 통해 배운것을 바탕으로
-            문제출제(web/pwn/crypto/forensic), ctf 서버 구축, ctf 웹 구축 등
-            동아리내에서 대회 개최, 모든 부원이 참여하는 EVI$ION 내부 CTF
+            세션 + 심화스터디를 통해 배운것을 바탕으로
+            문제출제(web/pwnable/reversing/forensic), ctf 구축 등<br />
+            동아리내에서 대회 개최, 모든 부원이 참여한 EVI$ION 내부 CTF
           </p>
         </section>
-        <section style={opt === "3" ? { display: "" } : { display: "none" }}>
+        <section
+          style={firstOpt === "3" ? { display: "" } : { display: "none" }}
+        >
           <img src={contest} alt="" />
+          <p>화이트햇, DFC, POX 등 외부 해킹 대회 참가를 통한 실력 성장</p>
+        </section>
+        <section
+          style={firstOpt === "4" ? { display: "" } : { display: "none" }}
+        >
+          <img src={pentest} alt="" />
           <p>
-            화이트햇, DFC, POX 등 외부에서 열리는 CTF 대회 자율 참여를 통한 실력
-            성장
+            1. 시나리오기반 모의해킹 공부 자세한 영상은 아래 링크 참조
+            <br />
+            https://drive.google.com/drive/folders/14zm_Gj-4QMJShsRovdddpZpTP2IvO2jG?usp=sharing
+            <br />
+            2. EV$ION 웹사이트 (what you're looking at right now!) 개발
           </p>
         </section>
-        <section style={opt === "4" ? { display: "" } : { display: "none" }}>
+        <section
+          style={firstOpt === "5" ? { display: "" } : { display: "none" }}
+        >
           <img src={bugbounty} alt="" />
           <p>
             toss, 우리은행 등의 버그바운티 대회, 모의해킹 프로젝트, AI 보안
@@ -335,31 +307,109 @@ const Result = () => {
           </p>
         </section>
       </S.Article>
-      <S.Title {...animatedItem[5]}>2022-2 방학활동</S.Title>
-      <S.Label {...animatedItem[6]}>
-        <div>
-          <b>Penetrating Test</b>
+      <S.Subtitle>2023-1 + Summer</S.Subtitle>
+      <S.Article>
+        <nav>
+          <div
+            style={
+              secondOpt === "1"
+                ? { borderBottom: "2px solid white" }
+                : { borderBottomColor: "" }
+            }
+            onClick={() => setSecondOpt("1")}
+          >
+            CTF세션
+          </div>
+          <div
+            style={
+              secondOpt === "2"
+                ? { borderBottom: "2px solid white" }
+                : { borderBottomColor: "" }
+            }
+            onClick={() => setSecondOpt("2")}
+          >
+            Project세션
+          </div>
+          <div
+            style={
+              secondOpt === "3"
+                ? { borderBottom: "2px solid white" }
+                : { borderBottomColor: "" }
+            }
+            onClick={() => setSecondOpt("3")}
+          >
+            내부CTF
+          </div>
+          <div
+            style={
+              secondOpt === "4"
+                ? { borderBottom: "2px solid white" }
+                : { borderBottomColor: "" }
+            }
+            onClick={() => setSecondOpt("4")}
+          >
+            여름방학활동
+          </div>
+          <div
+            style={
+              secondOpt === "5"
+                ? { borderBottom: "2px solid white" }
+                : { borderBottomColor: "" }
+            }
+            onClick={() => setSecondOpt("5")}
+          >
+            ETC.
+          </div>
+        </nav>
+        <section
+          style={secondOpt === "1" ? { display: "" } : { display: "none" }}
+        >
+          <img src={ctfsession} alt="" />
           <p>
-            시나리오 기반의 모의해킹 프로젝트
-            <br /> 자세한 영상은 아래 링크에서 확인 가능합니다.
+            HackDay, DEFCON, DreamHack Blitz CTF 등
             <br />
-            https://drive.google.com/drive/folders/14zm_Gj-4QMJShsRovdddpZpTP2IvO2jG?usp=sharing
+            개인 또는 팀을 구성해서 국내외 CTF에 참가
           </p>
-        </div>
-        <div>
-          <b>EVI$ION Website v2.0</b>
-          <p> What you're looking at right now!</p>
-        </div>
-      </S.Label>
+        </section>
+        <section
+          style={secondOpt === "2" ? { display: "" } : { display: "none" }}
+        >
+          <img src={projectsession} alt="" />
+          <p>
+            웹 Fuzzing, 시나리오기반모의해킹, 디지털포렌식 챌린지
+            <br /> 총 3가지 팀을 관심사 기반으로 구성하여 공부
+          </p>
+        </section>
+        <section
+          style={secondOpt === "3" ? { display: "" } : { display: "none" }}
+        >
+          <img src={hspaceCTF} alt="" />
+          <p>H-Space와 연계한 EVI$ION 내부 CTF</p>
+        </section>
+        <section
+          style={secondOpt === "4" ? { display: "" } : { display: "none" }}
+        >
+          <img src={medusa} alt="" />
+          <p>Medusa: 문서형 악성코드 제작 프로젝트</p>
+        </section>
+        <section
+          style={secondOpt === "5" ? { display: "" } : { display: "none" }}
+        >
+          <img src={ddos} alt="" />
+          <p>
+            DDoS Generator 제작 프로젝트(기업외주 및 타대 해킹동아리와 협업)
+          </p>
+        </section>
+      </S.Article>
       <Link to="/curriculum">
         <S.Button>
-          2023-1 <br />
+          6th EVI$ION <br />
           커리큘럼 보러가기
         </S.Button>
       </Link>
-      <S.Title {...animatedItem[7]}>수상 & 프로그램</S.Title>
+      <S.Title>Accomplishment</S.Title>
       <S.Label>
-        <div {...animatedItem[8]}>
+        <div>
           <b>Contest</b>
           <p className="award">
             양자암호통신 아이디어 공모전 대상
@@ -381,7 +431,7 @@ const Result = () => {
             KU 해커톤 우수상
           </p>
         </div>
-        <div {...animatedItem[9]}>
+        <div>
           <b>Research / Project</b>
           <p className="award">
             한국 IT서비스 학회 추계학술대회 우수논문상
@@ -392,20 +442,20 @@ const Result = () => {
             <br />
             시나리오 기반의 모의해킹 프로젝트
             <br />
-            BOB 차세대 보안리더 양성 프로그램
+            BOB 차세대 보안리더 양성 프로그램 수료
             <br />
             스틸리언, BOSCH KOREA, 금융감독원 프로그램
           </p>
         </div>
       </S.Label>
-      <S.Title {...animatedItem[10]}>졸업 후 커리어</S.Title>
-      <S.Label {...animatedItem[11]}>
+      <S.Title>Alumni + Career</S.Title>
+      <S.Label>
         <section>
           <img src={career} className="career" alt="" />
         </section>
       </S.Label>
-      <S.Title {...animatedItem[12]}>파트너</S.Title>
-      <S.Label {...animatedItem[13]}>
+      <S.Title>Partner</S.Title>
+      <S.Label>
         <section>
           <img src={hspace} className="" alt="" />
           <h3>

@@ -108,9 +108,14 @@ const Header = ({ isLogin, setIsLogin }) => {
 
 export default Header;
 
+// const menus = [
+//   { name: "Curriculum", link: "/curriculum" },
+//   { name: "Recruit", link: "/recruit" },
+//   { name: "Board", link: "/board" },
+// ];
+
 const menus = [
   { name: "Curriculum", link: "/curriculum" },
-  { name: "Recruit", link: "/recruit" },
   { name: "Board", link: "/board" },
 ];
 

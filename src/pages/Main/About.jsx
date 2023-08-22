@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import useScrollFadeIn from "./useScrollFadeIn";
-import arrowDown from "assets/arrow_down.png";
 import flag from "assets/flag.png";
 
 const S = {
@@ -30,21 +29,9 @@ const S = {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
     text-align: center;
 
     line-height: 9rem;
-
-    .arrow {
-      position: absolute;
-      top: 95rem;
-      width: 2rem;
-      height: 2rem;
-      z-index: 3;
-      @media (max-width: 1023px) {
-        top: 73rem;
-      }
-    }
 
     b {
       font-size: 12rem;
@@ -55,6 +42,58 @@ const S = {
         font-size: 10rem;
         line-height: 12rem;
         font-weight: 600;
+      }
+      span {
+        color: #e2a600;
+      }
+    }
+
+    p {
+      padding-top: 60px;
+    }
+    p span {
+      position: absolute;
+      top: 80rem;
+      left: 50%;
+      width: 36px;
+      height: 36px;
+      margin-left: -18px;
+      border-left: 3px solid #fff;
+      border-bottom: 3px solid #fff;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-animation: sdb 2s infinite;
+      animation: sdb 2s infinite;
+      box-sizing: border-box;
+      @media (max-width: 1023px) {
+        top: 70rem;
+        width: 24px;
+        height: 24px;
+        margin-left: -12px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+      }
+    }
+    @-webkit-keyframes sdb {
+      0% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+      }
+      20% {
+        -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+      }
+      40% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+      }
+    }
+    @keyframes sdb {
+      0% {
+        transform: rotate(-45deg) translate(0, 0);
+      }
+      20% {
+        transform: rotate(-45deg) translate(-10px, 10px);
+      }
+      40% {
+        transform: rotate(-45deg) translate(0, 0);
       }
     }
   `,
@@ -113,8 +152,12 @@ const About = () => {
   return (
     <S.Wrapper>
       <S.FirstWrapper>
-        <b {...animatedItem[0]}>Put Your Vision to Reality</b>
-        <img src={arrowDown} class="arrow" alt="" />
+        <b {...animatedItem[0]}>
+          <span>E</span>wha's <span>VI$ION</span> in security
+        </b>
+        <p>
+          <span></span>
+        </p>
       </S.FirstWrapper>
       <S.Title {...animatedItem[1]}>EVI$ION</S.Title>
       <S.Label {...animatedItem[2]}>
@@ -122,13 +165,13 @@ const About = () => {
         <p>
           EVI$ION은
           <br />
-          엘텍공과대학 소프트웨어학부 사이버보안전공
+          엘텍공과대학 소프트웨어학부 사이버보안전공 소속의
           <br />
-          소속의 유일한 과동아리 입니다.
+          유일한 과동아리이자 오펜시브 시큐리티 동아리입니다
           <br />
-          5기수째 사이버보안 벗들을 중심으로
+          6기수째 사이버보안 벗들을 중심으로
           <br />
-          사이버보안 전공의 학술적인 발전을 도모하고 있습니다.
+          사이버보안 전공의 학술적인 발전을 도모하고 있습니다
         </p>
       </S.Label>
     </S.Wrapper>
